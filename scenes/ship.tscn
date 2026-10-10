@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bijuc40vsvgfj" path="res://scripts/Ship.cs" id="1_q631a"]
 [ext_resource type="Texture2D" uid="uid://bmksrnhpeu66r" path="res://spaceship-png-icon-17270.png" id="2_2gnfn"]
-[ext_resource type="PackedScene" uid="uid://qigx5ujsoyew" path="res://scenes/beam.tscn" id="4_gudjc"]
+[ext_resource type="PackedScene" uid="uid://qigx5ujsoyew" path="res://scenes/Beam.tscn" id="4_gudjc"]
 [ext_resource type="PackedScene" uid="uid://c706muv7iwdrg" path="res://scenes/planet.tscn" id="4_tfsc7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2gnfn"]
@@ -22,12 +22,10 @@ shape = SubResource("CircleShape2D_2gnfn")
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_2gnfn")
 
+[node name="Beam" parent="Ship" unique_id=1856874238 instance=ExtResource("4_gudjc")]
+
 [node name="Camera2D" type="Camera2D" parent="Ship" unique_id=238794553]
 zoom = Vector2(8, 8)
-
-[node name="Beam" parent="Ship" unique_id=66586983 instance=ExtResource("4_gudjc")]
-position = Vector2(0, 45)
-scale = Vector2(0.15, 0.15)
 
 [node name="Planet" parent="." unique_id=1182448530 instance=ExtResource("4_tfsc7")]
 position = Vector2(0, 78)
