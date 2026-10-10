@@ -10,16 +10,16 @@ size = Vector2(32, 64)
 [node name="Beam" type="Node2D" unique_id=1856874238]
 
 [node name="Beam" type="Area2D" parent="." unique_id=225202901]
-script = ExtResource("1_nd3fc")
+script = ExtResource("1_hl8vi")
 
 [node name="BeamCollisionBox" type="CollisionShape2D" parent="Beam" unique_id=871870481]
 position = Vector2(0, 32)
 shape = SubResource("RectangleShape2D_cvm0i")
-script = ExtResource("2_jvpjs")
+script = ExtResource("2_daiji")
 
 [node name="Sprite2D" type="Sprite2D" parent="Beam" unique_id=1874935488]
 position = Vector2(0, 31.500015)
 scale = Vector2(0.007111113, 0.014444438)
-texture = ExtResource("3_oqmk3")
+texture = ExtResource("3_daiji")
 
 [connection signal="body_entered" from="Beam" to="Beam" method="OnBodyEntered"]
