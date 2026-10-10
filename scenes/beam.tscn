@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://qigx5ujsoyew"]
+
+[ext_resource type="Texture2D" uid="uid://ihlqdvqho1ly" path="res://icon.svg" id="1_5ijbd"]
+[ext_resource type="Script" uid="uid://b7b22kd6jtj1n" path="res://scripts/Beam.cs" id="1_hl8vi"]
+[ext_resource type="Script" uid="uid://dc3ue0wee2v2" path="res://scripts/BeamCollision.cs" id="2_daiji"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cvm0i"]
+size = Vector2(143, 115.5)
+
+[node name="Node2D" type="Node2D" unique_id=66586983]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1383027687]
+script = ExtResource("1_hl8vi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=2023841716]
+position = Vector2(532.5, 228.25)
+shape = SubResource("RectangleShape2D_cvm0i")
+script = ExtResource("2_daiji")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=1434187051]
+position = Vector2(533, 221)
+texture = ExtResource("1_5ijbd")
