@@ -45,26 +45,19 @@ public partial class Beam : Area2D
 			var y = this.Position.Y;
 			this.Position = new Vector2(x,y);
 		}
+		else if (Input.IsActionPressed("Left"))
+		{
+			var x = this.Position.X - 1; 
+			var y = this.Position.Y;
+			this.Position = new Vector2(x,y);
+		}
 	}
 
-	// private void OnAreaShapeEntered(Rid area_rid, Area2D area, int area_shape_index, int local_shape_index)
-	// {
-	// 	GD.Print("collision detected 1");
-	// 	// GD.Print(nodeBody.Name);
-	// }
-	// private void OnBodyEntered(Node2D nodeBody)
-	// {
-	// 	GD.Print("collision detected 2");
-	// }
-
-	// this one works
-	private void _on_body_entered(Node2D nodeBody)
+	private void OnBodyEntered(Node2D nodeBody)
 	{
-		GD.Print("collision detected 3");
+		GD.Print("collision detected 2");
+		GD.Print(nodeBody.Name);
 	}
-	// private void _on_area_shape_entered(Rid area_rid, Area2D area, int area_shape_index, int local_shape_index)
-	// {
-	// 	GD.Print("collision detected 4");
-	// 	// GD.Print(nodeBody.Name);
-	// }
+
+
 }

@@ -13,6 +13,7 @@ radius = 147.87157
 [node name="Node2D" type="Node2D" unique_id=66586983]
 
 [node name="BeamArea" type="Area2D" parent="." unique_id=1226529487]
+position = Vector2(-1, 0)
 script = ExtResource("1_hl8vi")
 
 [node name="BeamCollisionBox" type="CollisionShape2D" parent="BeamArea" unique_id=2023841716]
@@ -21,7 +22,7 @@ shape = SubResource("RectangleShape2D_cvm0i")
 script = ExtResource("2_daiji")
 
 [node name="Sprite2D" type="Sprite2D" parent="BeamArea" unique_id=1434187051]
-position = Vector2(557, 419)
+position = Vector2(549, 248)
 texture = ExtResource("1_5ijbd")
 
 [node name="testbod" type="CharacterBody2D" parent="." unique_id=67853675]
@@ -30,5 +31,4 @@ texture = ExtResource("1_5ijbd")
 position = Vector2(799, 427)
 shape = SubResource("CircleShape2D_cvm0i")
 
-[connection signal="area_shape_entered" from="BeamArea" to="BeamArea" method="_on_area_shape_entered"]
-[connection signal="body_entered" from="BeamArea" to="BeamArea" method="_on_body_entered"]
+[connection signal="body_entered" from="BeamArea" to="BeamArea" method="OnBodyEntered"]
