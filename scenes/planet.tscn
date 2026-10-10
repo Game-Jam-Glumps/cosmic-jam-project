@@ -10,6 +10,3 @@ script = ExtResource("1_h8ms6")
 
 [node name="Sprite2D" type="Sprite2D" parent="Planet" unique_id=193960650]
 texture = ExtResource("2_ggt7d")
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1689581671]
-zoom = Vector2(8, 8)
