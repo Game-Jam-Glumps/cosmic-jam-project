@@ -1,4 +1,5 @@
 using Godot;
+namespace Orbitals;
 
 [GlobalClass]
 public partial class SpeciesProfile : Resource

@@ -1,5 +1,6 @@
 using Godot;
 
+namespace Orbitals;
 public partial class Critter : CharacterBody2D
 {
 

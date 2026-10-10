@@ -2,8 +2,9 @@
 
 [ext_resource type="Script" uid="uid://bijuc40vsvgfj" path="res://scripts/Ship.cs" id="1_q631a"]
 [ext_resource type="Texture2D" uid="uid://bmksrnhpeu66r" path="res://spaceship-png-icon-17270.png" id="2_2gnfn"]
-[ext_resource type="PackedScene" uid="uid://qigx5ujsoyew" path="res://scenes/Beam.tscn" id="4_gudjc"]
+[ext_resource type="PackedScene" uid="uid://c583loungn32v" path="res://scenes/Beam.tscn" id="4_gudjc"]
 [ext_resource type="PackedScene" uid="uid://c706muv7iwdrg" path="res://scenes/planet.tscn" id="4_tfsc7"]
+[ext_resource type="PackedScene" uid="uid://dkqybdfs05tje" path="res://scenes/critter.tscn" id="5_gudjc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2gnfn"]
 
@@ -29,3 +30,6 @@ zoom = Vector2(8, 8)
 
 [node name="Planet" parent="." unique_id=1182448530 instance=ExtResource("4_tfsc7")]
 position = Vector2(0, 78)
+
+[node name="Critter" parent="." unique_id=1328425137 instance=ExtResource("5_gudjc")]
+position = Vector2(15, 20)

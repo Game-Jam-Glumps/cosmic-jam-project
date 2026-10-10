@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://qigx5ujsoyew"]
+[gd_scene format=3 uid="uid://c583loungn32v"]
 
 [ext_resource type="Script" uid="uid://b7b22kd6jtj1n" path="res://scripts/Beam.cs" id="1_nd3fc"]
 [ext_resource type="Script" uid="uid://dc3ue0wee2v2" path="res://scripts/BeamCollision.cs" id="2_jvpjs"]
@@ -21,3 +21,5 @@ script = ExtResource("2_jvpjs")
 position = Vector2(0, 31.500015)
 scale = Vector2(0.007111113, 0.014444438)
 texture = ExtResource("3_oqmk3")
+
+[connection signal="body_entered" from="Beam" to="Beam" method="OnBodyEntered"]

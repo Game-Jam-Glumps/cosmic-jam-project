@@ -2,6 +2,8 @@ using Godot;
 using Orbitals;
 using System;
 
+namespace Orbitals;
+
 public partial class BeamCollision : CollisionShape2D
 {
     // public override void _Process(double delta)

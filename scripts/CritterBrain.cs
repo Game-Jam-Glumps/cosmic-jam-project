@@ -1,5 +1,6 @@
 using Godot;
 
+namespace Orbitals;
 public enum BehaviourState { Idle, Wander, ReturnHome }
 
 public partial class CritterBrain : Node

@@ -1,5 +1,6 @@
 using Godot;
 
+namespace Orbitals;
 public partial class CritterDebug : Node
 {
     [Export]
