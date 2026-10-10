@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Project Orbitals"
-run/main_scene="uid://dkqybdfs05tje"
+run/main_scene="uid://dgqoowrg0swct"
 config/features=PackedStringArray("4.7", "C#", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Globals="*uid://bo0ii8jbmvf61"
 
 [display]
 
