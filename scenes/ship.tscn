@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://b6kfohy5lmeo8"]
 
 [ext_resource type="Script" uid="uid://bijuc40vsvgfj" path="res://scripts/Ship.cs" id="1_q631a"]
-[ext_resource type="Texture2D" uid="uid://bmksrnhpeu66r" path="res://spaceship-png-icon-17270.png" id="2_2gnfn"]
-[ext_resource type="PackedScene" uid="uid://c583loungn32v" path="res://scenes/Beam.tscn" id="4_gudjc"]
+[ext_resource type="Texture2D" uid="uid://bmksrnhpeu66r" path="res://assets/spaceship-png-icon-17270.png" id="2_2gnfn"]
+[ext_resource type="PackedScene" uid="uid://rlpodagx4v8f" path="res://scenes/beam.tscn" id="4_gudjc"]
 [ext_resource type="PackedScene" uid="uid://c706muv7iwdrg" path="res://scenes/planet.tscn" id="4_tfsc7"]
 [ext_resource type="PackedScene" uid="uid://dkqybdfs05tje" path="res://scenes/critter.tscn" id="5_gudjc"]
 

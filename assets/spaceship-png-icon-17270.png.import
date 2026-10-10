@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://csssb7fl1sglm"
-path="res://.godot/imported/1606.m00.i104.n015.P.c25.376246066 UFO light vector. Alien sky beams.jpg-22ea54d5cb5a5fd9808596cbfd3bb859.ctex"
+uid="uid://bmksrnhpeu66r"
+path="res://.godot/imported/spaceship-png-icon-17270.png-e3342816f788e5c6628ad840c08af96c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://1606.m00.i104.n015.P.c25.376246066 UFO light vector. Alien sky beams.jpg"
-dest_files=["res://.godot/imported/1606.m00.i104.n015.P.c25.376246066 UFO light vector. Alien sky beams.jpg-22ea54d5cb5a5fd9808596cbfd3bb859.ctex"]
+source_file="res://assets/spaceship-png-icon-17270.png"
+dest_files=["res://.godot/imported/spaceship-png-icon-17270.png-e3342816f788e5c6628ad840c08af96c.ctex"]
 
 [params]
 

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dkqybdfs05tje"]
 
-[ext_resource type="Texture2D" uid="uid://ihlqdvqho1ly" path="res://icon.svg" id="1_63vdf"]
+[ext_resource type="Texture2D" uid="uid://ihlqdvqho1ly" path="res://assets/icon.svg" id="1_63vdf"]
 [ext_resource type="Script" uid="uid://cmk7p1d84exao" path="res://scripts/Critter.cs" id="1_oeans"]
 [ext_resource type="Script" uid="uid://beb8whanohrnh" path="res://scripts/CritterBrain.cs" id="3_qlvc6"]
 

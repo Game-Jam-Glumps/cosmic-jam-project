@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://dm4igesmwqafu"]
+
+[ext_resource type="PackedScene" uid="uid://dgf8cgrnvxdsk" path="res://scenes/pickup_zone.tscn" id="1_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://dkqybdfs05tje" path="res://scenes/critter.tscn" id="2_lnu2h"]
+
+[node name="Game" type="Node2D" unique_id=1639041935]
+
+[node name="Pickup Zone" parent="." unique_id=570087053 instance=ExtResource("1_yqjtg")]
+position = Vector2(-92, -18)
+
+[node name="Critter" parent="." unique_id=1328425137 instance=ExtResource("2_lnu2h")]
+position = Vector2(-108, -81)
