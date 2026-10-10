@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://dgqoowrg0swct"]
+
+[ext_resource type="Script" uid="uid://bxafjgdxyjsml" path="res://scripts/ShowTitle.cs" id="1_4dhvd"]
+[ext_resource type="PackedScene" uid="uid://bocwithakkxvb" path="res://scenes/GameSpace.tscn" id="1_34tde"]
+[ext_resource type="Script" uid="uid://g8bchpfej20b" path="res://scripts/ShowPlanet.cs" id="3_3dus2"]
+
+[node name="GameManager" type="Node" unique_id=1431068297]
+
+[node name="Control" type="Control" parent="." unique_id=1469862443]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Control" unique_id=123007305]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SubViewport" type="SubViewport" parent="Control/SubViewportContainer" unique_id=2116010513]
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+size_2d_override = Vector2i(1920, 1080)
+size_2d_override_stretch = true
+render_target_update_mode = 4
+
+[node name="IntroSlides" type="Control" parent="Control/SubViewportContainer/SubViewport" unique_id=877477135]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1912.0
+offset_bottom = 1080.0
+script = ExtResource("1_4dhvd")
+
+[node name="placeholder_title" type="Label" parent="Control/SubViewportContainer/SubViewport/IntroSlides" unique_id=812082988]
+layout_mode = 0
+offset_left = 464.0
+offset_top = 104.0
+offset_right = 1616.0
+offset_bottom = 320.0
+theme_override_font_sizes/font_size = 128
+text = "AbsORB_IT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="Control/SubViewportContainer/SubViewport/IntroSlides" unique_id=460461332]
+layout_mode = 0
+offset_left = 125.0
+offset_top = 584.0
+offset_right = 344.0
+offset_bottom = 856.0
+text = "Explanation of controls here"
+
+[node name="Label2" type="Label" parent="Control/SubViewportContainer/SubViewport/IntroSlides" unique_id=528141427]
+layout_mode = 0
+offset_left = 1152.0
+offset_top = 480.0
+offset_right = 1816.0
+offset_bottom = 824.0
+text = "Explanation for objectives"
+
+[node name="Planet" parent="Control/SubViewportContainer/SubViewport" unique_id=1426500986 instance=ExtResource("1_34tde")]
+position = Vector2(960, 6400)
+script = ExtResource("3_3dus2")
+
+[node name="IntroSlideTimer" type="Timer" parent="Control/SubViewportContainer/SubViewport" unique_id=151718130]
+autostart = true
+
+[connection signal="timeout" from="Control/SubViewportContainer/SubViewport/IntroSlideTimer" to="Control/SubViewportContainer/SubViewport/IntroSlides" method="OnIntroSlideTimeout"]
+[connection signal="timeout" from="Control/SubViewportContainer/SubViewport/IntroSlideTimer" to="Control/SubViewportContainer/SubViewport/Planet" method="OnPlanetTimeout"]

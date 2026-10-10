@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bocwithakkxvb"]
+
+[ext_resource type="PackedScene" uid="uid://c706muv7iwdrg" path="res://scenes/planet.tscn" id="1_jdjnh"]
+
+[node name="Node2D" type="Node2D" unique_id=1426500986]
+
+[node name="Planet" parent="." unique_id=1182448530 instance=ExtResource("1_jdjnh")]
+scale = Vector2(90, 90)
