@@ -23,7 +23,7 @@ script = ExtResource("2_daiji")
 
 [node name="Sprite2D" type="Sprite2D" parent="BeamArea" unique_id=1434187051]
 position = Vector2(549, 248)
-texture = ExtResource("1_5ijbd")
+texture = ExtResource("3_daiji")
 
 [node name="testbod" type="CharacterBody2D" parent="." unique_id=67853675]
 
