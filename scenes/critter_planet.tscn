@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://5oql0rmmulsu"]
+
+[ext_resource type="Script" uid="uid://cmk7p1d84exao" path="res://scripts/Critter.cs" id="1_c6xux"]
+[ext_resource type="Script" uid="uid://bk8edcwwugpm8" path="res://scripts/WorldSetup.cs" id="1_d2wdd"]
+[ext_resource type="PackedScene" uid="uid://c706muv7iwdrg" path="res://scenes/planet.tscn" id="2_c6xux"]
+[ext_resource type="Texture2D" uid="uid://ihlqdvqho1ly" path="res://icon.svg" id="2_d2wdd"]
+[ext_resource type="PackedScene" uid="uid://dkqybdfs05tje" path="res://scenes/critter.tscn" id="3_d2wdd"]
+[ext_resource type="Script" uid="uid://c7l35i8kdhvsi" path="res://CritterDebug.cs" id="4_d2wdd"]
+[ext_resource type="Script" uid="uid://beb8whanohrnh" path="res://scripts/CritterBrain.cs" id="6_us0c2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5xnpt"]
+
+[node name="CritterPlanet" type="Node2D" unique_id=1959274182 node_paths=PackedStringArray("PlanetInstance", "Critters", "SceneCamera")]
+script = ExtResource("1_d2wdd")
+PlanetInstance = NodePath("Planet/Planet")
+Critters = [NodePath("Critter/Critter"), NodePath("Critter/Critter2"), NodePath("Critter/Critter3")]
+SceneCamera = NodePath("Camera2D")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=584323880]
+scale = Vector2(10, 10)
+
+[node name="Planet" parent="." unique_id=1182448530 instance=ExtResource("2_c6xux")]
+
+[node name="Planet" parent="Planet" index="0" unique_id=397226317]
+Radius = 70.0
+
+[node name="Critter" parent="." unique_id=1328425137 instance=ExtResource("3_d2wdd")]
+position = Vector2(0, -74)
+
+[node name="Critter" parent="Critter" index="1" unique_id=564322013]
+BodyOffset = 10.0
+
+[node name="Critter2" type="CharacterBody2D" parent="Critter" unique_id=399564818]
+script = ExtResource("1_c6xux")
+BodyOffset = 10.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Critter/Critter2" unique_id=828712254]
+position = Vector2(-1.1920929e-07, 0)
+scale = Vector2(0.1640625, 0.16796875)
+texture = ExtResource("2_d2wdd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Critter/Critter2" unique_id=1680863473]
+shape = SubResource("RectangleShape2D_5xnpt")
+
+[node name="Brain" type="Node" parent="Critter/Critter2" unique_id=1290063025]
+script = ExtResource("6_us0c2")
+
+[node name="Critter3" type="CharacterBody2D" parent="Critter" unique_id=1870440936]
+script = ExtResource("1_c6xux")
+BodyOffset = 10.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Critter/Critter3" unique_id=1430615147]
+position = Vector2(-1.1920929e-07, 0)
+scale = Vector2(0.1640625, 0.16796875)
+texture = ExtResource("2_d2wdd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Critter/Critter3" unique_id=201056233]
+shape = SubResource("RectangleShape2D_5xnpt")
+
+[node name="Brain" type="Node" parent="Critter/Critter3" unique_id=231749963]
+script = ExtResource("6_us0c2")
+
+[node name="Debug" type="Node" parent="." unique_id=275266674 node_paths=PackedStringArray("Creature")]
+script = ExtResource("4_d2wdd")
+Creature = NodePath("../Critter/Critter")
+
+[editable path="Planet"]
+[editable path="Critter"]

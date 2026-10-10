@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://ihlqdvqho1ly" path="res://icon.svg" id="1_63vdf"]
 [ext_resource type="Script" uid="uid://cmk7p1d84exao" path="res://scripts/Critter.cs" id="1_oeans"]
+[ext_resource type="Script" uid="uid://beb8whanohrnh" path="res://scripts/CritterBrain.cs" id="3_qlvc6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5xnpt"]
 
@@ -10,9 +11,8 @@
 [node name="Camera2D" type="Camera2D" parent="." unique_id=567617152]
 zoom = Vector2(6, 6)
 
-[node name="Critter" type="CharacterBody2D" parent="." unique_id=564322013 node_paths=PackedStringArray("Center")]
+[node name="Critter" type="CharacterBody2D" parent="." unique_id=564322013]
 script = ExtResource("1_oeans")
-Center = NodePath("../Center")
 
 [node name="Sprite2D" type="Sprite2D" parent="Critter" unique_id=352831124]
 position = Vector2(-1.1920929e-07, 0)
@@ -22,7 +22,5 @@ texture = ExtResource("1_63vdf")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Critter" unique_id=1996449197]
 shape = SubResource("RectangleShape2D_5xnpt")
 
-[node name="Center" type="Marker2D" parent="." unique_id=1364660815]
-position = Vector2(0, 25)
-
-[node name="Sprite2D" type="Sprite2D" parent="Center" unique_id=1845590617]
+[node name="Brain" type="Node" parent="Critter" unique_id=711587934]
+script = ExtResource("3_qlvc6")

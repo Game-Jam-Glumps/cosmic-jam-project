@@ -5,8 +5,11 @@
 
 [node name="Planet" type="Node2D" unique_id=1182448530]
 
-[node name="Planet" type="Node2D" parent="." unique_id=397226317]
+[node name="Planet" type="Node2D" parent="." unique_id=397226317 node_paths=PackedStringArray("Center")]
 script = ExtResource("1_h8ms6")
+Center = NodePath("Center")
 
 [node name="Sprite2D" type="Sprite2D" parent="Planet" unique_id=193960650]
 texture = ExtResource("2_ggt7d")
+
+[node name="Center" type="Marker2D" parent="Planet" unique_id=2113967171]
