@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://dgf8cgrnvxdsk"]
+
+[ext_resource type="Script" uid="uid://co6aqevhhd60r" path="res://scripts/PickupZone.cs" id="1_bn0s3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4kxuq"]
+size = Vector2(256, 95)
+
+[node name="Pickup Zone" type="Area2D" unique_id=570087053]
+script = ExtResource("1_bn0s3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1825798838]
+shape = SubResource("RectangleShape2D_4kxuq")
+
+[node name="ColorRect" type="ColorRect" parent="CollisionShape2D" unique_id=1771452679]
+offset_left = -129.0
+offset_top = -48.0
+offset_right = 128.0
+offset_bottom = 47.0
+color = Color(1, 0.2627451, 0.10980392, 0.5254902)
+
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]
