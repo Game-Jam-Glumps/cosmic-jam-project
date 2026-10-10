@@ -2,7 +2,7 @@ using Godot;
 using System;
 
 namespace Orbitals;
-public partial class Beam : StaticBody2D
+public partial class Beam : Area2D
 {
 	public override void _Input(InputEvent @event)
 	{
@@ -14,11 +14,13 @@ public partial class Beam : StaticBody2D
 				Globals.Instance.IsBeamActive = true;
 				GD.Print($"beam is {Globals.Instance.IsBeamActive}");
 				GD.Print("mouse pressed");
+				GetNode("BeamCollisionBox").SetDeferred("disabled", false);
 			}else {
 				Hide();
 				Globals.Instance.IsBeamActive = false;
 				GD.Print($"beam is {Globals.Instance.IsBeamActive}");
 				GD.Print("mouse released");
+				GetNode("BeamCollisionBox").SetDeferred("disabled", true);
 			}
 		}
 	}
@@ -32,4 +34,8 @@ public partial class Beam : StaticBody2D
 		Hide();
     }
 
+	private void OnBodyEntered(Node2D nodeBody)
+	{
+		GD.Print("collision detected");
+	}
 }

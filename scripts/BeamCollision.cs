@@ -13,12 +13,18 @@ public partial class BeamCollision : CollisionShape2D
     {
         if(beamStatus == true)
         {
-            GD.Print("Collision is active");
+            GD.Print($"Collision is active {this.Disabled}");  
         }
         else
         {
-            GD.Print("NOO Collision");
+            GD.Print($"NOO Collision {this.Disabled}");
         }
     }
+
+    public override void _Ready()
+    {
+        this.SetDeferred("disabled", true);
+    }
+
 
 }
