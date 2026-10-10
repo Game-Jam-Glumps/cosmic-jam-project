@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://rlpodagx4v8f"]
 
-[ext_resource type="Script" uid="uid://b7b22kd6jtj1n" path="res://scripts/Beam.cs" id="1_nd3fc"]
-[ext_resource type="Script" uid="uid://dc3ue0wee2v2" path="res://scripts/BeamCollision.cs" id="2_jvpjs"]
-[ext_resource type="Texture2D" uid="uid://csssb7fl1sglm" path="res://1606.m00.i104.n015.P.c25.376246066 UFO light vector. Alien sky beams.jpg" id="3_oqmk3"]
+[ext_resource type="Script" uid="uid://b7b22kd6jtj1n" path="res://scripts/Beam.cs" id="1_hl8vi"]
+[ext_resource type="Script" uid="uid://dc3ue0wee2v2" path="res://scripts/BeamCollision.cs" id="2_daiji"]
+[ext_resource type="Texture2D" uid="uid://csssb7fl1sglm" path="res://assets/1606.m00.i104.n015.P.c25.376246066 UFO light vector. Alien sky beams.jpg" id="3_daiji"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cvm0i"]
 size = Vector2(32, 64)

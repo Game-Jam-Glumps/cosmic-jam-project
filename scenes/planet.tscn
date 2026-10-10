@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c706muv7iwdrg"]
 
 [ext_resource type="Script" uid="uid://dbbmxao35f3lh" path="res://scripts/Planet.cs" id="1_h8ms6"]
-[ext_resource type="Texture2D" uid="uid://ihlqdvqho1ly" path="res://icon.svg" id="2_ggt7d"]
+[ext_resource type="Texture2D" uid="uid://ihlqdvqho1ly" path="res://assets/icon.svg" id="2_ggt7d"]
 
 [node name="Planet" type="Node2D" unique_id=1182448530]
 
