@@ -1,3 +1,18 @@
 [gd_scene format=3 uid="uid://dgqoowrg0swct"]
 
+[ext_resource type="Texture2D" uid="uid://ihlqdvqho1ly" path="res://icon.svg" id="2_lnu2h"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_siuyn"]
+radius = 61.03278
+
 [node name="Game" type="Node2D" unique_id=1639041935]
+
+[node name="World" type="Node2D" parent="." unique_id=1307807102]
+
+[node name="Surface" type="StaticBody2D" parent="World" unique_id=1435223465]
+
+[node name="Sprite2D" type="Sprite2D" parent="World/Surface" unique_id=74659906]
+texture = ExtResource("2_lnu2h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Surface" unique_id=1731852094]
+shape = SubResource("CircleShape2D_siuyn")
