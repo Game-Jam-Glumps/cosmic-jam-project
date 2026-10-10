@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://c583loungn32v"]
+[gd_scene format=3 uid="uid://rlpodagx4v8f"]
 
 [ext_resource type="Script" uid="uid://b7b22kd6jtj1n" path="res://scripts/Beam.cs" id="1_nd3fc"]
 [ext_resource type="Script" uid="uid://dc3ue0wee2v2" path="res://scripts/BeamCollision.cs" id="2_jvpjs"]
