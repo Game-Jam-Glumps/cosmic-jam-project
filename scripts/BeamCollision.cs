@@ -14,6 +14,7 @@ public partial class BeamCollision : CollisionShape2D
         if(beamStatus == true)
         {
             GD.Print("Collision is active");
+            CollisionShape2D.
         }
         else
         {
@@ -21,8 +22,4 @@ public partial class BeamCollision : CollisionShape2D
         }
     }
 
-    public void doCollisionEffect()
-    {
-        // TODO: put 
-    }
 }
