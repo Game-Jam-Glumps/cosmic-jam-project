@@ -11,20 +11,19 @@ public partial class Critter : CharacterBody2D
 	[Export]
 	public float OrbitalSpeed = 1.0f;
 
-
-	private Vector2 distance;
+	private Vector2 orbit;
 
 	public override void _Ready()
 	{
-		distance = GlobalPosition - Center.GlobalPosition;
+		orbit = GlobalPosition - Center.GlobalPosition;
 
 	}
 
 	public override void _PhysicsProcess(double delta)
 	{
-		distance = distance.Rotated(OrbitalSpeed * (float)delta);
+		orbit = orbit.Rotated(OrbitalSpeed * (float)delta);
 
-		GlobalPosition = Center.GlobalPosition + distance;
+		GlobalPosition = Center.GlobalPosition + orbit;
 
 	}
 }
