@@ -1,4 +1,5 @@
 using Godot;
+namespace Orbitals;
 
 public partial class Planet : Node2D
 {

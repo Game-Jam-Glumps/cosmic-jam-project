@@ -1,4 +1,6 @@
 using Godot;
+namespace Orbitals;
+
 public partial class PickupZone : Area2D
 {
 	[Signal]

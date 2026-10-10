@@ -1,5 +1,6 @@
 using Godot;
 using System;
+namespace Orbitals;
 
 public partial class Ship : CharacterBody2D
 {
