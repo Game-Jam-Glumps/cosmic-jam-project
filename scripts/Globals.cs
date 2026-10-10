@@ -10,6 +10,7 @@ public partial class Globals : Node
 	[Export]
 	public Boolean IsBeamActive {get; set;} = false;
 
+	public int PlayerScore {get; set;} = 0;
 	
 	public override void _Ready()
 	{

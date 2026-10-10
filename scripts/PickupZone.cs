@@ -1,13 +1,10 @@
 using Godot;
+using Orbitals;
+
 public partial class PickupZone : Area2D
 {
 	[Signal]
 	public delegate void CritterCollectedEventHandler();
-
-	public override void _Ready()
-	{
-		BodyEntered += OnBodyEntered;
-	}
 
 	private void OnBodyEntered(Node2D body)
 	{
@@ -16,6 +13,8 @@ public partial class PickupZone : Area2D
 		{
 			GD.Print("Critter collected!");
 			EmitSignal(SignalName.CritterCollected);
+			Globals.Instance.PlayerScore += 50;
+			GD.Print($"Player score: {Globals.Instance.PlayerScore}");
 		}
 	}
 }
