@@ -63,6 +63,7 @@ position = Vector2(960, 6400)
 script = ExtResource("3_3dus2")
 
 [node name="IntroSlideTimer" type="Timer" parent="Control/SubViewportContainer/SubViewport" unique_id=151718130]
+wait_time = 15.0
 autostart = true
 
 [connection signal="timeout" from="Control/SubViewportContainer/SubViewport/IntroSlideTimer" to="Control/SubViewportContainer/SubViewport/IntroSlides" method="OnIntroSlideTimeout"]
