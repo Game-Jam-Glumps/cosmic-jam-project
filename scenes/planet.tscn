@@ -19,26 +19,6 @@ colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
 [node name="Planet" type="Node2D" unique_id=1182448530]
 
-[node name="MainCamera" type="Node2D" parent="." unique_id=1944215202]
-
-[node name="Camera2D" type="Camera2D" parent="MainCamera" unique_id=2061871972]
-
-[node name="Camera_Rendering" type="Node2D" parent="." unique_id=2024313424]
-
-[node name="SubViewportContainer" type="SubViewportContainer" parent="Camera_Rendering" unique_id=1949946842]
-offset_left = -952.0
-offset_top = -537.0
-offset_right = 968.0
-offset_bottom = 543.0
-
-[node name="SubViewport" type="SubViewport" parent="Camera_Rendering/SubViewportContainer" unique_id=1534576612]
-handle_input_locally = false
-size = Vector2i(375, 211)
-render_target_update_mode = 4
-
-[node name="Camera2D" type="Camera2D" parent="Camera_Rendering/SubViewportContainer/SubViewport" unique_id=1847209837]
-position = Vector2(6787, 0)
-
 [node name="Obj" type="Node2D" parent="." unique_id=2108927082]
 position = Vector2(6773, 0)
 

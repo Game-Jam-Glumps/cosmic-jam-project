@@ -4,14 +4,12 @@
 [ext_resource type="Script" uid="uid://bijuc40vsvgfj" path="res://scripts/Ship.cs" id="1_q631a"]
 [ext_resource type="Texture2D" uid="uid://bmksrnhpeu66r" path="res://assets/spaceship-png-icon-17270.png" id="2_2gnfn"]
 [ext_resource type="PackedScene" uid="uid://rlpodagx4v8f" path="res://scenes/beam.tscn" id="4_gudjc"]
-[ext_resource type="PackedScene" uid="uid://c706muv7iwdrg" path="res://scenes/planet.tscn" id="4_tfsc7"]
-[ext_resource type="PackedScene" uid="uid://dkqybdfs05tje" path="res://scenes/critter.tscn" id="5_gudjc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2gnfn"]
 
 [node name="Ship" type="Node2D" unique_id=1937052776 node_paths=PackedStringArray("CritterInstance")]
 script = ExtResource("1_7j21i")
-CritterInstance = NodePath("Critter/Critter")
+CritterInstance = NodePath("")
 
 [node name="Ship" type="CharacterBody2D" parent="." unique_id=2040208976]
 position = Vector2(0, -5)
@@ -34,17 +32,7 @@ z_index = 1
 collision_layer = 2
 collision_mask = 2
 
-[node name="Planet" parent="." unique_id=1182448530 instance=ExtResource("4_tfsc7")]
-position = Vector2(0, 78)
-
-[node name="Critter" parent="." unique_id=1328425137 instance=ExtResource("5_gudjc")]
-z_index = 1
-position = Vector2(30, 20)
-
-[node name="Critter" parent="Critter" index="1" unique_id=1338414584]
-collision_layer = 2
-collision_mask = 2
+[node name="Camera2D" type="Camera2D" parent="Ship" unique_id=1958900881]
+rotation_smoothing_enabled = true
 
 [editable path="Ship/Beam"]
-[editable path="Planet"]
-[editable path="Critter"]
