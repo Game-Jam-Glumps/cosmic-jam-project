@@ -15,7 +15,8 @@ public partial class Obstacle : CharacterBody2D
     public float HomeHalfWidthDegrees { get; set; } = 60f;
 
     public Planet World { get; private set; }
-    public bool IsCarried => !GodotObject.IsInstanceValid(World);
+    public bool WasCarried { get; private set; }
+    public bool IsCarried => WasCarried && !GodotObject.IsInstanceValid(World);
 
     public float Angle { get; private set; }
     public float SurfaceSpeed { get; private set; }
@@ -127,6 +128,8 @@ public partial class Obstacle : CharacterBody2D
         World = null;
         StopMoving();
     }
+
+    public void MarkCarried() => WasCarried = true;
 
     private void SetPlanet(Planet planet, bool clampToHome)
     {

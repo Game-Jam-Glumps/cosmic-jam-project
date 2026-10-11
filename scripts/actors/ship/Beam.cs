@@ -179,9 +179,15 @@ public partial class Beam : Area2D
     private static void DetachTarget(Node2D target)
     {
         if (target is Critter critter)
+        {
             critter.DetachFromPlanet();
+            critter.MarkCarried();
+        }
         else if (target is Obstacle obstacle)
+        {
             obstacle.DetachFromPlanet();
+            obstacle.MarkCarried();
+        }
     }
 
     private static void LandTarget(Node2D target, Planet planet)

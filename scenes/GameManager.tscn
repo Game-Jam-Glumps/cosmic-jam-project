@@ -19,6 +19,7 @@
 [ext_resource type="Resource" path="res://resources/spawning/moss_creature_grassland.tres" id="spawn_0"]
 [ext_resource type="Resource" path="res://resources/spawning/penguin_snowfield.tres" id="spawn_1"]
 [ext_resource type="Resource" path="res://resources/spawning/bombastick_desert.tres" id="spawn_2"]
+[ext_resource type="Resource" path="res://resources/spawning/cug_desert.tres" id="spawn_3"]
 [ext_resource type="Resource" path="res://resources/spawning/lorax_grassland.tres" id="spawn_4"]
 [ext_resource type="Resource" path="res://resources/spawning/mouse_snail_grassland.tres" id="spawn_5"]
 [ext_resource type="Resource" path="res://resources/spawning/many_eyes_snowfield.tres" id="spawn_6"]
