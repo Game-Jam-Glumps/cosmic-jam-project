@@ -12,6 +12,7 @@ public partial class ObstacleSpawner : Node2D
     public int ObstacleCount { get; set; } = 144;
 
     [Export] public bool SpawnOnReady { get; set; } = true;
+    [Export] public bool RespawnMissing { get; set; } = true;
     [Export] public bool RandomizeAngles { get; set; } = true;
 
     [Export]
@@ -29,6 +30,16 @@ public partial class ObstacleSpawner : Node2D
 
         if (SpawnOnReady)
             CallDeferred(nameof(SpawnObstacles));
+    }
+
+    public override void _PhysicsProcess(double delta)
+    {
+        if (!RespawnMissing || !GodotObject.IsInstanceValid(World))
+            return;
+
+        int missing = Mathf.Max(0, ObstacleCount - GetActiveObstacleCount());
+        for (int index = 0; index < missing; index++)
+            SpawnObstacle();
     }
 
     public void SpawnObstacles()
@@ -61,6 +72,8 @@ public partial class ObstacleSpawner : Node2D
 
         Node parent = GetParent();
         parent.AddChild(obstacle);
+        obstacle.AddToGroup("obstacles");
+        obstacle.ZIndex = 0;
 
         float angle = GetSpawnAngle();
 
@@ -95,5 +108,14 @@ public partial class ObstacleSpawner : Node2D
             if (child is Obstacle obstacle)
                 obstacle.QueueFree();
         }
+    }
+
+    private int GetActiveObstacleCount()
+    {
+        int count = 0;
+        foreach (Node node in GetTree().GetNodesInGroup("obstacles"))
+            if (GodotObject.IsInstanceValid(node) && !node.IsQueuedForDeletion())
+                count++;
+        return count;
     }
 }

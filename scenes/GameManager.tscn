@@ -74,6 +74,7 @@ position = Vector2(960, 3350)
 SurfaceDiameter = 5200.0
 
 [node name="CritterSpawner" parent="Control/SubViewportContainer/SubViewport" unique_id=682853831 node_paths=PackedStringArray("PlanetInstance") instance=ExtResource("5_spawner")]
+z_index = 1
 PlanetInstance = NodePath("../Planet")
 SpawnProfiles = Array[ExtResource("4_biy4i")]([ExtResource("spawn_0"), ExtResource("spawn_1"), ExtResource("spawn_2"), ExtResource("spawn_3"), ExtResource("spawn_4"), ExtResource("spawn_5"), ExtResource("spawn_6"), ExtResource("spawn_7"), ExtResource("spawn_8"), ExtResource("spawn_9"), ExtResource("spawn_10"), ExtResource("spawn_11"), ExtResource("spawn_12"), ExtResource("spawn_13"), ExtResource("spawn_14"), ExtResource("spawn_15"), ExtResource("spawn_16"), ExtResource("spawn_17")])
 MaxPopulation = 144
@@ -83,7 +84,7 @@ ContinuousSpawning = true
 script = ExtResource("25_ptb65")
 ObstacleScene = ExtResource("26_nt4xe")
 World = NodePath("../Planet")
-ObstacleCount = 100
+ObstacleCount = 30
 
 [node name="Ship" parent="Control/SubViewportContainer/SubViewport" unique_id=1937052776 instance=ExtResource("2_4dhvd")]
 position = Vector2(960, 600)
