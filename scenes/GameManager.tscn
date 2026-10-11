@@ -4,19 +4,20 @@
 [ext_resource type="PackedScene" uid="uid://c706muv7iwdrg" path="res://scenes/planet.tscn" id="2_qppyr"]
 [ext_resource type="Script" uid="uid://duyieb4jy5na1" path="res://scripts/data/CritterSpawnProfile.cs" id="4_biy4i"]
 [ext_resource type="PackedScene" path="res://scenes/critter_spawner.tscn" id="5_spawner"]
+[ext_resource type="Resource" path="res://resources/spawning/cug_snowfield.tres" id="10_nt4xe"]
 [ext_resource type="Script" uid="uid://c6bj3kn7w6uv7" path="res://scripts/gameplay/GameSession.cs" id="11_session"]
 [ext_resource type="Script" uid="uid://3ybosg7j0v1r" path="res://scripts/input/PlayerController.cs" id="12_player"]
 [ext_resource type="Script" uid="uid://cgoiqpfguc350" path="res://scripts/ui/GameHud.cs" id="13_hud"]
 [ext_resource type="Resource" path="res://resources/spawning/jumpluff_desert.tres" id="25_nt4xe"]
 [ext_resource type="Resource" path="res://resources/spawning/jumpluff_snowfield.tres" id="26_wvq2v"]
 [ext_resource type="Resource" path="res://resources/spawning/jumpluff_grassland.tres" id="27_0j36w"]
+[ext_resource type="Resource" path="res://resources/spawning/robot_mascot.tres" id="28_wvq2v"]
 [ext_resource type="Texture2D" uid="uid://d4f3cqfycfb0w" path="res://assets/HUD/black-hole.png" id="hud_black_hole"]
 [ext_resource type="Texture2D" uid="uid://cgv83cfx6w4sw" path="res://assets/HUD/medal.png" id="hud_medal"]
 [ext_resource type="Script" uid="uid://cbfl2k34mwps6" path="res://scripts/gameplay/GameRound.cs" id="round"]
 [ext_resource type="Resource" path="res://resources/spawning/moss_creature_grassland.tres" id="spawn_0"]
 [ext_resource type="Resource" path="res://resources/spawning/penguin_snowfield.tres" id="spawn_1"]
 [ext_resource type="Resource" path="res://resources/spawning/bombastick_desert.tres" id="spawn_2"]
-[ext_resource type="Resource" path="res://resources/spawning/cug_desert.tres" id="spawn_3"]
 [ext_resource type="Resource" path="res://resources/spawning/lorax_grassland.tres" id="spawn_4"]
 [ext_resource type="Resource" path="res://resources/spawning/mouse_snail_grassland.tres" id="spawn_5"]
 [ext_resource type="Resource" path="res://resources/spawning/many_eyes_snowfield.tres" id="spawn_6"]
@@ -72,7 +73,7 @@ SurfaceDiameter = 5200.0
 
 [node name="CritterSpawner" parent="Control/SubViewportContainer/SubViewport" unique_id=682853831 node_paths=PackedStringArray("PlanetInstance") instance=ExtResource("5_spawner")]
 PlanetInstance = NodePath("../Planet")
-SpawnProfiles = Array[ExtResource("4_biy4i")]([ExtResource("spawn_0"), ExtResource("spawn_1"), ExtResource("spawn_2"), ExtResource("spawn_3"), ExtResource("spawn_4"), ExtResource("spawn_5"), ExtResource("spawn_6"), ExtResource("spawn_7"), ExtResource("spawn_8"), ExtResource("spawn_9"), ExtResource("spawn_10"), ExtResource("spawn_11"), ExtResource("spawn_12"), ExtResource("spawn_13"), ExtResource("spawn_14"), ExtResource("spawn_15"), ExtResource("spawn_16"), ExtResource("spawn_17"), ExtResource("25_nt4xe"), ExtResource("26_wvq2v"), ExtResource("27_0j36w")])
+SpawnProfiles = Array[ExtResource("4_biy4i")]([ExtResource("spawn_0"), ExtResource("spawn_1"), ExtResource("spawn_2"), ExtResource("10_nt4xe"), ExtResource("spawn_4"), ExtResource("spawn_5"), ExtResource("spawn_6"), ExtResource("spawn_7"), ExtResource("spawn_8"), ExtResource("spawn_9"), ExtResource("spawn_10"), ExtResource("spawn_11"), ExtResource("spawn_12"), ExtResource("spawn_13"), ExtResource("spawn_14"), ExtResource("spawn_15"), ExtResource("spawn_16"), ExtResource("spawn_17"), ExtResource("25_nt4xe"), ExtResource("26_wvq2v"), ExtResource("27_0j36w"), ExtResource("28_wvq2v")])
 MaxPopulation = 300
 ContinuousSpawning = true
 

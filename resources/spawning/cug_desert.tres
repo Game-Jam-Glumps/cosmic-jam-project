@@ -1,8 +1,8 @@
-[gd_resource type="Resource" script_class="CritterSpawnProfile" format=3]
+[gd_resource type="Resource" script_class="CritterSpawnProfile" format=3 uid="uid://bc3fy7a7xtsrl"]
 
-[ext_resource type="Script" path="res://scripts/data/CritterSpawnProfile.cs" id="1_rule"]
-[ext_resource type="Resource" path="res://resources/habitats/desert.tres" id="2_habitat"]
-[ext_resource type="Resource" path="res://resources/species/cug.tres" id="3_species"]
+[ext_resource type="Script" uid="uid://duyieb4jy5na1" path="res://scripts/data/CritterSpawnProfile.cs" id="1_rule"]
+[ext_resource type="Resource" uid="uid://ycmmp1x43ik7" path="res://resources/habitats/desert.tres" id="2_habitat"]
+[ext_resource type="Resource" uid="uid://ctlfqsrv1jpuj" path="res://resources/species/cug.tres" id="3_species"]
 
 [resource]
 resource_name = "cug_desert"
