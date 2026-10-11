@@ -6,7 +6,7 @@ public partial class Planet : Node2D
 	[Export] public Node2D Center { get; set; }
 
 	[Export] public float Radius { get; set; } = 200f;
-	[Export] public float RotationSpeed { get; set; } = 1.5f;
+	[Export] public float RotationSpeed { get; set; } = 0.3f;
 
 	public override void _Ready()
 	{
