@@ -32,7 +32,7 @@ script = ExtResource("2_visuals")
 
 [node name="BeamPassiveNoise" type="AudioStreamPlayer" parent="Beam" unique_id=996416711]
 stream = SubResource("AudioStreamWAV_daiji")
-volume_db = 20.0
+volume_db = 5.0
 pitch_scale = 0.4
 bus = &"Beam"
 script = ExtResource("3_daiji")

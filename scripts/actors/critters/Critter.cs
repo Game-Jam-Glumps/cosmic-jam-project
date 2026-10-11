@@ -35,6 +35,7 @@ public partial class Critter : CharacterBody2D
 	private float _bodyWidth = 24f;
 
 	private static readonly Shader ShinyGlowShader = GD.Load<Shader>("res://shaders/shiny_glow.gdshader");
+	[Signal] public delegate void CreatureDetachEventHandler();
 
 	public override void _Ready()
 	{
@@ -92,6 +93,7 @@ public partial class Critter : CharacterBody2D
 		StopMoving();
 		_brain?.OnEnvironmentChanged();
 		UpdateAnimation();
+		EmitSignal(SignalName.CreatureDetach);
 	}
 
 	public void MarkCarried() => WasCarried = true;
