@@ -106,20 +106,9 @@ public partial class Beam : Area2D
         {
             Critter critter = entry.Key;
             Capture capture = entry.Value;
-            // if (!GodotObject.IsInstanceValid(critter) || critter.IsQueuedForDeletion())
-            // {
-            //     _targets.Remove(critter);
-            //     continue;
-            // }
 
             capture.Speed = Mathf.MoveToward(capture.Speed, Mathf.Max(1f, PullSpeed),
                 Mathf.Max(0f, PullAcceleration) * dt);
-            // if (Mode == BeamMode.Single)
-            // {
-            //     UpdateHeldTarget(critter, capture, dt);
-            //     continue;
-            // }
-            // UpdateAbsorbedTarget(critter, capture, dt);
             UpdateHeldTarget(critter, capture, dt);
         }
     }
@@ -135,24 +124,6 @@ public partial class Beam : Area2D
         critter.GlobalScale = capture.OriginalScale;
         critter.GlobalPosition = critter.GlobalPosition.MoveToward(hoverPoint, capture.Speed * dt);
         critter.GlobalRotation = Mathf.LerpAngle(critter.GlobalRotation, 0f, Mathf.Min(1f, dt * 8f));
-    }
-
-    // Pulls, shrinks, and spins a creature; reports collection once before freeing it at the intake.
-    private void UpdateAbsorbedTarget(Critter critter, Capture capture, float dt)
-    {
-        critter.GlobalPosition = critter.GlobalPosition.MoveToward(GlobalPosition, capture.Speed * dt);
-        float distance = critter.GlobalPosition.DistanceTo(GlobalPosition);
-        float progress = Mathf.Clamp(1f - distance / capture.InitialDistance, 0f, 1f);
-        critter.GlobalScale = capture.OriginalScale * Mathf.Lerp(1f, 0.35f, progress);
-        critter.GlobalRotation += dt * 4f;
-
-        // if (distance <= Mathf.Max(1f, CaptureRadius))
-        // {
-        //     // _targets.Remove(critter);
-        //     if (GodotObject.IsInstanceValid(Visuals)) Visuals.PlayCollectionFlash();
-        //     // EmitSignal(SignalName.CritterCollected, critter);
-        //     critter.QueueFree();
-        // }
     }
 
     // Compatibility helper: true selects absorption; false switches the beam off.
