@@ -5,72 +5,72 @@ namespace Orbitals;
 
 public partial class CritterSpawner : Node2D
 {
-    [Export] public Planet PlanetInstance { get; set; }
-    [Export] public PackedScene CritterScene { get; set; }
-    [Export] public Godot.Collections.Array<CritterSpawnProfile> SpawnProfiles { get; set; } = new();
-    [Export(PropertyHint.Range, "0,1000,1")]
-    public int MaxPopulation { get; set; } = 15;
-    [Export] public bool SpawnOnReady { get; set; } = true;
-    [Export(PropertyHint.Range, "0.1,4,0.1")]
-    public float CritterScale { get; set; } = 1f;
-    [Export] public bool ContinuousSpawning { get; set; }
-    [Export(PropertyHint.Range, "0.1,60,0.1,suffix:s")]
-    public float SpawnInterval { get; set; } = 2f;
-    private float _spawnTimer;
+	[Export] public Planet PlanetInstance { get; set; }
+	[Export] public PackedScene CritterScene { get; set; }
+	[Export] public Godot.Collections.Array<CritterSpawnProfile> SpawnProfiles { get; set; } = new();
+	[Export(PropertyHint.Range, "0,1000,1")]
+	public int MaxPopulation { get; set; } = 15;
+	[Export] public bool SpawnOnReady { get; set; } = true;
+	[Export(PropertyHint.Range, "0.1,4,0.1")]
+	public float CritterScale { get; set; } = 1f;
+	[Export] public bool ContinuousSpawning { get; set; }
+	[Export(PropertyHint.Range, "0.1,60,0.1,suffix:s")]
+	public float SpawnInterval { get; set; } = 2f;
+	private float _spawnTimer;
 
-    private readonly RandomNumberGenerator _rng = new();
-    private readonly List<(CritterSpawnProfile Rule, int Slot, Node2D Root, Critter Body)> _spawned = new();
-    private Node2D _population;
-    // Planet-local angles for the three authored dropoff areas:
-    // (-273, 161), (265, 169), and (0, -297).
-    private static readonly float[] DropoffAngles =
-    {
-        Mathf.DegToRad(150f),
-        Mathf.DegToRad(32f),
-        Mathf.DegToRad(-90f)
-    };
-    private const float DropoffExclusionHalfWidth = 0.35f;
-    private const float DropoffNudge = 0.5f;
+	private readonly RandomNumberGenerator _rng = new();
+	private readonly List<(CritterSpawnProfile Rule, int Slot, Node2D Root, Critter Body)> _spawned = new();
+	private Node2D _population;
+	// Planet-local angles for the three authored dropoff areas:
+	// (-273, 161), (265, 169), and (0, -297).
+	private static readonly float[] DropoffAngles =
+	{
+		Mathf.DegToRad(150f),
+		Mathf.DegToRad(32f),
+		Mathf.DegToRad(-90f)
+	};
+	private const float DropoffExclusionHalfWidth = 0.35f;
+	private const float DropoffNudge = 0.5f;
 
-    public Godot.Collections.Array<Critter> Critters
-    {
-        get
-        {
-            RemoveFreedCritters();
-            var critters = new Godot.Collections.Array<Critter>();
-            foreach (var entry in _spawned) critters.Add(entry.Body);
-            return critters;
-        }
-    }
+	public Godot.Collections.Array<Critter> Critters
+	{
+		get
+		{
+			RemoveFreedCritters();
+			var critters = new Godot.Collections.Array<Critter>();
+			foreach (var entry in _spawned) critters.Add(entry.Body);
+			return critters;
+		}
+	}
 
-    public override void _Ready()
-    {
-        _rng.Randomize();
-        _population = GetNode<Node2D>("Population");
-        _spawnTimer = Mathf.Max(0.1f, SpawnInterval);
-        if (SpawnProfiles.Count == 0 && (SpawnOnReady || ContinuousSpawning))
-            GD.PushWarning($"{Name}: SpawnProfiles is empty. Assign spawn resources in the Inspector to create creatures.");
-        if (SpawnOnReady) SpawnPopulation();
-    }
+	public override void _Ready()
+	{
+		_rng.Randomize();
+		_population = GetNode<Node2D>("Population");
+		_spawnTimer = Mathf.Max(0.1f, SpawnInterval);
+		if (SpawnProfiles.Count == 0 && (SpawnOnReady || ContinuousSpawning))
+			GD.PushWarning($"{Name}: SpawnProfiles is empty. Assign spawn resources in the Inspector to create creatures.");
+		if (SpawnOnReady) SpawnPopulation();
+	}
 
-    public override void _PhysicsProcess(double delta)
-    {
-        if (!ContinuousSpawning) return;
-        _spawnTimer -= (float)delta;
-        if (_spawnTimer > 0f) return;
-        _spawnTimer = Mathf.Max(0.1f, SpawnInterval);
-        SpawnPopulation();
-    }
+	public override void _PhysicsProcess(double delta)
+	{
+		if (!ContinuousSpawning) return;
+		_spawnTimer -= (float)delta;
+		if (_spawnTimer > 0f) return;
+		_spawnTimer = Mathf.Max(0.1f, SpawnInterval);
+		SpawnPopulation();
+	}
 
-    // Fill configured counts, keeping existing creatures and respecting the total cap.
-    // Call again after collection/removal to replenish the population when desired.
-    public void SpawnPopulation()
-    {
-        if (!GodotObject.IsInstanceValid(PlanetInstance) || CritterScene == null || _population == null)
-        {
-            GD.PushError($"{Name}: assign a planet and a critter scene before spawning.");
-            return;
-        }
+	// Fill configured counts, keeping existing creatures and respecting the total cap.
+	// Call again after collection/removal to replenish the population when desired.
+	public void SpawnPopulation()
+	{
+		if (!GodotObject.IsInstanceValid(PlanetInstance) || CritterScene == null || _population == null)
+		{
+			GD.PushError($"{Name}: assign a planet and a critter scene before spawning.");
+			return;
+		}
 
         RemoveFreedCritters();
         foreach (CritterSpawnProfile rule in SpawnProfiles)
@@ -147,12 +147,12 @@ public partial class CritterSpawner : Node2D
         return angle;
     }
 
-    private void RemoveFreedCritters()
-        => _spawned.RemoveAll(entry =>
-        {
-            if (!GodotObject.IsInstanceValid(entry.Root) || entry.Root.IsQueuedForDeletion()) return true;
-            if (GodotObject.IsInstanceValid(entry.Body) && !entry.Body.IsQueuedForDeletion()) return false;
-            entry.Root.QueueFree();
-            return true;
-        });
+	private void RemoveFreedCritters()
+		=> _spawned.RemoveAll(entry =>
+		{
+			if (!GodotObject.IsInstanceValid(entry.Root) || entry.Root.IsQueuedForDeletion()) return true;
+			if (GodotObject.IsInstanceValid(entry.Body) && !entry.Body.IsQueuedForDeletion()) return false;
+			entry.Root.QueueFree();
+			return true;
+		});
 }

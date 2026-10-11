@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://b0534to1f1jpn"]
+
+[ext_resource type="Script" path="res://scripts/actors/obstacle/Obstacle.cs" id="1_drdry"]
+[ext_resource type="Texture2D" uid="uid://dnjqniqdg516k" path="res://assets/Env/Asset_pine-tree.png" id="2_cjuko"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cvm0i"]
+size = Vector2(128, 128)
+
+[node name="obstacle" type="CharacterBody2D" unique_id=156838050]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_drdry")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1447724784]
+scale = Vector2(0.062499993, 0.062499993)
+texture = ExtResource("2_cjuko")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1321097597]
+shape = SubResource("RectangleShape2D_cvm0i")
