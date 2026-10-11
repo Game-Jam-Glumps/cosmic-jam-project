@@ -1,11 +1,11 @@
 using Godot;
-using System;
 
 namespace Orbitals;
 public partial class Critter : CharacterBody2D
 {
 
 	[Export] public SpeciesProfile Profile { get; set; } = new();
+	[Export] public bool IsShiny { get; set; }
 	[Export] public HabitatProfile Habitat { get; set; }
 	[Export] public float BodyOffset { get; set; } = 12f;
 	[Export] public float HomeCenterDegrees { get; set; } = -90f;
@@ -14,7 +14,6 @@ public partial class Critter : CharacterBody2D
 
 	public Planet World { get; private set; }
 	public bool WasCarried { get; private set; }
-	public bool IsShiny => string.Equals(Profile?.Rarity, "Shiny", StringComparison.OrdinalIgnoreCase);
 	public float Angle { get; private set; }
 	public float SurfaceSpeed { get; private set; }
 	public float SurfaceOffset =>
@@ -24,7 +23,8 @@ public partial class Critter : CharacterBody2D
 	public float TrackRadius => (World.SurfaceRadiusAt(Angle) + SurfaceOffset) * Mathf.Abs(World.GlobalScale.X);
 	public float HomeCenter => Habitat?.Center ?? Mathf.DegToRad(HomeCenterDegrees);
 	public float HomeHalfWidth => Habitat?.HalfWidth ?? Mathf.DegToRad(Mathf.Clamp(HomeHalfWidthDegrees, 1f, 180f));
-	public bool HomeCoversWholePlanet => Habitat?.CoversWholePlanet ?? HomeHalfWidthDegrees >= 180f;
+	public bool HomeCoversWholePlanet => Profile?.RoamsAllHabitats == true ||
+		(Habitat?.CoversWholePlanet ?? HomeHalfWidthDegrees >= 180f);
 	// Keep the entire body inside the region when selecting normal wander destinations.
 	private float WanderHalfWidth => Mathf.Max(0f, HomeHalfWidth -
 		Mathf.Atan2(_bodyWidth * Mathf.Abs(GlobalScale.X) / 2f + 2f, TrackRadius));

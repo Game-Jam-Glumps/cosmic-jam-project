@@ -13,9 +13,9 @@ public partial class GameSession : Node
     [Signal] public delegate void ArrivalDueEventHandler();
 
     [Export(PropertyHint.Range, "1,3600,1,suffix:s")]
-    public float ArrivalSeconds { get; set; } = 10f;
+    public float ArrivalSeconds { get; set; } = 120f;
     [Export] public bool StartOnReady { get; set; }
-    [Export(PropertyHint.Range, "1,1000,1")] public int ScorePerStar { get; set; } = 20;
+    [Export(PropertyHint.Range, "1,10000,50")] public int ScorePerStar { get; set; } = 10000;
     public int RescuedCount { get; private set; }
     public int Score { get; private set; }
     public double SecondsRemaining { get; private set; }
@@ -43,7 +43,9 @@ public partial class GameSession : Node
         if (HasArrived || !GodotObject.IsInstanceValid(critter) || critter.IsQueuedForDeletion() ||
             !_rescuedCritters.Add(critter.GetInstanceId())) return;
         RescuedCount++;
-        Score += critter?.IsShiny == true ? 500 : 50;
+        int rarityPoints = string.Equals(critter.Profile?.Rarity, "Legendary",
+            StringComparison.OrdinalIgnoreCase) ? 1000 : 50;
+        Score += rarityPoints * (critter.IsShiny ? 5 : 1);
         EmitSignal(SignalName.RescueCountChanged, RescuedCount);
         EmitSignal(SignalName.ScoreChanged, Score);
     }

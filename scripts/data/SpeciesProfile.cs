@@ -5,6 +5,7 @@ namespace Orbitals;
 public partial class SpeciesProfile : Resource
 {
     [Export] public SpriteFrames Animations { get; set; }
+    [Export] public bool RoamsAllHabitats { get; set; }
     [Export(PropertyHint.Range, "8,256,1,or_greater,suffix:px")]
     public float SpriteHeight { get; set; } = 48f;
     [Export(PropertyHint.Range, "0,2000,10,or_greater,suffix:px")]

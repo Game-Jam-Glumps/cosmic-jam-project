@@ -59,6 +59,14 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_glal8")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_glal8")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_n74d1")
@@ -97,6 +105,6 @@ animations = [{
 "texture": SubResource("AtlasTexture_prjcg")
 }],
 "loop": 1,
-"name": &"default",
-"speed": 5.0
+"name": &"walk",
+"speed": 8.0
 }]

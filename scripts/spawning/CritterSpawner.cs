@@ -75,9 +75,10 @@ public partial class CritterSpawner : Node2D
         RemoveFreedCritters();
         foreach (CritterSpawnProfile rule in SpawnProfiles)
         {
-            if (rule?.Habitat == null || rule.Species == null || !PlanetInstance.Habitats.Contains(rule.Habitat))
+            if (rule?.Species == null || (!rule.Species.RoamsAllHabitats &&
+                (rule.Habitat == null || !PlanetInstance.Habitats.Contains(rule.Habitat))))
             {
-                GD.PushWarning($"{Name}: each spawn profile needs a species and one of this planet's habitats.");
+                GD.PushWarning($"{Name}: assign a species and, unless it roams all habitats, one of this planet's habitats.");
                 continue;
             }
 
@@ -85,6 +86,7 @@ public partial class CritterSpawner : Node2D
             for (int index = 0; index < count && _spawned.Count < Mathf.Max(0, MaxPopulation); index++)
             {
                 if (_spawned.Exists(entry => entry.Rule == rule && entry.Slot == index)) continue;
+                float angle = ChooseSpawnAngle(rule, index, count);
                 Node2D instance = CritterScene.Instantiate<Node2D>();
                 Critter critter = instance as Critter ?? instance.GetNodeOrNull<Critter>("Critter");
                 if (critter == null)
@@ -95,9 +97,9 @@ public partial class CritterSpawner : Node2D
                 }
 
                 critter.Profile = (SpeciesProfile)rule.Species.Duplicate();
-                critter.Profile.Rarity = _rng.Randf() < 0.01f ? "Shiny" : "Normal";
-                critter.Habitat = rule.Habitat;
-                instance.Name = $"{rule.Habitat.HabitatName}Critter";
+                critter.IsShiny = _rng.Randf() < 0.01f;
+                critter.Habitat = rule.Species.RoamsAllHabitats ? PlanetInstance.HabitatAt(angle) : rule.Habitat;
+                instance.Name = $"{critter.Habitat?.HabitatName ?? "Roaming"}Critter";
                 _population.AddChild(instance, true);
                 instance.GlobalScale = Vector2.One * Mathf.Max(0.1f, CritterScale);
                 critter.TreeExited += () =>
@@ -107,12 +109,6 @@ public partial class CritterSpawner : Node2D
                         instance.QueueFree();
                 };
 
-                // Spread starts across the region, leaving space at its boundaries.
-                float margin = Mathf.Min(Mathf.DegToRad(10f), rule.Habitat.HalfWidth * 0.25f);
-                float reach = rule.Habitat.HalfWidth - margin;
-                float fraction = (index + _rng.RandfRange(0.25f, 0.75f)) / count;
-                float angle = rule.Habitat.Center + Mathf.Lerp(-reach, reach, fraction);
-                angle = MoveOutsideDropoff(angle);
                 // BodyOffset is measured in creature units, independently of planet scale.
                 float offset = critter.BodyOffset * Mathf.Abs(critter.GlobalScale.Y) /
                     Mathf.Max(0.0001f, Mathf.Abs(PlanetInstance.GlobalScale.X));
@@ -121,6 +117,22 @@ public partial class CritterSpawner : Node2D
                 _spawned.Add((rule, index, instance, critter));
             }
         }
+    }
+
+    // Places roamers anywhere; other species start spread inside their assigned region.
+    private float ChooseSpawnAngle(CritterSpawnProfile rule, int slot, int count)
+    {
+        float angle;
+        if (rule.Species.RoamsAllHabitats)
+            angle = _rng.RandfRange(-Mathf.Pi, Mathf.Pi);
+        else
+        {
+            float margin = Mathf.Min(Mathf.DegToRad(10f), rule.Habitat.HalfWidth * 0.25f);
+            float reach = rule.Habitat.HalfWidth - margin;
+            float fraction = (slot + _rng.RandfRange(0.25f, 0.75f)) / count;
+            angle = rule.Habitat.Center + Mathf.Lerp(-reach, reach, fraction);
+        }
+        return MoveOutsideDropoff(angle);
     }
 
     private static float MoveOutsideDropoff(float angle)

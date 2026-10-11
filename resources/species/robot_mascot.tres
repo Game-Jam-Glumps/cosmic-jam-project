@@ -7,3 +7,9 @@
 resource_name = "robot_mascot"
 script = ExtResource("1")
 Animations = ExtResource("2")
+RoamsAllHabitats = true
+WalkSpeed = 70.0
+IdleTimeMin = 0.5
+IdleTimeMax = 1.2
+WanderDistance = 900.0
+Rarity = "Legendary"
