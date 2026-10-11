@@ -21,8 +21,8 @@ public partial class PlayerController : Node
         if (GodotObject.IsInstanceValid(PlanetActor))
             PlanetActor.SetOrbitInput(Input.GetAxis("Left", "Right"));
         if (GodotObject.IsInstanceValid(BeamActor))
-            BeamActor.SetMode(Input.IsActionPressed("Abduct") ? Beam.BeamMode.Absorb :
-                Input.IsActionPressed("HoldBeam") ? Beam.BeamMode.Hold : Beam.BeamMode.Off);
+            BeamActor.SetMode(Input.IsActionPressed("Abduct") ? Beam.BeamMode.Multiple :
+                Input.IsActionPressed("HoldBeam") ? Beam.BeamMode.Single : Beam.BeamMode.Off);
     }
 
     // Clears held controls and actor commands when the application loses focus.
