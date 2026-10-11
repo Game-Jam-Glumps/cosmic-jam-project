@@ -9,11 +9,12 @@
 [ext_resource type="Script" uid="uid://3ybosg7j0v1r" path="res://scripts/input/PlayerController.cs" id="12_player"]
 [ext_resource type="Script" uid="uid://cgoiqpfguc350" path="res://scripts/ui/GameHud.cs" id="13_hud"]
 [ext_resource type="Resource" path="res://resources/spawning/jumpluff_desert.tres" id="25_nt4xe"]
+[ext_resource type="Script" uid="uid://2hq74wyjxbju" path="res://scripts/spawning/ObstacleSpawner.cs" id="25_ptb65"]
+[ext_resource type="PackedScene" uid="uid://b0534to1f1jpn" path="res://scenes/obstacle.tscn" id="26_nt4xe"]
 [ext_resource type="Resource" path="res://resources/spawning/jumpluff_snowfield.tres" id="26_wvq2v"]
 [ext_resource type="Resource" path="res://resources/spawning/jumpluff_grassland.tres" id="27_0j36w"]
+[ext_resource type="Script" uid="uid://qjsxkrlk25b5" path="res://scripts/soundscripts/music/MainThemeScript.cs" id="27_cliqf"]
 [ext_resource type="Resource" path="res://resources/spawning/robot_mascot.tres" id="28_wvq2v"]
-[ext_resource type="Script" uid="uid://c48eolwiu22e2" path="res://scripts/spawning/ObstacleSpawner.cs" id="25_ptb65"]
-[ext_resource type="PackedScene" uid="uid://buh4okktrihm4" path="res://scenes/obstacle.tscn" id="26_nt4xe"]
 [ext_resource type="Texture2D" uid="uid://dnjqniqdg516k" path="res://assets/Env/Asset_pine-tree.png" id="29_r1jpt"]
 [ext_resource type="Texture2D" uid="uid://b0vwgsqp18o4a" path="res://assets/Env/Asset_Mountain_BackGround.png" id="29_rq0se"]
 [ext_resource type="Texture2D" uid="uid://qj8w3xn0c1dm" path="res://assets/Env/Asset_ForestMountain.png" id="30_g2nle"]
@@ -34,7 +35,6 @@
 [ext_resource type="Texture2D" uid="uid://d4f3cqfycfb0w" path="res://assets/HUD/black-hole.png" id="hud_black_hole"]
 [ext_resource type="Texture2D" uid="uid://cgv83cfx6w4sw" path="res://assets/HUD/medal.png" id="hud_medal"]
 [ext_resource type="Script" uid="uid://cbfl2k34mwps6" path="res://scripts/gameplay/GameRound.cs" id="round"]
-[ext_resource type="Script" uid="uid://qjsxkrlk25b5" path="res://scripts/soundscripts/music/MainThemeScript.cs" id="27_cliqf"]
 [ext_resource type="Resource" path="res://resources/spawning/moss_creature_grassland.tres" id="spawn_0"]
 [ext_resource type="Resource" path="res://resources/spawning/penguin_snowfield.tres" id="spawn_1"]
 [ext_resource type="Resource" path="res://resources/spawning/bombastick_desert.tres" id="spawn_2"]
@@ -73,6 +73,7 @@ loop = true
 script = ExtResource("round")
 Session = NodePath("Control/SubViewportContainer/SubViewport/GameSession")
 Controls = NodePath("Control/SubViewportContainer/SubViewport/PlayerController")
+
 [node name="Control" type="Control" parent="." unique_id=1469862443]
 layout_mode = 3
 anchors_preset = 0
@@ -1756,7 +1757,6 @@ ContinuousSpawning = true
 script = ExtResource("25_ptb65")
 ObstacleScene = ExtResource("26_nt4xe")
 World = NodePath("../Planet")
-ObstacleCount = 30
 
 [node name="Ship" parent="Control/SubViewportContainer/SubViewport" unique_id=1937052776 instance=ExtResource("2_4dhvd")]
 position = Vector2(960, 600)
@@ -1857,24 +1857,6 @@ text = "03:00"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[connection signal="CritterDelivered" from="Control/SubViewportContainer/SubViewport/Planet/Mothership" to="Control/SubViewportContainer/SubViewport/GameSession" method="RecordRescue"]
-[connection signal="CritterDelivered" from="Control/SubViewportContainer/SubViewport/Planet/Mothership2" to="Control/SubViewportContainer/SubViewport/GameSession" method="RecordRescue"]
-[connection signal="CritterDelivered" from="Control/SubViewportContainer/SubViewport/Planet/Mothership3" to="Control/SubViewportContainer/SubViewport/GameSession" method="RecordRescue"]
-[connection signal="ObstacleDelivered" from="Control/SubViewportContainer/SubViewport/Planet/Mothership" to="Control/SubViewportContainer/SubViewport/GameSession" method="RecordObstacleDelivery"]
-[connection signal="ObstacleDelivered" from="Control/SubViewportContainer/SubViewport/Planet/Mothership2" to="Control/SubViewportContainer/SubViewport/GameSession" method="RecordObstacleDelivery"]
-[connection signal="ObstacleDelivered" from="Control/SubViewportContainer/SubViewport/Planet/Mothership3" to="Control/SubViewportContainer/SubViewport/GameSession" method="RecordObstacleDelivery"]
-[node name="Controls" type="Label" parent="Control/SubViewportContainer/SubViewport/HUD" unique_id=2121287720]
-offset_left = 32.0
-offset_top = 76.0
-offset_right = 850.0
-offset_bottom = 110.0
-theme_override_colors/font_color = Color(0.8, 0.95, 1, 0.85)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
-theme_override_constants/shadow_offset_x = 2
-theme_override_constants/shadow_offset_y = 2
-theme_override_font_sizes/font_size = 20
-text = "W/S or â†‘/â†“: hover    A/D or â†/â†’: orbit"
-
 [node name="BeamControls" type="Label" parent="Control/SubViewportContainer/SubViewport/HUD" unique_id=1223736909]
 offset_left = 32.0
 offset_top = 110.0
@@ -1897,15 +1879,19 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
 theme_override_font_sizes/font_size = 22
-text = "E / right click: HOLD a critter"
+text = "E / right click: HOLD an object"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Control/SubViewportContainer/SubViewport" unique_id=318961963]
 stream = SubResource("AudioStreamOggVorbis_3yw2i")
 script = ExtResource("27_cliqf")
 
+[connection signal="CritterDelivered" from="Control/SubViewportContainer/SubViewport/Planet/Mothership" to="Control/SubViewportContainer/SubViewport/GameSession" method="RecordRescue"]
+[connection signal="ObstacleDelivered" from="Control/SubViewportContainer/SubViewport/Planet/Mothership" to="Control/SubViewportContainer/SubViewport/GameSession" method="RecordObstacleDelivery"]
+[connection signal="CritterDelivered" from="Control/SubViewportContainer/SubViewport/Planet/Mothership2" to="Control/SubViewportContainer/SubViewport/GameSession" method="RecordRescue"]
+[connection signal="ObstacleDelivered" from="Control/SubViewportContainer/SubViewport/Planet/Mothership2" to="Control/SubViewportContainer/SubViewport/GameSession" method="RecordObstacleDelivery"]
+[connection signal="CritterDelivered" from="Control/SubViewportContainer/SubViewport/Planet/Mothership3" to="Control/SubViewportContainer/SubViewport/GameSession" method="RecordRescue"]
+[connection signal="ObstacleDelivered" from="Control/SubViewportContainer/SubViewport/Planet/Mothership3" to="Control/SubViewportContainer/SubViewport/GameSession" method="RecordObstacleDelivery"]
 [connection signal="CritterCollected" from="Control/SubViewportContainer/SubViewport/Ship/Ship/Beam/Beam" to="Control/SubViewportContainer/SubViewport/GameSession" method="RecordRescue" unbinds=1]
-[connection signal="timeout" from="Control/SubViewportContainer/SubViewport/IntroSlideTimer" to="Control/SubViewportContainer/SubViewport/IntroSlides" method="OnIntroSlideTimeout"]
-[connection signal="IntroFinished" from="Control/SubViewportContainer/SubViewport/HUD" to="Control/SubViewportContainer/SubViewport/GameSession" method="StartSession"]
 
 [editable path="Control/SubViewportContainer/SubViewport/Planet"]
 [editable path="Control/SubViewportContainer/SubViewport/Ship"]
