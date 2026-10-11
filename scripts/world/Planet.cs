@@ -10,7 +10,7 @@ public partial class Planet : Node2D
 	// Zero preserves the authored transform; a positive value sizes the whole planet in world pixels.
 	[Export(PropertyHint.Range, "0,20000,100,or_greater,suffix:px")]
 	public float SurfaceDiameter { get; set; }
-	[Export] public float RotationSpeed { get; set; } = 0.7f;
+	[Export] public float RotationSpeed { get; set; } = 0.5f;
 	[Export] public Godot.Collections.Array<HabitatProfile> Habitats { get; set; } = new();
 	[Export] public Node2D SurfaceArt { get; set; }
 	private const int SurfaceSamples = 7200;
