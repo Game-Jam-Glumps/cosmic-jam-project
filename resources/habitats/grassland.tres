@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="HabitatProfile" format=3 uid="uid://m7haikqy3st7"]
+
+[ext_resource type="Script" uid="uid://cgg658nx6ndru" path="res://scripts/data/HabitatProfile.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+HabitatName = "Grassland"
+CenterDegrees = -52.5
+SurfaceDegrees = 150.0
