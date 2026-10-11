@@ -19,9 +19,11 @@ public partial class GameHud : CanvasLayer
             GD.PushError($"{Name}: assign a GameSession before displaying the HUD.");
             return;
         }
-        Session.ScoreChanged += UpdateCargo;
+        Session.RescueCountChanged += UpdateCargo;
+        Session.ScoreChanged += UpdateScore;
         Session.TimeRemainingChanged += UpdateCountdown;
-        UpdateCargo(Session.Score);
+        UpdateCargo(Session.RescuedCount);
+        UpdateScore(Session.Score);
         UpdateCountdown(Session.SecondsRemaining);
     }
 
@@ -29,7 +31,12 @@ public partial class GameHud : CanvasLayer
     private void UpdateCargo(int count)
     {
         if (GodotObject.IsInstanceValid(CargoLabel)) CargoLabel.Text = $"RESCUED: {count}";
-        if (GodotObject.IsInstanceValid(ScoreLabel)) ScoreLabel.Text = $"SCORE: {Session.Score}";
+    }
+
+    // Formats points separately from the number of rescued creatures.
+    private void UpdateScore(int score)
+    {
+        if (GodotObject.IsInstanceValid(ScoreLabel)) ScoreLabel.Text = $"SCORE: {score}";
     }
 
     // Formats remaining time and highlights the final thirty seconds.
@@ -47,7 +54,8 @@ public partial class GameHud : CanvasLayer
     {
         if (GodotObject.IsInstanceValid(Session))
         {
-            Session.ScoreChanged -= UpdateCargo;
+            Session.RescueCountChanged -= UpdateCargo;
+            Session.ScoreChanged -= UpdateScore;
             Session.TimeRemainingChanged -= UpdateCountdown;
         }
     }

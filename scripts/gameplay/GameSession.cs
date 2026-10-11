@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 namespace Orbitals;
 
@@ -20,6 +21,7 @@ public partial class GameSession : Node
     public double SecondsRemaining { get; private set; }
     public bool HasArrived { get; private set; }
     public bool IsRunning { get; private set; }
+    private readonly HashSet<ulong> _rescuedCritters = new();
 
     
     public override void _Ready()
@@ -38,7 +40,8 @@ public partial class GameSession : Node
     // Records one completed rescue and publishes the new session total.
     public void RecordRescue(Critter critter)
     {
-        if (HasArrived) return;
+        if (HasArrived || !GodotObject.IsInstanceValid(critter) || critter.IsQueuedForDeletion() ||
+            !_rescuedCritters.Add(critter.GetInstanceId())) return;
         RescuedCount++;
         Score += critter?.IsShiny == true ? 500 : 50;
         EmitSignal(SignalName.RescueCountChanged, RescuedCount);

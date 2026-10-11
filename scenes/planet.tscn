@@ -17,7 +17,7 @@
 [ext_resource type="Resource" uid="uid://m7haikqy3st7" path="res://resources/habitats/grassland.tres" id="15_grass"]
 [ext_resource type="Resource" uid="uid://vx81tf0l8l3w" path="res://resources/habitats/snowfield.tres" id="16_snow"]
 [ext_resource type="Resource" uid="uid://ycmmp1x43ik7" path="res://resources/habitats/desert.tres" id="17_desert"]
-[ext_resource type="PackedScene" uid="uid://dgf8cgrnvxdsk" path="res://scenes/pickup_zone.tscn" id="18_xa7tn"]
+[ext_resource type="PackedScene" path="res://scenes/mothership.tscn" id="18_xa7tn"]
 
 [sub_resource type="Gradient" id="Gradient_8dfcq"]
 offsets = PackedFloat32Array(0, 0.16009852, 0.8399015, 1)
@@ -319,19 +319,20 @@ texture = ExtResource("12_11eka")
 [node name="ForegroundItem" type="Node2D" parent="Obj/Map" unique_id=422169293]
 position = Vector2(0, -426)
 
-[node name="Pickup Zone" parent="." unique_id=570087053 instance=ExtResource("18_xa7tn")]
+[node name="Mothership" parent="." unique_id=570087053 node_paths=PackedStringArray("PlanetInstance") instance=ExtResource("18_xa7tn")]
 position = Vector2(-273, 161)
-rotation = -2.0943952
-scale = Vector2(0.5, 0.5)
+PlanetInstance = NodePath("..")
+SurfaceAngleDegrees = 150.0
 
-[node name="Pickup Zone2" parent="." unique_id=165711443 instance=ExtResource("18_xa7tn")]
+[node name="Mothership2" parent="." unique_id=165711443 node_paths=PackedStringArray("PlanetInstance") instance=ExtResource("18_xa7tn")]
 position = Vector2(265, 169)
-rotation = -1.0629056
-scale = Vector2(0.5, 0.5)
+PlanetInstance = NodePath("..")
+SurfaceAngleDegrees = 32.0
 
-[node name="Pickup Zone3" parent="." unique_id=1157786660 instance=ExtResource("18_xa7tn")]
+[node name="Mothership3" parent="." unique_id=1157786660 node_paths=PackedStringArray("PlanetInstance") instance=ExtResource("18_xa7tn")]
 position = Vector2(0, -297)
-scale = Vector2(0.5, 0.5)
+PlanetInstance = NodePath("..")
+SurfaceAngleDegrees = -90.0
 
 [node name="Center" type="Marker2D" parent="." unique_id=1840687157]
 position = Vector2(0, 6)

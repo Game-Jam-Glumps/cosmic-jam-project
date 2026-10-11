@@ -108,6 +108,13 @@ public partial class Beam : Area2D
             Critter critter = entry.Key;
             Capture capture = entry.Value;
 
+            // A mothership can remove a carried target between beam physics ticks.
+            if (!GodotObject.IsInstanceValid(critter) || critter.IsQueuedForDeletion())
+            {
+                _targets.Remove(critter);
+                continue;
+            }
+
             capture.Speed = Mathf.MoveToward(capture.Speed, Mathf.Max(1f, PullSpeed),
                 Mathf.Max(0f, PullAcceleration) * dt);
             UpdateHeldTarget(critter, capture, dt);

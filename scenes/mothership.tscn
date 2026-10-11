@@ -1,0 +1,42 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/gameplay/DropOffZone.cs" id="script"]
+[ext_resource type="Texture2D" path="res://assets/Ship/mothership-transparent.png" id="art"]
+
+[sub_resource type="RectangleShape2D" id="bay_shape"]
+size = Vector2(280, 220)
+
+[node name="Mothership" type="Area2D" node_paths=PackedStringArray("Sprite", "IntakeCollision")]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("script")
+Sprite = NodePath("Sprite")
+IntakeCollision = NodePath("IntakeCollision")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("art")
+scale = Vector2(0.375, 0.375)
+
+[node name="IntakeCollision" type="CollisionShape2D" parent="."]
+position = Vector2(0, 140)
+shape = SubResource("bay_shape")
+
+[node name="BayLight" type="Line2D" parent="."]
+position = Vector2(0, 126)
+points = PackedVector2Array(-110, 0, 110, 0)
+width = 4.0
+default_color = Color(0.4, 1, 0.8, 0.9)
+
+[node name="Instructions" type="Label" parent="."]
+offset_left = -230.0
+offset_top = 154.0
+offset_right = 230.0
+offset_bottom = 196.0
+theme_override_colors/font_color = Color(0.7, 1, 0.85, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.9)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 20
+text = "MOTHERSHIP · DELIVER CRITTERS BELOW"
+horizontal_alignment = 1
