@@ -1,0 +1,76 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://dv3n7ptf7114y"]
+
+[ext_resource type="Texture2D" uid="uid://epuj2qmmj3ui" path="res://assets/Critter/Sky/Species_WAAhd.png" id="1_rvb7j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y703k"]
+atlas = ExtResource("1_rvb7j")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bp8qj"]
+atlas = ExtResource("1_rvb7j")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2c17l"]
+atlas = ExtResource("1_rvb7j")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cutqt"]
+atlas = ExtResource("1_rvb7j")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b0esg"]
+atlas = ExtResource("1_rvb7j")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b536p"]
+atlas = ExtResource("1_rvb7j")
+region = Rect2(160, 0, 32, 32)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y703k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bp8qj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2c17l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cutqt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b0esg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b536p")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y703k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bp8qj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2c17l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cutqt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b0esg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b536p")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 5.0
+}]
