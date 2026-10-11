@@ -3,10 +3,10 @@ using System.Collections.Generic;
 
 namespace Orbitals;
 
-
 public partial class Beam : Area2D
 {
     public enum BeamMode { Off, Single, Multiple }
+
     [Signal] public delegate void HitEventHandler();
     [Signal] public delegate void CritterCollectedEventHandler(Critter creature);
 
@@ -28,6 +28,10 @@ public partial class Beam : Area2D
     public Color ActiveColor => Mode == BeamMode.Single ? HoldColor : BeamColor;
     public int TargetCount => _targets.Count;
     public float CurrentLength { get; private set; }
+
+    // signal for sound
+    [Signal]
+    public delegate void TractorBeamModeEventHandler(int mode);
 
     private sealed class Capture
     {
@@ -68,6 +72,8 @@ public partial class Beam : Area2D
         AcquireTargets();
         UpdateTargets(dt);
         UpdateVisuals();
+        // emit current mode for sound
+        EmitSignal(SignalName.TractorBeamMode, (int)Mode);
     }
 
     // Finds overlapping creatures, preferring the nearest one for the single-target hold mode.

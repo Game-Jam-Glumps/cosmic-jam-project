@@ -73,8 +73,6 @@ tags = {
 }
 loop = true
 
-[node name="GameManager" type="Node" unique_id=1431068297]
-
 [node name="Control" type="Control" parent="." unique_id=1469862443]
 layout_mode = 3
 anchors_preset = 0
@@ -1748,7 +1746,6 @@ BeamActor = NodePath("../Ship/Ship/Beam/Beam")
 PlanetActor = NodePath("../Planet")
 
 [node name="CritterSpawner" parent="Control/SubViewportContainer/SubViewport" unique_id=682853831 node_paths=PackedStringArray("PlanetInstance") instance=ExtResource("5_spawner")]
-<<<<<<< HEAD
 z_index = 1
 PlanetInstance = NodePath("../Planet")
 SpawnProfiles = Array[ExtResource("4_biy4i")]([ExtResource("spawn_0"), ExtResource("spawn_1"), ExtResource("spawn_2"), ExtResource("10_nt4xe"), ExtResource("spawn_4"), ExtResource("spawn_5"), ExtResource("spawn_6"), ExtResource("spawn_7"), ExtResource("spawn_8"), ExtResource("spawn_9"), ExtResource("spawn_10"), ExtResource("spawn_11"), ExtResource("spawn_12"), ExtResource("spawn_13"), ExtResource("spawn_14"), ExtResource("spawn_15"), ExtResource("spawn_16"), ExtResource("spawn_17"), ExtResource("25_nt4xe"), ExtResource("26_wvq2v"), ExtResource("27_0j36w"), ExtResource("28_wvq2v")])
@@ -1760,12 +1757,6 @@ script = ExtResource("25_ptb65")
 ObstacleScene = ExtResource("26_nt4xe")
 World = NodePath("../Planet")
 ObstacleCount = 30
-=======
-PlanetInstance = NodePath("../Planet")
-SpawnProfiles = Array[ExtResource("4_biy4i")]([ExtResource("spawn_0"), ExtResource("spawn_1"), ExtResource("spawn_2"), ExtResource("spawn_3"), ExtResource("spawn_4"), ExtResource("spawn_5"), ExtResource("spawn_6"), ExtResource("spawn_7"), ExtResource("spawn_8"), ExtResource("spawn_9"), ExtResource("spawn_10"), ExtResource("spawn_11"), ExtResource("spawn_12"), ExtResource("spawn_13"), ExtResource("spawn_14"), ExtResource("spawn_15"), ExtResource("spawn_16"), ExtResource("spawn_17")])
-MaxPopulation = 144
-ContinuousSpawning = true
->>>>>>> 072826f (Add audio for main theme)
 
 [node name="Ship" parent="Control/SubViewportContainer/SubViewport" unique_id=1937052776 instance=ExtResource("2_4dhvd")]
 position = Vector2(960, 600)
@@ -1866,14 +1857,12 @@ text = "03:00"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-<<<<<<< HEAD
 [connection signal="CritterDelivered" from="Control/SubViewportContainer/SubViewport/Planet/Mothership" to="Control/SubViewportContainer/SubViewport/GameSession" method="RecordRescue"]
 [connection signal="CritterDelivered" from="Control/SubViewportContainer/SubViewport/Planet/Mothership2" to="Control/SubViewportContainer/SubViewport/GameSession" method="RecordRescue"]
 [connection signal="CritterDelivered" from="Control/SubViewportContainer/SubViewport/Planet/Mothership3" to="Control/SubViewportContainer/SubViewport/GameSession" method="RecordRescue"]
 [connection signal="ObstacleDelivered" from="Control/SubViewportContainer/SubViewport/Planet/Mothership" to="Control/SubViewportContainer/SubViewport/GameSession" method="RecordObstacleDelivery"]
 [connection signal="ObstacleDelivered" from="Control/SubViewportContainer/SubViewport/Planet/Mothership2" to="Control/SubViewportContainer/SubViewport/GameSession" method="RecordObstacleDelivery"]
 [connection signal="ObstacleDelivered" from="Control/SubViewportContainer/SubViewport/Planet/Mothership3" to="Control/SubViewportContainer/SubViewport/GameSession" method="RecordObstacleDelivery"]
-=======
 [node name="Controls" type="Label" parent="Control/SubViewportContainer/SubViewport/HUD" unique_id=2121287720]
 offset_left = 32.0
 offset_top = 76.0
@@ -1917,7 +1906,6 @@ script = ExtResource("27_cliqf")
 [connection signal="CritterCollected" from="Control/SubViewportContainer/SubViewport/Ship/Ship/Beam/Beam" to="Control/SubViewportContainer/SubViewport/GameSession" method="RecordRescue" unbinds=1]
 [connection signal="timeout" from="Control/SubViewportContainer/SubViewport/IntroSlideTimer" to="Control/SubViewportContainer/SubViewport/IntroSlides" method="OnIntroSlideTimeout"]
 [connection signal="IntroFinished" from="Control/SubViewportContainer/SubViewport/HUD" to="Control/SubViewportContainer/SubViewport/GameSession" method="StartSession"]
->>>>>>> 072826f (Add audio for main theme)
 
 [editable path="Control/SubViewportContainer/SubViewport/Planet"]
 [editable path="Control/SubViewportContainer/SubViewport/Ship"]
