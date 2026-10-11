@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bxiryxnkwq26t"
-path="res://.godot/imported/walker-transparent.png-e3696a81e4ea904827256c258fe945a6.ctex"
+path="res://.godot/imported/walker-transparent.png-c6529ffb9f6bf57c17a3a3607e28bbc3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/critter/Snow/walker-transparent.png"
-dest_files=["res://.godot/imported/walker-transparent.png-e3696a81e4ea904827256c258fe945a6.ctex"]
+source_file="res://assets/Critter/Snow/walker-transparent.png"
+dest_files=["res://.godot/imported/walker-transparent.png-c6529ffb9f6bf57c17a3a3607e28bbc3.ctex"]
 
 [params]
 

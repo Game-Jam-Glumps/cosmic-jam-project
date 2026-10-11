@@ -34,6 +34,8 @@ public partial class Critter : CharacterBody2D
 	private bool _initialized;
 	private float _bodyWidth = 24f;
 
+	private static readonly Shader ShinyGlowShader = GD.Load<Shader>("res://shaders/shiny_glow.gdshader");
+
 	public override void _Ready()
 	{
 		Profile ??= new SpeciesProfile();
@@ -51,6 +53,7 @@ public partial class Critter : CharacterBody2D
 			CollisionShape2D collision = GetNodeOrNull<CollisionShape2D>("CollisionShape2D");
 			if (collision != null)
 				collision.Shape = new RectangleShape2D { Size = new Vector2(height * 0.65f, height) };
+			ApplyRarityVisuals();
 		}
 		UpdateAnimation();
 		_initialized = true;
@@ -165,6 +168,27 @@ public partial class Critter : CharacterBody2D
 		if (dt <= 0f) { StopMoving(); return false; }
 		SurfaceSpeed = Mathf.Sign(difference) * Mathf.Min(Mathf.Max(0f, speed), distance / dt);
 		return false;
+	}
+
+	private void ApplyRarityVisuals()
+	{
+		if (_sprite == null || !IsShiny || ShinyGlowShader == null)
+			return;
+
+		ShaderMaterial material = new()
+		{
+			Shader = ShinyGlowShader
+		};
+
+		material.SetShaderParameter(
+			"glow_color",
+			new Color(1f, 0.75f, 0.15f, 1f)
+		);
+
+		material.SetShaderParameter("glow_size", 2.5f);
+		material.SetShaderParameter("pulse_speed", 2f);
+
+		_sprite.Material = material;
 	}
 
 }

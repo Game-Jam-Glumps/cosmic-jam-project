@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cflmvcqmehhyb"
-path="res://.godot/imported/moss-creature-transparent.png-c433d3c27ea75b0047cee15bd4678daf.ctex"
+path="res://.godot/imported/moss-creature-transparent.png-0fdd0d74c9332580b15519838c22fe0a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/critter/Grassland/moss-creature-transparent.png"
-dest_files=["res://.godot/imported/moss-creature-transparent.png-c433d3c27ea75b0047cee15bd4678daf.ctex"]
+source_file="res://assets/Critter/Grassland/moss-creature-transparent.png"
+dest_files=["res://.godot/imported/moss-creature-transparent.png-0fdd0d74c9332580b15519838c22fe0a.ctex"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c6rx0qjynklsl"
-path="res://.godot/imported/Species_CUG.png-1491370d3dc0487af90f470cacd71ff9.ctex"
+path="res://.godot/imported/Species_CUG.png-e86af552547da9dac2d14b0300f7f188.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/critter/Special/Species_CUG.png"
-dest_files=["res://.godot/imported/Species_CUG.png-1491370d3dc0487af90f470cacd71ff9.ctex"]
+source_file="res://assets/Critter/Special/Species_CUG.png"
+dest_files=["res://.godot/imported/Species_CUG.png-e86af552547da9dac2d14b0300f7f188.ctex"]
 
 [params]
 

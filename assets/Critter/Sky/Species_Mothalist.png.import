@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://rsvicv4wm18w"
-path="res://.godot/imported/Species_Mothalist.png-db040ccbd28d4cf84b78f7970cae3671.ctex"
+path="res://.godot/imported/Species_Mothalist.png-dad048005b55eb42e1542bdbd814c784.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/critter/Sky/Species_Mothalist.png"
-dest_files=["res://.godot/imported/Species_Mothalist.png-db040ccbd28d4cf84b78f7970cae3671.ctex"]
+source_file="res://assets/Critter/Sky/Species_Mothalist.png"
+dest_files=["res://.godot/imported/Species_Mothalist.png-dad048005b55eb42e1542bdbd814c784.ctex"]
 
 [params]
 
