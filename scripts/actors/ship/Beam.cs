@@ -37,11 +37,11 @@ public partial class Beam : Area2D
         public float Speed = 100f;
     }
 
-    private readonly Dictionary<Critter, Capture> _targets = new();
+    private readonly Dictionary<Node2D, Capture> _targets = new();
     private CollisionPolygon2D _collision;
     private float _lastTopWidth, _lastBottomWidth;
 
-    // Initializes creature-only detection and the cone shape, and starts hidden.
+    // Initializes target detection and the cone shape, and starts hidden.
     public override void _Ready()
     {
         ProcessPhysicsPriority = -5;
@@ -73,28 +73,36 @@ public partial class Beam : Area2D
     // Finds overlapping creatures, preferring the nearest one for the single-target hold mode.
     private void AcquireTargets()
     {
-        // Polling includes creatures already inside when the beam is switched on.
-        var candidates = new List<Critter>();
+        // Polling includes targets already inside when the beam is switched on.
+        var candidates = new List<Node2D>();
         foreach (Node2D body in GetOverlappingBodies())
         {
-            if (body is not Critter critter || critter.IsQueuedForDeletion() ||
-                _targets.ContainsKey(critter) || !GodotObject.IsInstanceValid(critter.World)) continue;
-            candidates.Add(critter);
+            if (body is not Critter && body is not Obstacle ||
+                body.IsQueuedForDeletion() || _targets.ContainsKey(body)) continue;
+
+            Planet world = body is Critter critter
+                ? critter.World
+                : ((Obstacle)body).World;
+            if (!GodotObject.IsInstanceValid(world)) continue;
+
+            candidates.Add(body);
         }
         candidates.Sort((a, b) => a.GlobalPosition.DistanceSquaredTo(GlobalPosition)
             .CompareTo(b.GlobalPosition.DistanceSquaredTo(GlobalPosition)));
-        foreach (Critter critter in candidates)
+        foreach (Node2D target in candidates)
         {
             if (Mode == BeamMode.Single && _targets.Count >= 1) break;
 
-            _targets.Add(critter, new Capture
+            Planet world = target is Critter critter
+                ? critter.World
+                : ((Obstacle)target).World;
+            _targets.Add(target, new Capture
             {
-                Planet = critter.World,
-                OriginalScale = critter.GlobalScale,
-                InitialDistance = Mathf.Max(1f, critter.GlobalPosition.DistanceTo(GlobalPosition))
+                Planet = world,
+                OriginalScale = target.GlobalScale,
+                InitialDistance = Mathf.Max(1f, target.GlobalPosition.DistanceTo(GlobalPosition))
             });
-            critter.MarkCarried();
-            critter.DetachFromPlanet();
+            DetachTarget(target);
             EmitSignal(SignalName.Hit);
         }
     }
@@ -102,10 +110,10 @@ public partial class Beam : Area2D
     // Updates latched creatures and discards targets removed by another system.
     private void UpdateTargets(float dt)
     {
-        // Captured creatures stay latched during ship movement until collected or released.
-        foreach (var entry in new List<KeyValuePair<Critter, Capture>>(_targets))
+        // Captured targets stay latched during ship movement until collected or released.
+        foreach (var entry in new List<KeyValuePair<Node2D, Capture>>(_targets))
         {
-            Critter critter = entry.Key;
+            Node2D target = entry.Key;
             Capture capture = entry.Value;
 
             // A mothership can remove a carried target between beam physics ticks.
@@ -117,21 +125,24 @@ public partial class Beam : Area2D
 
             capture.Speed = Mathf.MoveToward(capture.Speed, Mathf.Max(1f, PullSpeed),
                 Mathf.Max(0f, PullAcceleration) * dt);
-            UpdateHeldTarget(critter, capture, dt);
+            UpdateHeldTarget(target, capture, dt);
         }
     }
 
 
-    // Moves one creature toward the safe hover point without shrinking or consuming it.
-    private void UpdateHeldTarget(Critter critter, Capture capture, float dt)
+    // Moves one target toward the safe hover point without shrinking or consuming it.
+    private void UpdateHeldTarget(Node2D target, Capture capture, float dt)
     {
-        float halfHeight = critter.Profile.SpriteHeight * Mathf.Abs(capture.OriginalScale.Y) / 2f;
+        float targetHeight = target is Critter critter
+            ? critter.Profile.SpriteHeight
+            : ((Obstacle)target).SpriteHeight;
+        float halfHeight = targetHeight * Mathf.Abs(capture.OriginalScale.Y) / 2f;
         float hoverY = Mathf.Min(Mathf.Max(24f, HoldDistance),
             Mathf.Max(24f, CurrentLength - halfHeight - 6f));
         Vector2 hoverPoint = ToGlobal(new Vector2(0f, hoverY));
-        critter.GlobalScale = capture.OriginalScale;
-        critter.GlobalPosition = critter.GlobalPosition.MoveToward(hoverPoint, capture.Speed * dt);
-        critter.GlobalRotation = Mathf.LerpAngle(critter.GlobalRotation, 0f, Mathf.Min(1f, dt * 8f));
+        target.GlobalScale = capture.OriginalScale;
+        target.GlobalPosition = target.GlobalPosition.MoveToward(hoverPoint, capture.Speed * dt);
+        target.GlobalRotation = Mathf.LerpAngle(target.GlobalRotation, 0f, Mathf.Min(1f, dt * 8f));
     }
 
     // Compatibility helper: true selects absorption; false switches the beam off.
@@ -155,14 +166,30 @@ public partial class Beam : Area2D
     {
         foreach (var entry in _targets)
         {
-            Critter critter = entry.Key;
-            if (!GodotObject.IsInstanceValid(critter) || critter.IsQueuedForDeletion()) continue;
-            critter.GlobalScale = entry.Value.OriginalScale;
+            Node2D target = entry.Key;
+            if (!GodotObject.IsInstanceValid(target) || target.IsQueuedForDeletion()) continue;
+            target.GlobalScale = entry.Value.OriginalScale;
             Planet planet = entry.Value.Planet;
             if (GodotObject.IsInstanceValid(planet) && planet.IsInsideTree())
-                critter.LandOnPlanet(planet);
+                LandTarget(target, planet);
         }
         _targets.Clear();
+    }
+
+    private static void DetachTarget(Node2D target)
+    {
+        if (target is Critter critter)
+            critter.DetachFromPlanet();
+        else if (target is Obstacle obstacle)
+            obstacle.DetachFromPlanet();
+    }
+
+    private static void LandTarget(Node2D target, Planet planet)
+    {
+        if (target is Critter critter)
+            critter.LandOnPlanet(planet);
+        else if (target is Obstacle obstacle)
+            obstacle.LandOnPlanet(planet);
     }
 
     // Synchronizes detection with the terrain-clipped cone calculated by BeamGeometry.
@@ -187,10 +214,13 @@ public partial class Beam : Area2D
         Visuals.SetAppearance(TopWidth, BottomWidth, CurrentLength, ActiveColor, Mode == BeamMode.Single);
         Visuals.SetHoldHalo(Vector2.Zero, 0f);
         if (Mode != BeamMode.Single) return;
-        foreach (Critter critter in _targets.Keys)
-            if (GodotObject.IsInstanceValid(critter))
+        foreach (Node2D target in _targets.Keys)
+            if (GodotObject.IsInstanceValid(target))
             {
-                Visuals.SetHoldHalo(Visuals.ToLocal(critter.GlobalPosition), critter.Profile.SpriteHeight * 0.65f);
+                float targetHeight = target is Critter critter
+                    ? critter.Profile.SpriteHeight
+                    : ((Obstacle)target).SpriteHeight;
+                Visuals.SetHoldHalo(Visuals.ToLocal(target.GlobalPosition), targetHeight * 0.65f);
                 break;
             }
     }
