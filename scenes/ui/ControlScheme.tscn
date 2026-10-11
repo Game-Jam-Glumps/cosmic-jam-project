@@ -1,0 +1,159 @@
+[gd_scene format=3]
+
+[ext_resource type="Theme" path="res://resources/ui/menu_theme.tres" id="theme"]
+[ext_resource type="Texture2D" path="res://assets/HUD/ws-keys.png" id="ws"]
+[ext_resource type="Texture2D" path="res://assets/HUD/ad-keys.png" id="ad"]
+[ext_resource type="Texture2D" path="res://assets/HUD/UD-arrows.png" id="ud"]
+[ext_resource type="Texture2D" path="res://assets/HUD/LR-arrows.png" id="lr"]
+[ext_resource type="Texture2D" path="res://assets/HUD/space-left-click.png" id="absorb"]
+[ext_resource type="Texture2D" path="res://assets/HUD/e-right-click.png" id="hold"]
+
+[node name="ControlScheme" type="PanelContainer"]
+custom_minimum_size = Vector2(780, 0)
+mouse_filter = 2
+theme = ExtResource("theme")
+texture_filter = 1
+
+[node name="Content" type="VBoxContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 16
+
+[node name="Title" type="Label" parent="Content"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "CONTROLS"
+horizontal_alignment = 1
+
+[node name="Actions" type="GridContainer" parent="Content"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 16
+columns = 2
+
+[node name="Fly" type="VBoxContainer" parent="Content/Actions"]
+custom_minimum_size = Vector2(340, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 6
+
+[node name="Keys" type="HBoxContainer" parent="Content/Actions/Fly"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="W_S" type="TextureRect" parent="Content/Actions/Fly/Keys"]
+custom_minimum_size = Vector2(144, 96)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("ws")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Or" type="Label" parent="Content/Actions/Fly/Keys"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "or"
+vertical_alignment = 1
+
+[node name="UpDown" type="TextureRect" parent="Content/Actions/Fly/Keys"]
+custom_minimum_size = Vector2(144, 96)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("ud")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Caption" type="Label" parent="Content/Actions/Fly"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Fly up / down"
+horizontal_alignment = 1
+
+[node name="Orbit" type="VBoxContainer" parent="Content/Actions"]
+custom_minimum_size = Vector2(340, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 6
+
+[node name="Keys" type="HBoxContainer" parent="Content/Actions/Orbit"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="A_D" type="TextureRect" parent="Content/Actions/Orbit/Keys"]
+custom_minimum_size = Vector2(144, 96)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("ad")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Or" type="Label" parent="Content/Actions/Orbit/Keys"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "or"
+vertical_alignment = 1
+
+[node name="LeftRight" type="TextureRect" parent="Content/Actions/Orbit/Keys"]
+custom_minimum_size = Vector2(144, 96)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("lr")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Caption" type="Label" parent="Content/Actions/Orbit"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Rotate the planet"
+horizontal_alignment = 1
+
+[node name="Absorb" type="VBoxContainer" parent="Content/Actions"]
+custom_minimum_size = Vector2(340, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 6
+
+[node name="MouseAndKey" type="TextureRect" parent="Content/Actions/Absorb"]
+custom_minimum_size = Vector2(0, 96)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("absorb")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Caption" type="Label" parent="Content/Actions/Absorb"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.65, 1, 1, 1)
+theme_override_font_sizes/font_size = 22
+text = "Absorb many critters"
+horizontal_alignment = 1
+
+[node name="Hold" type="VBoxContainer" parent="Content/Actions"]
+custom_minimum_size = Vector2(340, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 6
+
+[node name="MouseAndKey" type="TextureRect" parent="Content/Actions/Hold"]
+custom_minimum_size = Vector2(0, 96)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("hold")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Caption" type="Label" parent="Content/Actions/Hold"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.65, 1, 1)
+theme_override_font_sizes/font_size = 22
+text = "Hold one / release to drop"
+horizontal_alignment = 1

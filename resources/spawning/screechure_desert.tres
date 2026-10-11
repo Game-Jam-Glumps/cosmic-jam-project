@@ -1,12 +1,11 @@
-[gd_resource type="Resource" script_class="CritterSpawnProfile" format=3]
+[gd_resource type="Resource" script_class="CritterSpawnProfile" format=3 uid="uid://dmqi3rdwb1gk5"]
 
-[ext_resource type="Script" path="res://scripts/data/CritterSpawnProfile.cs" id="1_rule"]
-[ext_resource type="Resource" path="res://resources/habitats/desert.tres" id="2_habitat"]
-[ext_resource type="Resource" path="res://resources/species/screechure.tres" id="3_species"]
+[ext_resource type="Script" uid="uid://duyieb4jy5na1" path="res://scripts/data/CritterSpawnProfile.cs" id="1_rule"]
+[ext_resource type="Resource" uid="uid://ycmmp1x43ik7" path="res://resources/habitats/desert.tres" id="2_habitat"]
+[ext_resource type="Resource" uid="uid://bxorlfoivoqw5" path="res://resources/species/screechure.tres" id="3_species"]
 
 [resource]
 resource_name = "screechure_desert"
 script = ExtResource("1_rule")
 Habitat = ExtResource("2_habitat")
 Species = ExtResource("3_species")
-Count = 3
