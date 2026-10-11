@@ -1,39 +1,47 @@
 [gd_scene format=3 uid="uid://b6kfohy5lmeo8"]
 
-[ext_resource type="Script" uid="uid://cgbth7fp73o0y" path="res://scripts/ShipInitalizer.cs" id="1_7j21i"]
-[ext_resource type="Script" uid="uid://bijuc40vsvgfj" path="res://scripts/Ship.cs" id="1_q631a"]
-[ext_resource type="Texture2D" uid="uid://bmksrnhpeu66r" path="res://assets/spaceship-png-icon-17270.png" id="2_2gnfn"]
-[ext_resource type="PackedScene" uid="uid://rlpodagx4v8f" path="res://scenes/beam.tscn" id="4_gudjc"]
+[ext_resource type="Script" uid="uid://bijuc40vsvgfj" path="res://scripts/actors/ship/Ship.cs" id="1_q631a"]
+[ext_resource type="SpriteFrames" path="res://resources/animations/ship.tres" id="2_frames"]
+[ext_resource type="PackedScene" path="res://scenes/beam.tscn" id="4_gudjc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2gnfn"]
+radius = 48.0
 
-[node name="Ship" type="Node2D" unique_id=1937052776 node_paths=PackedStringArray("CritterInstance")]
-scale = Vector2(0.3, 0.3)
-script = ExtResource("1_7j21i")
-CritterInstance = NodePath("")
+[node name="Ship" type="Node2D" unique_id=1937052776]
+scale = Vector2(1, 1)
 
-[node name="Ship" type="CharacterBody2D" parent="." unique_id=2040208976]
+[node name="Ship" type="CharacterBody2D" parent="." unique_id=2040208976 node_paths=PackedStringArray("Sprite", "HullCollision", "BeamMount")]
+collision_mask = 0
 position = Vector2(0, -5)
 script = ExtResource("1_q631a")
+Sprite = NodePath("AnimatedSprite2D")
+HullCollision = NodePath("CollisionShape2D")
+BeamMount = NodePath("Beam")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ship" unique_id=23795670]
 position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_2gnfn")
 
-[node name="Sprite2D" type="Sprite2D" parent="Ship" unique_id=1880522618]
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("2_2gnfn")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Ship" unique_id=1880522618]
+texture_filter = 1
+scale = Vector2(4, 4)
+sprite_frames = ExtResource("2_frames")
+animation = &"hover"
+autoplay = "hover"
 
 [node name="Beam" parent="Ship" unique_id=1856874238 instance=ExtResource("4_gudjc")]
 z_index = 1
+position = Vector2(0, 48)
 
 [node name="Beam" parent="Ship/Beam" index="0" unique_id=225202901]
 z_index = 1
-collision_layer = 2
+collision_layer = 0
 collision_mask = 2
 
 [node name="Camera2D" type="Camera2D" parent="Ship" unique_id=1958900881]
 zoom = Vector2(4, 4)
+position_smoothing_enabled = true
+position_smoothing_speed = 4.0
 rotation_smoothing_enabled = true
 
 [editable path="Ship/Beam"]
