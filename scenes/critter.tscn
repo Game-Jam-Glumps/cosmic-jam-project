@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cmk7p1d84exao" path="res://scripts/actors/critters/Critter.cs" id="1_oeans"]
 [ext_resource type="Script" uid="uid://beb8whanohrnh" path="res://scripts/actors/critters/CritterBrain.cs" id="2_brain"]
 [ext_resource type="Texture2D" uid="uid://d1mqnh88lrot8" path="res://assets/Critter/Grassland/mouse-snail-transparent.png" id="3_35jsl"]
-[ext_resource type="Resource" path="res://resources/species/moss_creature.tres" id="3_species"]
+[ext_resource type="Resource" uid="uid://qffchu1dgxa4" path="res://resources/species/moss_creature.tres" id="3_species"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uunrr"]
 atlas = ExtResource("3_35jsl")
@@ -53,7 +53,7 @@ Profile = ExtResource("3_species")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Critter" unique_id=1015940515]
 texture_filter = 1
-scale = Vector2(0.0234375, 0.0234375)
+scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_gsppg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Critter" unique_id=1996449197]
