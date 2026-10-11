@@ -38,13 +38,13 @@ public partial class Beam : Area2D
 	private void OnBodyEntered(Node2D nodeBody)
 	{
 		GD.Print("collision detected 2");
-		if(nodeBody is Critter)
+		if(nodeBody is Critter critter)
 		{
 			GD.Print($"Critter pos: {nodeBody.GlobalPosition}");
 			GD.Print($"Ship pos: {GlobalPosition}");
-			var newPosition = new Vector2(GlobalPosition.X, GlobalPosition.Y);
-			nodeBody.GlobalPosition = newPosition;
-			GD.Print($"Critter pos after: {nodeBody.GlobalPosition}");
+			critter.DetachFromPlanet();
+			critter.GlobalPosition = GlobalPosition;
+			GD.Print($"Critter pos after: {critter.GlobalPosition}");
 		}
 	}
 
