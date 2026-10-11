@@ -12,15 +12,25 @@
 [ext_resource type="Texture2D" uid="uid://mbfgisqqktap" path="res://assets/SkyBox/GroundMask.png" id="7_m5dqw"]
 [ext_resource type="Texture2D" uid="uid://cuyc3g4onu2pu" path="res://assets/Env/Surface_Snow_Iced.png" id="8_11eka"]
 [ext_resource type="Texture2D" uid="uid://3sakhken8c3q" path="res://assets/SkyBox/Skybox_Cloud1.png" id="12_11eka"]
+[ext_resource type="Script" path="res://scripts/world/Planet.cs" id="13_planet"]
+[ext_resource type="Script" path="res://scripts/data/HabitatProfile.cs" id="14_habitat"]
+[ext_resource type="Resource" path="res://resources/habitats/grassland.tres" id="15_grass"]
+[ext_resource type="Resource" path="res://resources/habitats/snowfield.tres" id="16_snow"]
+[ext_resource type="Resource" path="res://resources/habitats/desert.tres" id="17_desert"]
 
 [sub_resource type="Gradient" id="Gradient_8dfcq"]
 offsets = PackedFloat32Array(0, 0.16009852, 0.8399015, 1)
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
-[node name="Planet" type="Node2D" unique_id=1182448530]
+[node name="Planet" type="Node2D" unique_id=1182448530 node_paths=PackedStringArray("Center", "SurfaceArt")]
+script = ExtResource("13_planet")
+Center = NodePath("Center")
+SurfaceArt = NodePath("Obj/Map/Ground")
+Radius = 258.0
+Habitats = Array[ExtResource("14_habitat")]([ExtResource("15_grass"), ExtResource("16_snow"), ExtResource("17_desert")])
 
 [node name="Obj" type="Node2D" parent="." unique_id=2108927082]
-position = Vector2(6773, 0)
+position = Vector2(0, 0)
 
 [node name="Map" type="Node2D" parent="Obj" unique_id=2098654404]
 position = Vector2(29, 0)
@@ -308,3 +318,6 @@ texture = ExtResource("12_11eka")
 
 [node name="ForegroundItem" type="Node2D" parent="Obj/Map" unique_id=422169293]
 position = Vector2(0, -426)
+
+[node name="Center" type="Marker2D" parent="."]
+position = Vector2(0, 6)
