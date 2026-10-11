@@ -1,0 +1,130 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/ui/BlackHoleBackground.tscn" id="background"]
+[ext_resource type="Theme" path="res://resources/ui/menu_theme.tres" id="theme"]
+[ext_resource type="Script" path="res://scripts/ui/EndScreen.cs" id="script"]
+
+[node name="EndScreen" type="Control" node_paths=PackedStringArray("ScoreLabel", "RescuedLabel", "StarLabels", "RetryButton", "MenuButton")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("theme")
+script = ExtResource("script")
+ScoreLabel = NodePath("Center/Content/ResultsPanel/Results/Score")
+RescuedLabel = NodePath("Center/Content/ResultsPanel/Results/Rescued")
+StarLabels = [NodePath("Center/Content/ResultsPanel/Results/Stars/Star1"), NodePath("Center/Content/ResultsPanel/Results/Stars/Star2"), NodePath("Center/Content/ResultsPanel/Results/Stars/Star3"), NodePath("Center/Content/ResultsPanel/Results/Stars/Star4"), NodePath("Center/Content/ResultsPanel/Results/Stars/Star5")]
+RetryButton = NodePath("Center/Content/Buttons/RetryButton")
+MenuButton = NodePath("Center/Content/Buttons/MenuButton")
+
+[node name="BlackHoleBackground" parent="." instance=ExtResource("background")]
+layout_mode = 1
+
+[node name="Center" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Content" type="VBoxContainer" parent="Center"]
+custom_minimum_size = Vector2(920, 0)
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="Eyebrow" type="Label" parent="Center/Content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.77, 0.4, 1)
+theme_override_font_sizes/font_size = 24
+text = "THE BLACK HOLE HAS ARRIVED"
+horizontal_alignment = 1
+
+[node name="Title" type="Label" parent="Center/Content"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.025, 0.035, 0.06, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 112
+text = "TIME'S UP!"
+horizontal_alignment = 1
+
+[node name="ResultsPanel" type="PanelContainer" parent="Center/Content"]
+layout_mode = 2
+
+[node name="Results" type="VBoxContainer" parent="Center/Content/ResultsPanel"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Stars" type="HBoxContainer" parent="Center/Content/ResultsPanel/Results"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Star1" type="Label" parent="Center/Content/ResultsPanel/Results/Stars"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 76
+text = "★"
+
+[node name="Star2" type="Label" parent="Center/Content/ResultsPanel/Results/Stars"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 76
+text = "★"
+
+[node name="Star3" type="Label" parent="Center/Content/ResultsPanel/Results/Stars"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 76
+text = "★"
+
+[node name="Star4" type="Label" parent="Center/Content/ResultsPanel/Results/Stars"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 76
+text = "★"
+
+[node name="Star5" type="Label" parent="Center/Content/ResultsPanel/Results/Stars"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 76
+text = "★"
+
+[node name="ScoreCaption" type="Label" parent="Center/Content/ResultsPanel/Results"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.68, 0.75, 0.85, 1)
+theme_override_font_sizes/font_size = 24
+text = "FINAL SCORE"
+horizontal_alignment = 1
+
+[node name="Score" type="Label" parent="Center/Content/ResultsPanel/Results"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 84
+text = "0"
+horizontal_alignment = 1
+
+[node name="Rescued" type="Label" parent="Center/Content/ResultsPanel/Results"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.55, 0.95, 1, 1)
+theme_override_font_sizes/font_size = 28
+text = "0 CREATURES RESCUED"
+horizontal_alignment = 1
+
+[node name="Buttons" type="HBoxContainer" parent="Center/Content"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="RetryButton" type="Button" parent="Center/Content/Buttons"]
+custom_minimum_size = Vector2(0, 82)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "RESCUE AGAIN"
+
+[node name="MenuButton" type="Button" parent="Center/Content/Buttons"]
+custom_minimum_size = Vector2(0, 82)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "MAIN MENU"
+
+[node name="Footer" type="Label" parent="Center/Content"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 23
+text = "Every rescue mattered."
+horizontal_alignment = 1
