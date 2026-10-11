@@ -44,7 +44,7 @@ public partial class GameHud : CanvasLayer
     {
         if (!GodotObject.IsInstanceValid(CountdownLabel)) return;
         int seconds = (int)Math.Ceiling(remaining);
-        CountdownLabel.Text = $"BLACK HOLE ETA: {seconds / 60:00}:{seconds % 60:00}";
+        CountdownLabel.Text = $"{seconds / 60:00}:{seconds % 60:00}";
         CountdownLabel.AddThemeColorOverride("font_color", seconds <= 30 ?
             new Color(1f, 0.4f, 0.4f) : new Color(0.9f, 0.75f, 1f));
     }

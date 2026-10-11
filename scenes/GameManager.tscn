@@ -57,6 +57,7 @@ render_target_update_mode = 4
 
 [node name="GameSession" type="Node" parent="Control/SubViewportContainer/SubViewport" unique_id=253214051]
 script = ExtResource("11_session")
+ArrivalSeconds = 140.0
 StartOnReady = true
 
 [node name="PlayerController" type="Node" parent="Control/SubViewportContainer/SubViewport" unique_id=846793002 node_paths=PackedStringArray("ShipActor", "BeamActor", "PlanetActor")]
@@ -146,7 +147,7 @@ stretch_mode = 5
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -600.0
+offset_left = -240.0
 offset_top = 24.0
 offset_right = -32.0
 offset_bottom = 72.0
@@ -170,7 +171,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
 theme_override_font_sizes/font_size = 30
-text = "BLACK HOLE ETA: 03:00"
+text = "03:00"
 horizontal_alignment = 2
 vertical_alignment = 1
 

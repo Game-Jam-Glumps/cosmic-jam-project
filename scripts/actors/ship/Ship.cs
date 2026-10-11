@@ -6,9 +6,9 @@ namespace Orbitals;
 public partial class Ship : CharacterBody2D
 {
 
-    [Export] public int speed { get; set; } = 200;
-    [Export] public float Acceleration { get; set; } = 800f;
-    [Export] public float Deceleration { get; set; } = 1100f;
+    [Export] public int speed { get; set; } = 600;
+    [Export] public float Acceleration { get; set; } = 2400f;
+    [Export] public float Deceleration { get; set; } = 3600f;
     [Export] public Planet PlanetInstance { get; set; }
     [Export(PropertyHint.Range, "32,512,1,or_greater,suffix:px")]
     public float SpriteWidth { get; set; } = 128f;
