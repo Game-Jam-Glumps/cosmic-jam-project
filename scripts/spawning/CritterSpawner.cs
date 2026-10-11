@@ -21,6 +21,16 @@ public partial class CritterSpawner : Node2D
     private readonly RandomNumberGenerator _rng = new();
     private readonly List<(CritterSpawnProfile Rule, int Slot, Node2D Root, Critter Body)> _spawned = new();
     private Node2D _population;
+    // Planet-local angles for the three authored dropoff areas:
+    // (-273, 161), (265, 169), and (0, -297).
+    private static readonly float[] DropoffAngles =
+    {
+        Mathf.DegToRad(150f),
+        Mathf.DegToRad(32f),
+        Mathf.DegToRad(-90f)
+    };
+    private const float DropoffExclusionHalfWidth = 0.35f;
+    private const float DropoffNudge = 0.5f;
 
     public Godot.Collections.Array<Critter> Critters
     {
@@ -101,6 +111,7 @@ public partial class CritterSpawner : Node2D
                 float reach = rule.Habitat.HalfWidth - margin;
                 float fraction = (index + _rng.RandfRange(0.25f, 0.75f)) / count;
                 float angle = rule.Habitat.Center + Mathf.Lerp(-reach, reach, fraction);
+                angle = MoveOutsideDropoff(angle);
                 // BodyOffset is measured in creature units, independently of planet scale.
                 float offset = critter.BodyOffset * Mathf.Abs(critter.GlobalScale.Y) /
                     Mathf.Max(0.0001f, Mathf.Abs(PlanetInstance.GlobalScale.X));
@@ -109,6 +120,18 @@ public partial class CritterSpawner : Node2D
                 _spawned.Add((rule, index, instance, critter));
             }
         }
+    }
+
+    private static float MoveOutsideDropoff(float angle)
+    {
+        foreach (float dropoffAngle in DropoffAngles)
+        {
+            float difference = Planet.Wrap(angle - dropoffAngle);
+            if (Mathf.Abs(difference) <= DropoffExclusionHalfWidth)
+                return Planet.Wrap(dropoffAngle + Mathf.Sign(difference == 0f ? 1f : difference) *
+                    (DropoffExclusionHalfWidth + DropoffNudge));
+        }
+        return angle;
     }
 
     private void RemoveFreedCritters()
