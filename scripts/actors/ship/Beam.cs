@@ -117,9 +117,9 @@ public partial class Beam : Area2D
             Capture capture = entry.Value;
 
             // A mothership can remove a carried target between beam physics ticks.
-            if (!GodotObject.IsInstanceValid(critter) || critter.IsQueuedForDeletion())
+            if (!GodotObject.IsInstanceValid(target) || target.IsQueuedForDeletion())
             {
-                _targets.Remove(critter);
+                _targets.Remove(target);
                 continue;
             }
 

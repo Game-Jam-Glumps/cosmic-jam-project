@@ -186,6 +186,9 @@ vertical_alignment = 1
 [connection signal="CritterDelivered" from="Control/SubViewportContainer/SubViewport/Planet/Mothership" to="Control/SubViewportContainer/SubViewport/GameSession" method="RecordRescue"]
 [connection signal="CritterDelivered" from="Control/SubViewportContainer/SubViewport/Planet/Mothership2" to="Control/SubViewportContainer/SubViewport/GameSession" method="RecordRescue"]
 [connection signal="CritterDelivered" from="Control/SubViewportContainer/SubViewport/Planet/Mothership3" to="Control/SubViewportContainer/SubViewport/GameSession" method="RecordRescue"]
+[connection signal="ObstacleDelivered" from="Control/SubViewportContainer/SubViewport/Planet/Mothership" to="Control/SubViewportContainer/SubViewport/GameSession" method="RecordObstacleDelivery"]
+[connection signal="ObstacleDelivered" from="Control/SubViewportContainer/SubViewport/Planet/Mothership2" to="Control/SubViewportContainer/SubViewport/GameSession" method="RecordObstacleDelivery"]
+[connection signal="ObstacleDelivered" from="Control/SubViewportContainer/SubViewport/Planet/Mothership3" to="Control/SubViewportContainer/SubViewport/GameSession" method="RecordObstacleDelivery"]
 
 [editable path="Control/SubViewportContainer/SubViewport/Planet"]
 [editable path="Control/SubViewportContainer/SubViewport/Ship"]

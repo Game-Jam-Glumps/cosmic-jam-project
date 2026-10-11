@@ -6,6 +6,7 @@ namespace Orbitals;
 public partial class DropOffZone : Area2D
 {
     [Signal] public delegate void CritterDeliveredEventHandler(Critter critter);
+    [Signal] public delegate void ObstacleDeliveredEventHandler(Obstacle obstacle);
     [Export] public Planet PlanetInstance { get; set; }
     [Export] public Sprite2D Sprite { get; set; }
     [Export] public CollisionShape2D IntakeCollision { get; set; }
@@ -40,7 +41,12 @@ public partial class DropOffZone : Area2D
     {
         UpdatePlacement();
         foreach (Node2D body in GetOverlappingBodies())
-            if (body is Critter critter) TryDeliver(critter);
+        {
+            if (body is Critter critter)
+                TryDeliver(critter);
+            else if (body is Obstacle obstacle)
+                TryDeliver(obstacle);
+        }
     }
 
     
@@ -61,5 +67,13 @@ public partial class DropOffZone : Area2D
             return;
         EmitSignal(SignalName.CritterDelivered, critter);
         critter.QueueFree();
+    }
+
+    private void TryDeliver(Obstacle obstacle)
+    {
+        if (!GodotObject.IsInstanceValid(obstacle) || obstacle.IsQueuedForDeletion() || !obstacle.IsCarried)
+            return;
+        EmitSignal(SignalName.ObstacleDelivered, obstacle);
+        obstacle.QueueFree();
     }
 }
