@@ -1,6 +1,6 @@
 [gd_resource type="SpriteFrames" format=3 uid="uid://c1uknei1cacmp"]
 
-[ext_resource type="Texture2D" uid="uid://btqdcf32qiyea" path="res://assets/critter/Snow/penguin-transparent.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://btqdcf32qiyea" path="res://assets/Critter/Snow/penguin-transparent.png" id="1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0"]
 atlas = ExtResource("1")
