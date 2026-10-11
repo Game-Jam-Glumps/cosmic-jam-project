@@ -1,15 +1,330 @@
 [gd_scene format=3 uid="uid://c706muv7iwdrg"]
 
-[ext_resource type="Script" uid="uid://dbbmxao35f3lh" path="res://scripts/Planet.cs" id="1_h8ms6"]
-[ext_resource type="Texture2D" uid="uid://ihlqdvqho1ly" path="res://assets/icon.svg" id="2_ggt7d"]
+[ext_resource type="Texture2D" uid="uid://lla0wcvrij8a" path="res://assets/SkyBox/SkyBox.png" id="1_48b8c"]
+[ext_resource type="Texture2D" uid="uid://dhv0nhpqgl5u0" path="res://assets/Env/Surface_Grass.png" id="1_cktii"]
+[ext_resource type="Texture2D" uid="uid://budheskgg51m5" path="res://assets/Env/Particle_Brown.png" id="2_1wmcx"]
+[ext_resource type="Texture2D" uid="uid://d0l3v6pv4g4i0" path="res://assets/Env/Surface_Snow.png" id="3_3s4jt"]
+[ext_resource type="Texture2D" uid="uid://cxqr8j1o51ibe" path="res://assets/Env/Particle_Green.png" id="3_8dfcq"]
+[ext_resource type="Texture2D" uid="uid://ypfjjkpovbe2" path="res://assets/Env/Surface_Sand.png" id="4_1wmcx"]
+[ext_resource type="Texture2D" uid="uid://cdv7e1t8cpecs" path="res://assets/Env/Particle_Yellow.png" id="4_qw1i6"]
+[ext_resource type="Texture2D" uid="uid://by53wocyaldqs" path="res://assets/SkyBox/SkyBox_Mask.png" id="5_m5dqw"]
+[ext_resource type="Texture2D" uid="uid://q57rf4oo4ajx" path="res://assets/Env/Surface_Grass_W.png" id="6_ekhpw"]
+[ext_resource type="Texture2D" uid="uid://mbfgisqqktap" path="res://assets/SkyBox/GroundMask.png" id="7_m5dqw"]
+[ext_resource type="Texture2D" uid="uid://cuyc3g4onu2pu" path="res://assets/Env/Surface_Snow_Iced.png" id="8_11eka"]
+[ext_resource type="Texture2D" uid="uid://3sakhken8c3q" path="res://assets/SkyBox/Skybox_Cloud1.png" id="12_11eka"]
+
+[sub_resource type="Gradient" id="Gradient_8dfcq"]
+offsets = PackedFloat32Array(0, 0.16009852, 0.8399015, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
 [node name="Planet" type="Node2D" unique_id=1182448530]
 
-[node name="Planet" type="Node2D" parent="." unique_id=397226317 node_paths=PackedStringArray("Center")]
-script = ExtResource("1_h8ms6")
-Center = NodePath("Center")
+[node name="MainCamera" type="Node2D" parent="." unique_id=1944215202]
 
-[node name="Sprite2D" type="Sprite2D" parent="Planet" unique_id=193960650]
-texture = ExtResource("2_ggt7d")
+[node name="Camera2D" type="Camera2D" parent="MainCamera" unique_id=2061871972]
 
-[node name="Center" type="Marker2D" parent="Planet" unique_id=2113967171]
+[node name="Camera_Rendering" type="Node2D" parent="." unique_id=2024313424]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Camera_Rendering" unique_id=1949946842]
+offset_left = -952.0
+offset_top = -537.0
+offset_right = 968.0
+offset_bottom = 543.0
+
+[node name="SubViewport" type="SubViewport" parent="Camera_Rendering/SubViewportContainer" unique_id=1534576612]
+handle_input_locally = false
+size = Vector2i(375, 211)
+render_target_update_mode = 4
+
+[node name="Camera2D" type="Camera2D" parent="Camera_Rendering/SubViewportContainer/SubViewport" unique_id=1847209837]
+position = Vector2(6787, 0)
+
+[node name="Obj" type="Node2D" parent="." unique_id=2108927082]
+position = Vector2(6773, 0)
+
+[node name="Map" type="Node2D" parent="Obj" unique_id=2098654404]
+position = Vector2(29, 0)
+
+[node name="SkyBox" type="Node2D" parent="Obj/Map" unique_id=2125112105]
+position = Vector2(0, -426)
+
+[node name="Sprite2D" type="Sprite2D" parent="Obj/Map/SkyBox" unique_id=242632683]
+position = Vector2(-46, 476.99997)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("1_48b8c")
+
+[node name="GlobalParticle" type="Node2D" parent="Obj/Map" unique_id=547905915]
+position = Vector2(-19, 1)
+rotation = -0.7460366
+
+[node name="Particles_Brown" type="CPUParticles2D" parent="Obj/Map/GlobalParticle" unique_id=329514520]
+amount = 36
+texture = ExtResource("2_1wmcx")
+lifetime = 6.0
+emission_shape = 6
+emission_ring_inner_radius = 250.0
+emission_ring_radius = 250.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 30.0
+angular_velocity_min = 10.0
+angular_velocity_max = 30.0
+angle_max = 360.0
+scale_amount_min = 0.25
+scale_amount_max = 0.5
+color_ramp = SubResource("Gradient_8dfcq")
+
+[node name="Particles_Green" type="CPUParticles2D" parent="Obj/Map/GlobalParticle" unique_id=765308167]
+amount = 36
+texture = ExtResource("3_8dfcq")
+lifetime = 6.0
+emission_shape = 6
+emission_ring_inner_radius = 250.0
+emission_ring_radius = 250.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 30.0
+angular_velocity_min = 10.0
+angular_velocity_max = 30.0
+angle_max = 360.0
+scale_amount_min = 0.25
+scale_amount_max = 0.5
+color_ramp = SubResource("Gradient_8dfcq")
+
+[node name="Particles_Yellow" type="CPUParticles2D" parent="Obj/Map/GlobalParticle" unique_id=1247637061]
+amount = 36
+texture = ExtResource("4_qw1i6")
+lifetime = 6.0
+emission_shape = 6
+emission_ring_inner_radius = 250.0
+emission_ring_radius = 250.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 30.0
+angular_velocity_min = 10.0
+angular_velocity_max = 30.0
+angle_max = 360.0
+scale_amount_min = 0.25
+scale_amount_max = 0.5
+color_ramp = SubResource("Gradient_8dfcq")
+
+[node name="BackGroundItem" type="Node2D" parent="Obj/Map" unique_id=503030344]
+position = Vector2(0, -426)
+
+[node name="Ground" type="Node2D" parent="Obj/Map" unique_id=329568616]
+position = Vector2(-29, -426)
+scale = Vector2(1.5, 1.5)
+
+[node name="Surface" type="Sprite2D" parent="Obj/Map/Ground" unique_id=1365564214]
+position = Vector2(0, 129)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_cktii")
+
+[node name="Surface2" type="Sprite2D" parent="Obj/Map/Ground" unique_id=703588630]
+position = Vector2(41, 134.5)
+rotation = 0.2617994
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_cktii")
+
+[node name="Surface3" type="Sprite2D" parent="Obj/Map/Ground" unique_id=1641090585]
+position = Vector2(79, 150.3)
+rotation = 0.5235988
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_cktii")
+
+[node name="Surface4" type="Sprite2D" parent="Obj/Map/Ground" unique_id=726651949]
+position = Vector2(111.5, 175.5)
+rotation = 0.7853982
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("6_ekhpw")
+
+[node name="Surface5" type="Sprite2D" parent="Obj/Map/Ground" unique_id=1997630608]
+position = Vector2(136.9, 208.4)
+rotation = 1.0471976
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("6_ekhpw")
+
+[node name="Surface6" type="Sprite2D" parent="Obj/Map/Ground" unique_id=1515029129]
+position = Vector2(153, 246.8)
+rotation = 1.3089969
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_cktii")
+
+[node name="Surface7" type="Sprite2D" parent="Obj/Map/Ground" unique_id=476777236]
+position = Vector2(158.6, 288)
+rotation = 1.5707964
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_cktii")
+
+[node name="Surface8" type="Sprite2D" parent="Obj/Map/Ground" unique_id=1564820109]
+position = Vector2(153.3, 329)
+rotation = 1.8325957
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_cktii")
+
+[node name="Surface9" type="Sprite2D" parent="Obj/Map/Ground" unique_id=198026100]
+position = Vector2(137.5, 367)
+rotation = 2.0943952
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_cktii")
+
+[node name="Surface10" type="Sprite2D" parent="Obj/Map/Ground" unique_id=1328181831]
+position = Vector2(137.5, 367)
+rotation = 2.0943952
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_3s4jt")
+
+[node name="Surface11" type="Sprite2D" parent="Obj/Map/Ground" unique_id=1181143827]
+position = Vector2(112.5, 400)
+rotation = 2.3561945
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_3s4jt")
+
+[node name="Surface12" type="Sprite2D" parent="Obj/Map/Ground" unique_id=1934032792]
+position = Vector2(80, 425)
+rotation = 2.6179938
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_3s4jt")
+
+[node name="Surface13" type="Sprite2D" parent="Obj/Map/Ground" unique_id=209987343]
+position = Vector2(42, 440.99997)
+rotation = 2.8797932
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("8_11eka")
+
+[node name="Surface14" type="Sprite2D" parent="Obj/Map/Ground" unique_id=1507241855]
+position = Vector2(1, 446.5)
+rotation = 3.1415927
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("8_11eka")
+
+[node name="Surface15" type="Sprite2D" parent="Obj/Map/Ground" unique_id=1964240959]
+position = Vector2(-40, 441.3)
+rotation = 3.403392
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("8_11eka")
+
+[node name="Surface16" type="Sprite2D" parent="Obj/Map/Ground" unique_id=1179969346]
+position = Vector2(-78, 425.4)
+rotation = 3.6651914
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_3s4jt")
+
+[node name="Surface17" type="Sprite2D" parent="Obj/Map/Ground" unique_id=1398712601]
+position = Vector2(-111, 400.00003)
+rotation = 3.9269907
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("4_1wmcx")
+
+[node name="Surface18" type="Sprite2D" parent="Obj/Map/Ground" unique_id=202562748]
+position = Vector2(-136, 366.99997)
+rotation = 4.1887903
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_3s4jt")
+
+[node name="Surface19" type="Sprite2D" parent="Obj/Map/Ground" unique_id=995860541]
+position = Vector2(-136, 366.99997)
+rotation = 4.1887903
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("4_1wmcx")
+
+[node name="Surface20" type="Sprite2D" parent="Obj/Map/Ground" unique_id=2135954881]
+position = Vector2(-152, 329)
+rotation = 4.4505897
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("4_1wmcx")
+
+[node name="Surface21" type="Sprite2D" parent="Obj/Map/Ground" unique_id=1735396104]
+position = Vector2(-157.5, 288)
+rotation = 4.712389
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("6_ekhpw")
+
+[node name="Surface22" type="Sprite2D" parent="Obj/Map/Ground" unique_id=1030014858]
+position = Vector2(-152, 247)
+rotation = 4.9741883
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_cktii")
+
+[node name="Surface23" type="Sprite2D" parent="Obj/Map/Ground" unique_id=822955176]
+position = Vector2(-136, 209)
+rotation = 5.2359877
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("4_1wmcx")
+
+[node name="Surface24" type="Sprite2D" parent="Obj/Map/Ground" unique_id=639519141]
+position = Vector2(-111, 176)
+rotation = 5.497787
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("4_1wmcx")
+
+[node name="Surface25" type="Sprite2D" parent="Obj/Map/Ground" unique_id=443647747]
+position = Vector2(-78.5, 151)
+rotation = 5.7595863
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_cktii")
+
+[node name="Surface26" type="Sprite2D" parent="Obj/Map/Ground" unique_id=1214901677]
+position = Vector2(-41, 135)
+rotation = 6.021386
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_cktii")
+
+[node name="LightMask" type="Node2D" parent="Obj/Map" unique_id=162545514]
+position = Vector2(0, -426)
+
+[node name="Sprite2D" type="Sprite2D" parent="Obj/Map/LightMask" unique_id=1476696279]
+modulate = Color(1, 1, 1, 0.39215687)
+position = Vector2(-34.999996, 473.99997)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("5_m5dqw")
+
+[node name="GroundMask" type="Node2D" parent="Obj/Map" unique_id=74414857]
+position = Vector2(0, -426)
+
+[node name="Sprite2D" type="Sprite2D" parent="Obj/Map/GroundMask" unique_id=39658370]
+modulate = Color(1, 1, 1, 0.27450982)
+position = Vector2(-22.999998, 428.99997)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("7_m5dqw")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Obj/Map/GroundMask" unique_id=1296326840]
+modulate = Color(1, 1, 1, 0.27450982)
+position = Vector2(-22.999998, 429)
+scale = Vector2(0.193, 0.193)
+texture = ExtResource("7_m5dqw")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Obj/Map/GroundMask" unique_id=1361982625]
+modulate = Color(1, 1, 1, 0.27450982)
+position = Vector2(-22.999998, 428.99997)
+scale = Vector2(0.188, 0.188)
+texture = ExtResource("7_m5dqw")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Obj/Map/GroundMask" unique_id=1334567365]
+position = Vector2(-23.999998, 428.99997)
+scale = Vector2(0.18, 0.18)
+texture = ExtResource("7_m5dqw")
+
+[node name="Cloud" type="Node2D" parent="Obj/Map" unique_id=1870346876]
+position = Vector2(-29, -426)
+
+[node name="SkyboxCloud1" type="Sprite2D" parent="Obj/Map/Cloud" unique_id=302750041]
+modulate = Color(1, 1, 1, 0.85882354)
+position = Vector2(-33, 133)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("12_11eka")
+
+[node name="SkyboxCloud2" type="Sprite2D" parent="Obj/Map/Cloud" unique_id=2020219950]
+modulate = Color(1, 1, 1, 0.85882354)
+position = Vector2(47.99999, 124)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("12_11eka")
+
+[node name="SkyboxCloud3" type="Sprite2D" parent="Obj/Map/Cloud" unique_id=83352832]
+modulate = Color(1, 1, 1, 0.85882354)
+position = Vector2(-70, 121)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("12_11eka")
+
+[node name="ForegroundItem" type="Node2D" parent="Obj/Map" unique_id=422169293]
+position = Vector2(0, -426)
