@@ -6,7 +6,7 @@ namespace Orbitals;
 
 public partial class Beam : Area2D
 {
-    public enum BeamMode { Off, Hold, Absorb }
+    public enum BeamMode { Off, Single, Multiple }
     [Signal] public delegate void HitEventHandler();
     [Signal] public delegate void CritterCollectedEventHandler(Critter creature);
 
@@ -25,7 +25,7 @@ public partial class Beam : Area2D
     [Export] public BeamVisuals Visuals { get; set; }
     public bool IsActive { get; private set; }
     public BeamMode Mode { get; private set; }
-    public Color ActiveColor => Mode == BeamMode.Hold ? HoldColor : BeamColor;
+    public Color ActiveColor => Mode == BeamMode.Single ? HoldColor : BeamColor;
     public int TargetCount => _targets.Count;
     public float CurrentLength { get; private set; }
 
@@ -85,7 +85,7 @@ public partial class Beam : Area2D
             .CompareTo(b.GlobalPosition.DistanceSquaredTo(GlobalPosition)));
         foreach (Critter critter in candidates)
         {
-            if (Mode == BeamMode.Hold && _targets.Count >= 1) break;
+            if (Mode == BeamMode.Single && _targets.Count >= 1) break;
 
             _targets.Add(critter, new Capture
             {
@@ -106,22 +106,13 @@ public partial class Beam : Area2D
         {
             Critter critter = entry.Key;
             Capture capture = entry.Value;
-            if (!GodotObject.IsInstanceValid(critter) || critter.IsQueuedForDeletion())
-            {
-                _targets.Remove(critter);
-                continue;
-            }
 
             capture.Speed = Mathf.MoveToward(capture.Speed, Mathf.Max(1f, PullSpeed),
                 Mathf.Max(0f, PullAcceleration) * dt);
-            if (Mode == BeamMode.Hold)
-            {
-                UpdateHeldTarget(critter, capture, dt);
-                continue;
-            }
-            UpdateAbsorbedTarget(critter, capture, dt);
+            UpdateHeldTarget(critter, capture, dt);
         }
     }
+
 
     // Moves one creature toward the safe hover point without shrinking or consuming it.
     private void UpdateHeldTarget(Critter critter, Capture capture, float dt)
@@ -135,34 +126,16 @@ public partial class Beam : Area2D
         critter.GlobalRotation = Mathf.LerpAngle(critter.GlobalRotation, 0f, Mathf.Min(1f, dt * 8f));
     }
 
-    // Pulls, shrinks, and spins a creature; reports collection once before freeing it at the intake.
-    private void UpdateAbsorbedTarget(Critter critter, Capture capture, float dt)
-    {
-        critter.GlobalPosition = critter.GlobalPosition.MoveToward(GlobalPosition, capture.Speed * dt);
-        float distance = critter.GlobalPosition.DistanceTo(GlobalPosition);
-        float progress = Mathf.Clamp(1f - distance / capture.InitialDistance, 0f, 1f);
-        critter.GlobalScale = capture.OriginalScale * Mathf.Lerp(1f, 0.35f, progress);
-        critter.GlobalRotation += dt * 4f;
-
-        if (distance <= Mathf.Max(1f, CaptureRadius))
-        {
-            _targets.Remove(critter);
-            if (GodotObject.IsInstanceValid(Visuals)) Visuals.PlayCollectionFlash();
-            EmitSignal(SignalName.CritterCollected, critter);
-            critter.QueueFree();
-        }
-    }
-
     // Compatibility helper: true selects absorption; false switches the beam off.
     public void SetActive(bool active)
-        => SetMode(active ? BeamMode.Absorb : BeamMode.Off);
+        => SetMode(active ? BeamMode.Multiple : BeamMode.Off);
 
     // Changes mode; turning off releases all targets, while switching a group to hold releases the group.
     public void SetMode(BeamMode mode)
     {
         if (Mode == mode) return;
         // A tractor beam holds one creature; switching back from a group releases the group.
-        if (mode == BeamMode.Off || (mode == BeamMode.Hold && _targets.Count > 1)) ReleaseTargets();
+        if (mode == BeamMode.Off || (mode == BeamMode.Single && _targets.Count > 1)) ReleaseTargets();
         Mode = mode;
         IsActive = mode != BeamMode.Off;
         Visible = IsActive;
@@ -203,9 +176,9 @@ public partial class Beam : Area2D
     {
         // Presentation is optional; removing it must not interrupt capture mechanics.
         if (!GodotObject.IsInstanceValid(Visuals)) return;
-        Visuals.SetAppearance(TopWidth, BottomWidth, CurrentLength, ActiveColor, Mode == BeamMode.Hold);
+        Visuals.SetAppearance(TopWidth, BottomWidth, CurrentLength, ActiveColor, Mode == BeamMode.Single);
         Visuals.SetHoldHalo(Vector2.Zero, 0f);
-        if (Mode != BeamMode.Hold) return;
+        if (Mode != BeamMode.Single) return;
         foreach (Critter critter in _targets.Keys)
             if (GodotObject.IsInstanceValid(critter))
             {
