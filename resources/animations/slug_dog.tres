@@ -1,6 +1,6 @@
-[gd_resource type="SpriteFrames" format=3]
+[gd_resource type="SpriteFrames" format=3 uid="uid://1j4xpec0dcc6"]
 
-[ext_resource type="Texture2D" path="res://assets/Critter/Snow/slug-dog-transparent.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://d28uh1p5cfhga" path="res://assets/Critter/Snow/slug-dog-transparent.png" id="1"]
 
 [sub_resource type="AtlasTexture" id="Frame_0"]
 atlas = ExtResource("1")
@@ -15,13 +15,25 @@ filter_clip = true
 [resource]
 resource_name = "slug_dog"
 animations = [{
-"frames": [{"duration": 1.0, "texture": SubResource("Frame_0")}, {"duration": 1.0, "texture": SubResource("Frame_1")}],
-"loop": true,
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("Frame_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("Frame_1")
+}],
+"loop": 1,
 "name": &"idle",
 "speed": 4.0
 }, {
-"frames": [{"duration": 1.0, "texture": SubResource("Frame_0")}, {"duration": 1.0, "texture": SubResource("Frame_1")}],
-"loop": true,
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("Frame_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("Frame_1")
+}],
+"loop": 1,
 "name": &"walk",
 "speed": 8.0
 }]

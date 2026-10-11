@@ -3,14 +3,13 @@ using System;
 
 namespace Orbitals;
 
-// Displays session state and notifies the session when the intro has finished.
+// Displays progress and remaining time from the current session.
 public partial class GameHud : CanvasLayer
 {
-    [Signal] public delegate void IntroFinishedEventHandler();
     [Export] public GameSession Session { get; set; }
     [Export] public Label CargoLabel { get; set; }
+    [Export] public Label ScoreLabel { get; set; }
     [Export] public Label CountdownLabel { get; set; }
-    [Export] public Control IntroSlides { get; set; }
 
     // Subscribes to the session and initializes labels from its current state.
     public override void _Ready()
@@ -24,15 +23,13 @@ public partial class GameHud : CanvasLayer
         Session.TimeRemainingChanged += UpdateCountdown;
         UpdateCargo(Session.RescuedCount);
         UpdateCountdown(Session.SecondsRemaining);
-        if (GodotObject.IsInstanceValid(IntroSlides))
-            IntroSlides.VisibilityChanged += OnIntroVisibilityChanged;
-        OnIntroVisibilityChanged();
     }
 
     // Formats the rescued total; all counting remains in GameSession.
     private void UpdateCargo(int count)
     {
         if (GodotObject.IsInstanceValid(CargoLabel)) CargoLabel.Text = $"RESCUED: {count}";
+        if (GodotObject.IsInstanceValid(ScoreLabel)) ScoreLabel.Text = $"SCORE: {Session.Score}";
     }
 
     // Formats remaining time and highlights the final thirty seconds.
@@ -45,13 +42,6 @@ public partial class GameHud : CanvasLayer
             new Color(1f, 0.4f, 0.4f) : new Color(0.9f, 0.75f, 1f));
     }
 
-    // Reports that the intro is hidden; scene wiring decides when to start gameplay.
-    private void OnIntroVisibilityChanged()
-    {
-        if (!GodotObject.IsInstanceValid(IntroSlides) || !IntroSlides.Visible)
-            EmitSignal(SignalName.IntroFinished);
-    }
-
     // Disconnects observers so removing or replacing a HUD cannot leave stale callbacks.
     public override void _ExitTree()
     {
@@ -60,7 +50,5 @@ public partial class GameHud : CanvasLayer
             Session.RescueCountChanged -= UpdateCargo;
             Session.TimeRemainingChanged -= UpdateCountdown;
         }
-        if (GodotObject.IsInstanceValid(IntroSlides))
-            IntroSlides.VisibilityChanged -= OnIntroVisibilityChanged;
     }
 }

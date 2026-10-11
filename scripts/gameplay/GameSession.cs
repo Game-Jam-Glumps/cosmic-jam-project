@@ -3,7 +3,7 @@ using System;
 
 namespace Orbitals;
 
-// Owns session state and rules; it has no references to actors, input, or UI nodes.
+
 public partial class GameSession : Node
 {
     [Signal] public delegate void RescueCountChangedEventHandler(int count);
@@ -11,39 +11,50 @@ public partial class GameSession : Node
     [Signal] public delegate void ArrivalDueEventHandler();
 
     [Export(PropertyHint.Range, "1,3600,1,suffix:s")]
-    public float ArrivalSeconds { get; set; } = 180f;
+    public float ArrivalSeconds { get; set; } = 10f;
     [Export] public bool StartOnReady { get; set; }
+    [Export(PropertyHint.Range, "1,1000,1")] public int ScorePerStar { get; set; } = 20;
     public int RescuedCount { get; private set; }
+    public int Score => RescuedCount;
     public double SecondsRemaining { get; private set; }
     public bool HasArrived { get; private set; }
     public bool IsRunning { get; private set; }
 
-    // Initializes the clock; the main scene waits for the intro to finish.
+    
     public override void _Ready()
     {
         SecondsRemaining = Mathf.Max(1f, ArrivalSeconds);
         if (StartOnReady) StartSession();
     }
 
-    // Starts the clock once without resetting accumulated rescues or elapsed time.
+    
     public void StartSession()
     {
         if (HasArrived) return;
         IsRunning = true;
     }
 
-    // Records one completed rescue and publishes the new session total.
+    
     public void RecordRescue()
     {
+        if (HasArrived) return;
         RescuedCount++;
         EmitSignal(SignalName.RescueCountChanged, RescuedCount);
     }
 
-    // Advances the session clock on Godot's fixed physics timestep.
+    
+    public RunResult CaptureResult() => new()
+    {
+        RescuedCount = RescuedCount,
+        Score = Score,
+        Stars = Mathf.Clamp(Score / Mathf.Max(1, ScorePerStar), 0, 5)
+    };
+
+    
     public override void _PhysicsProcess(double delta)
         => AdvanceTime(delta);
 
-    // Advances a running clock, clamps it to zero, and reports arrival exactly once.
+    
     public void AdvanceTime(double seconds)
     {
         if (!IsRunning || HasArrived || seconds <= 0d) return;

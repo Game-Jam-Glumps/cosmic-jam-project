@@ -1,0 +1,121 @@
+[gd_scene format=3 uid="uid://div5j0kd2uj3e"]
+
+[ext_resource type="PackedScene" path="res://scenes/ui/BlackHoleBackground.tscn" id="background"]
+[ext_resource type="Script" uid="uid://cg0hdwqrjsluq" path="res://scripts/ui/StartScreen.cs" id="script"]
+[ext_resource type="Theme" uid="uid://3kyttaqtde04" path="res://resources/ui/menu_theme.tres" id="theme"]
+
+[node name="StartScreen" type="Control" unique_id=649511724 node_paths=PackedStringArray("PlayButton")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("theme")
+script = ExtResource("script")
+PlayButton = NodePath("Center/Content/PlayButton")
+
+[node name="BlackHoleBackground" parent="." unique_id=864529216 instance=ExtResource("background")]
+layout_mode = 1
+
+[node name="Center" type="CenterContainer" parent="." unique_id=988124064]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Content" type="VBoxContainer" parent="Center" unique_id=903986165]
+custom_minimum_size = Vector2(920, 0)
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Eyebrow" type="Label" parent="Center/Content" unique_id=1415389704]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.77, 0.4, 1)
+theme_override_font_sizes/font_size = 24
+text = "Noah's Ark (IN SPACE)"
+horizontal_alignment = 1
+
+[node name="Title" type="Label" parent="Center/Content" unique_id=49051256]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.025, 0.035, 0.06, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 112
+text = "AbsORB_IT"
+horizontal_alignment = 1
+
+[node name="Tagline" type="Label" parent="Center/Content" unique_id=983083013]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "A planet to save. A black hole on the way."
+horizontal_alignment = 1
+
+[node name="Spacer" type="Control" parent="Center/Content" unique_id=1750055629]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="IntroductionPanel" type="PanelContainer" parent="Center/Content" unique_id=2022522190]
+layout_mode = 2
+
+[node name="Introduction" type="VBoxContainer" parent="Center/Content/IntroductionPanel" unique_id=1443338931]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="Story" type="Label" parent="Center/Content/IntroductionPanel/Introduction" unique_id=775187744]
+layout_mode = 2
+text = "A black hole is closing in. Rescue as many critters as you can before the planet runs out of time."
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Controls" type="GridContainer" parent="Center/Content/IntroductionPanel/Introduction" unique_id=1498820247]
+layout_mode = 2
+theme_override_constants/h_separation = 40
+theme_override_constants/v_separation = 14
+columns = 2
+
+[node name="Flight" type="Label" parent="Center/Content/IntroductionPanel/Introduction/Controls" unique_id=182622667]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 23
+text = "W / S  ·  fly up and down"
+
+[node name="Orbit" type="Label" parent="Center/Content/IntroductionPanel/Introduction/Controls" unique_id=1901725997]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 23
+text = "A / D  ·  move left and right"
+
+[node name="Absorb" type="Label" parent="Center/Content/IntroductionPanel/Introduction/Controls" unique_id=1253635288]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.55, 0.95, 1, 1)
+theme_override_font_sizes/font_size = 23
+text = "SPACE / CLICK  ·  absorb many"
+
+[node name="Hold" type="Label" parent="Center/Content/IntroductionPanel/Introduction/Controls" unique_id=1339553039]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.68, 1, 1)
+theme_override_font_sizes/font_size = 23
+text = "E / RIGHT CLICK  ·  absorb one"
+
+[node name="SkyHint" type="Label" parent="Center/Content/IntroductionPanel/Introduction" unique_id=1319356219]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.68, 0.75, 0.85, 1)
+theme_override_font_sizes/font_size = 23
+text = "Orbit around the surface of a foreign planet"
+horizontal_alignment = 1
+
+[node name="PlayButton" type="Button" parent="Center/Content" unique_id=454330240]
+custom_minimum_size = Vector2(0, 82)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "START RESCUE"
+
+[node name="Footer" type="Label" parent="Center/Content" unique_id=1458624500]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.88, 0.9, 0.94, 1)
+theme_override_font_sizes/font_size = 23
+text = "Every creature counts."
+horizontal_alignment = 1

@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://dgqoowrg0swct"]
 
-[ext_resource type="Script" uid="uid://bxafjgdxyjsml" path="res://scripts/ui/ShowTitle.cs" id="1_4dhvd"]
 [ext_resource type="PackedScene" uid="uid://b6kfohy5lmeo8" path="res://scenes/ship.tscn" id="2_4dhvd"]
 [ext_resource type="PackedScene" uid="uid://c706muv7iwdrg" path="res://scenes/planet.tscn" id="2_qppyr"]
 [ext_resource type="Script" path="res://scripts/data/CritterSpawnProfile.cs" id="4_biy4i"]
@@ -8,6 +7,8 @@
 [ext_resource type="Script" uid="uid://c6bj3kn7w6uv7" path="res://scripts/gameplay/GameSession.cs" id="11_session"]
 [ext_resource type="Script" uid="uid://3ybosg7j0v1r" path="res://scripts/input/PlayerController.cs" id="12_player"]
 [ext_resource type="Script" uid="uid://cgoiqpfguc350" path="res://scripts/ui/GameHud.cs" id="13_hud"]
+[ext_resource type="Texture2D" path="res://assets/HUD/medal.png" id="hud_medal"]
+[ext_resource type="Texture2D" path="res://assets/HUD/black-hole.png" id="hud_black_hole"]
 
 [ext_resource type="Resource" path="res://resources/spawning/moss_creature_grassland.tres" id="spawn_0"]
 [ext_resource type="Resource" path="res://resources/spawning/penguin_snowfield.tres" id="spawn_1"]
@@ -28,7 +29,12 @@
 [ext_resource type="Resource" path="res://resources/spawning/screechure_snowfield.tres" id="spawn_16"]
 [ext_resource type="Resource" path="res://resources/spawning/screechure_desert.tres" id="spawn_17"]
 
-[node name="GameManager" type="Node" unique_id=1431068297]
+[ext_resource type="Script" path="res://scripts/gameplay/GameRound.cs" id="round"]
+
+[node name="GameManager" type="Node" unique_id=1431068297 node_paths=PackedStringArray("Session", "Controls")]
+script = ExtResource("round")
+Session = NodePath("Control/SubViewportContainer/SubViewport/GameSession")
+Controls = NodePath("Control/SubViewportContainer/SubViewport/PlayerController")
 
 [node name="Control" type="Control" parent="." unique_id=1469862443]
 layout_mode = 3
@@ -50,48 +56,13 @@ render_target_update_mode = 4
 
 [node name="GameSession" type="Node" parent="Control/SubViewportContainer/SubViewport" unique_id=253214051]
 script = ExtResource("11_session")
+StartOnReady = true
 
 [node name="PlayerController" type="Node" parent="Control/SubViewportContainer/SubViewport" unique_id=846793002 node_paths=PackedStringArray("ShipActor", "BeamActor", "PlanetActor")]
 script = ExtResource("12_player")
 ShipActor = NodePath("../Ship/Ship")
 BeamActor = NodePath("../Ship/Ship/Beam/Beam")
 PlanetActor = NodePath("../Planet")
-
-[node name="IntroSlides" type="Control" parent="Control/SubViewportContainer/SubViewport" unique_id=877477135]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 111.0
-offset_top = -3.0
-offset_right = 2023.0
-offset_bottom = 1077.0
-script = ExtResource("1_4dhvd")
-
-[node name="placeholder_title" type="Label" parent="Control/SubViewportContainer/SubViewport/IntroSlides" unique_id=812082988]
-layout_mode = 0
-offset_left = 464.0
-offset_top = 104.0
-offset_right = 1616.0
-offset_bottom = 320.0
-theme_override_font_sizes/font_size = 128
-text = "AbsORB_IT"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label" type="Label" parent="Control/SubViewportContainer/SubViewport/IntroSlides" unique_id=460461332]
-layout_mode = 0
-offset_left = 125.0
-offset_top = 584.0
-offset_right = 344.0
-offset_bottom = 856.0
-text = "Explanation of controls here"
-
-[node name="Label2" type="Label" parent="Control/SubViewportContainer/SubViewport/IntroSlides" unique_id=528141427]
-layout_mode = 0
-offset_left = 1152.0
-offset_top = 480.0
-offset_right = 1816.0
-offset_bottom = 824.0
-text = "Explanation for objectives"
 
 [node name="Planet" parent="Control/SubViewportContainer/SubViewport" unique_id=1182448530 instance=ExtResource("2_qppyr")]
 position = Vector2(960, 3350)
@@ -116,23 +87,42 @@ PlanetInstance = NodePath("../../../../Planet")
 [node name="Camera2D" parent="Control/SubViewportContainer/SubViewport/Ship/Ship" index="3" unique_id=1958900881]
 zoom = Vector2(1.4, 1.4)
 
-[node name="IntroSlideTimer" type="Timer" parent="Control/SubViewportContainer/SubViewport" unique_id=151718130]
-wait_time = 15.0
-autostart = true
-
-[node name="HUD" type="CanvasLayer" parent="Control/SubViewportContainer/SubViewport" unique_id=170956536 node_paths=PackedStringArray("Session", "CargoLabel", "CountdownLabel", "IntroSlides")]
+[node name="HUD" type="CanvasLayer" parent="Control/SubViewportContainer/SubViewport" unique_id=170956536 node_paths=PackedStringArray("Session", "CargoLabel", "CountdownLabel", "ScoreLabel")]
 layer = 10
 script = ExtResource("13_hud")
 Session = NodePath("../GameSession")
 CargoLabel = NodePath("CargoCount")
-CountdownLabel = NodePath("BlackHoleCountdown")
-IntroSlides = NodePath("../IntroSlides")
+CountdownLabel = NodePath("CountdownRow/BlackHoleCountdown")
+ScoreLabel = NodePath("Score")
 
-[node name="CargoCount" type="Label" parent="Control/SubViewportContainer/SubViewport/HUD" unique_id=1127080903]
+[node name="Score" type="Label" parent="Control/SubViewportContainer/SubViewport/HUD"]
+offset_left = 84.0
+offset_top = 24.0
+offset_right = 440.0
+offset_bottom = 64.0
+theme_override_colors/font_color = Color(1, 0.8, 0.4, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 30
+text = "SCORE: 0"
+
+[node name="ScoreMedal" type="TextureRect" parent="Control/SubViewportContainer/SubViewport/HUD"]
 offset_left = 32.0
 offset_top = 24.0
+offset_right = 72.0
+offset_bottom = 64.0
+texture_filter = 1
+mouse_filter = 2
+texture = ExtResource("hud_medal")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CargoCount" type="Label" parent="Control/SubViewportContainer/SubViewport/HUD" unique_id=1127080903]
+offset_left = 84.0
+offset_top = 64.0
 offset_right = 360.0
-offset_bottom = 72.0
+offset_bottom = 104.0
 theme_override_colors/font_color = Color(0.65, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
 theme_override_constants/shadow_offset_x = 2
@@ -140,27 +130,54 @@ theme_override_constants/shadow_offset_y = 2
 theme_override_font_sizes/font_size = 30
 text = "RESCUED: 0"
 
-[node name="BlackHoleCountdown" type="Label" parent="Control/SubViewportContainer/SubViewport/HUD" unique_id=864060378]
+[node name="RescuedMedal" type="TextureRect" parent="Control/SubViewportContainer/SubViewport/HUD"]
+offset_left = 32.0
+offset_top = 64.0
+offset_right = 72.0
+offset_bottom = 104.0
+texture_filter = 1
+mouse_filter = 2
+texture = ExtResource("hud_medal")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CountdownRow" type="HBoxContainer" parent="Control/SubViewportContainer/SubViewport/HUD"]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -540.0
+offset_left = -600.0
 offset_top = 24.0
 offset_right = -32.0
 offset_bottom = 72.0
 grow_horizontal = 0
+mouse_filter = 2
+theme_override_constants/separation = 12
+alignment = 2
+
+[node name="BlackHoleIcon" type="TextureRect" parent="Control/SubViewportContainer/SubViewport/HUD/CountdownRow"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture_filter = 1
+mouse_filter = 2
+texture = ExtResource("hud_black_hole")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BlackHoleCountdown" type="Label" parent="Control/SubViewportContainer/SubViewport/HUD/CountdownRow" unique_id=864060378]
+layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
 theme_override_font_sizes/font_size = 30
 text = "BLACK HOLE ETA: 03:00"
 horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="Controls" type="Label" parent="Control/SubViewportContainer/SubViewport/HUD" unique_id=2121287720]
 offset_left = 32.0
-offset_top = 76.0
+offset_top = 108.0
 offset_right = 850.0
-offset_bottom = 110.0
+offset_bottom = 142.0
 theme_override_colors/font_color = Color(0.8, 0.95, 1, 0.85)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
 theme_override_constants/shadow_offset_x = 2
@@ -170,9 +187,9 @@ text = "W/S or ↑/↓: hover    A/D or ←/→: orbit"
 
 [node name="BeamControls" type="Label" parent="Control/SubViewportContainer/SubViewport/HUD" unique_id=1223736909]
 offset_left = 32.0
-offset_top = 110.0
+offset_top = 144.0
 offset_right = 1100.0
-offset_bottom = 145.0
+offset_bottom = 178.0
 theme_override_colors/font_color = Color(0.65, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
 theme_override_constants/shadow_offset_x = 2
@@ -182,9 +199,9 @@ text = "Space / left click: ABSORB many"
 
 [node name="HoldControls" type="Label" parent="Control/SubViewportContainer/SubViewport/HUD" unique_id=1898581655]
 offset_left = 32.0
-offset_top = 145.0
+offset_top = 180.0
 offset_right = 1100.0
-offset_bottom = 180.0
+offset_bottom = 214.0
 theme_override_colors/font_color = Color(0.9, 0.65, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
 theme_override_constants/shadow_offset_x = 2
@@ -192,9 +209,7 @@ theme_override_constants/shadow_offset_y = 2
 theme_override_font_sizes/font_size = 22
 text = "E / right click: HOLD a critter"
 
-[connection signal="timeout" from="Control/SubViewportContainer/SubViewport/IntroSlideTimer" to="Control/SubViewportContainer/SubViewport/IntroSlides" method="OnIntroSlideTimeout"]
 [connection signal="CritterCollected" from="Control/SubViewportContainer/SubViewport/Ship/Ship/Beam/Beam" to="Control/SubViewportContainer/SubViewport/GameSession" method="RecordRescue" unbinds=1]
-[connection signal="IntroFinished" from="Control/SubViewportContainer/SubViewport/HUD" to="Control/SubViewportContainer/SubViewport/GameSession" method="StartSession"]
 
 [editable path="Control/SubViewportContainer/SubViewport/Planet"]
 [editable path="Control/SubViewportContainer/SubViewport/Ship"]

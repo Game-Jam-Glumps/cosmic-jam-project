@@ -15,4 +15,6 @@ public partial class SpeciesProfile : Resource
     [Export] public float IdleTimeMax { get; set; } = 3f;
     [Export] public float WanderDistance { get; set; } = 80f;
     [Export] public float ArrivalDistance { get; set; } = 3f;
+
+    [Export] public float Rarity = 1;
 }

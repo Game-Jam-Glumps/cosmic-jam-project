@@ -29,6 +29,19 @@ public partial class PlayerController : Node
     public override void _Notification(int what)
     {
         if (what != NotificationApplicationFocusOut && what != NotificationWMWindowFocusOut) return;
+        ReleaseControls();
+    }
+
+    // Enables round controls or releases them immediately when the round ends.
+    public void SetEnabled(bool enabled)
+    {
+        if (!enabled) ReleaseControls();
+        SetPhysicsProcess(enabled);
+    }
+
+    // Clears action state so a menu click or held key cannot carry into another round.
+    public void ReleaseControls()
+    {
         foreach (string action in new[] { "Abduct", "HoldBeam", "Up", "Down", "Left", "Right" })
             Input.ActionRelease(action);
         ClearCommands();
@@ -38,7 +51,7 @@ public partial class PlayerController : Node
     public override void _ExitTree()
         => ClearCommands();
 
-    // Leaves the ship hovering, stops orbit input, and releases captured creatures.
+    // Leaves the ship hovering, stops orbit inpt, and releases captured creatures.
     private void ClearCommands()
     {
         if (GodotObject.IsInstanceValid(ShipActor)) ShipActor.SetVerticalInput(0f);
