@@ -16,11 +16,7 @@ public partial class GameSession : Node
     [Export] public bool StartOnReady { get; set; }
     [Export(PropertyHint.Range, "1,1000,1")] public int ScorePerStar { get; set; } = 20;
     public int RescuedCount { get; private set; }
-<<<<<<< HEAD
-    public int Score => RescuedCount;
-=======
     public int Score { get; private set; }
->>>>>>> 2007f16 (Add random chance for Shiny critter)
     public double SecondsRemaining { get; private set; }
     public bool HasArrived { get; private set; }
     public bool IsRunning { get; private set; }
