@@ -10,7 +10,9 @@ public partial class EndScreen : Control
     [Export] public RunResult Result { get; set; } = new();
     [Export] public Label ScoreLabel { get; set; }
     [Export] public Label RescuedLabel { get; set; }
-    [Export] public Godot.Collections.Array<Label> StarLabels { get; set; } = new();
+    [Export] public Godot.Collections.Array<TextureRect> StarIcons { get; set; } = new();
+    [Export] public Texture2D FullStarTexture { get; set; }
+    [Export] public Texture2D EmptyStarTexture { get; set; }
     [Export] public Button RetryButton { get; set; }
     [Export] public Button MenuButton { get; set; }
 
@@ -20,9 +22,8 @@ public partial class EndScreen : Control
         Result ??= new RunResult();
         ScoreLabel.Text = Result.Score.ToString();
         RescuedLabel.Text = $"{Result.RescuedCount} CREATURES RESCUED";
-        for (int index = 0; index < StarLabels.Count; index++)
-            StarLabels[index].Modulate = index < Result.Stars
-                ? new Color(1f, 0.75f, 0.3f) : new Color(0.32f, 0.36f, 0.43f);
+        for (int index = 0; index < StarIcons.Count; index++)
+            StarIcons[index].Texture = index < Result.Stars ? FullStarTexture : EmptyStarTexture;
         RetryButton.Pressed += OnRetryPressed;
         MenuButton.Pressed += OnMenuPressed;
         RetryButton.GrabFocus();
