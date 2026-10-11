@@ -15,7 +15,7 @@ node. Both are now removed from Ship; the beam also no longer stores a total.
 | `BeamVisuals` | Cone drawing, pulse/streak animation, held halo and intake flash | Receives dimensions, colors, mode and halo coordinates from Beam |
 | `BeamGeometry` | Terrain-clipped reach and shared trapezoid calculations | Stateless functions used by Beam and BeamVisuals |
 | `GameSession` | Rescued total, remaining mission time, theoretical arrival | State-change signals; no actor or UI references |
-| `GameHud` | Cargo/time labels, colors, intro presentation notifications | Observes GameSession; emits `IntroFinished` |
+| `GameHud` | Cargo/score/time labels and colors | Observes GameSession |
 | `Planet` | Authored terrain, surface queries, habitat lookup and rotation | `SetOrbitInput(direction)` and surface query methods |
 | `Critter` | Creature placement, movement and appearance | Commands from its brain and beam |
 | `CritterBrain` | Idle/wander/return-home decisions | Movement commands to its Critter |
@@ -47,18 +47,15 @@ flowchart LR
     Input -->|beam mode| Beam
     Beam -->|CritterCollected| Session[GameSession]
     Session -->|RescueCountChanged / TimeRemainingChanged| HUD[GameHud]
-    HUD -->|IntroFinished| Session
 ```
 
-The collection connection calls `GameSession.RecordRescue()`. It unbinds the
-signal's creature argument because the current scoring rule only needs one
-rescue per completed capture. Future species-specific scoring can use that
-argument through an appropriate session rule or adapter.
+The collection connection calls `GameSession.RecordRescue(creature)`, which
+applies the current rescue scoring rule.
 
-GameSession starts paused. Hiding the intro makes GameHud emit `IntroFinished`;
-the scene connects that event to `StartSession()`. UI code formats the clock,
-while session code advances it and emits `ArrivalDue` exactly once. Reaching
-zero still represents theoretical arrival; destruction is not implemented.
+The active scene sets `GameSession.StartOnReady`, so the session starts during
+initialization. UI code formats the clock, while session code advances it and
+emits `ArrivalDue` exactly once. Reaching zero still represents theoretical
+arrival; destruction is not implemented.
 
 GameHud subscribes to state changes in `_Ready` and disconnects in `_ExitTree`.
 Removing the HUD leaves the session functional. No autoload or global beam flag

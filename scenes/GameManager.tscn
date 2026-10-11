@@ -212,8 +212,6 @@ text = "E / right click: HOLD a critter"
 [connection signal="CritterDelivered" from="Control/SubViewportContainer/SubViewport/Planet/Pickup Zone" to="Control/SubViewportContainer/SubViewport/GameSession" method="RecordRescue"]
 [connection signal="CritterDelivered" from="Control/SubViewportContainer/SubViewport/Planet/Pickup Zone2" to="Control/SubViewportContainer/SubViewport/GameSession" method="RecordRescue"]
 [connection signal="CritterDelivered" from="Control/SubViewportContainer/SubViewport/Planet/Pickup Zone3" to="Control/SubViewportContainer/SubViewport/GameSession" method="RecordRescue"]
-[connection signal="timeout" from="Control/SubViewportContainer/SubViewport/IntroSlideTimer" to="Control/SubViewportContainer/SubViewport/IntroSlides" method="OnIntroSlideTimeout"]
-[connection signal="IntroFinished" from="Control/SubViewportContainer/SubViewport/HUD" to="Control/SubViewportContainer/SubViewport/GameSession" method="StartSession"]
 
 [editable path="Control/SubViewportContainer/SubViewport/Planet"]
 [editable path="Control/SubViewportContainer/SubViewport/Ship"]

@@ -35,13 +35,8 @@ public partial class GameSession : Node
         IsRunning = true;
     }
 
-<<<<<<< HEAD
-    
-    public void RecordRescue()
-=======
     // Records one completed rescue and publishes the new session total.
     public void RecordRescue(Critter critter)
->>>>>>> 2007f16 (Add random chance for Shiny critter)
     {
         if (HasArrived) return;
         RescuedCount++;
