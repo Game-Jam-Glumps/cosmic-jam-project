@@ -11,13 +11,15 @@
 [ext_resource type="Resource" path="res://resources/spawning/jumpluff_desert.tres" id="25_nt4xe"]
 [ext_resource type="Resource" path="res://resources/spawning/jumpluff_snowfield.tres" id="26_wvq2v"]
 [ext_resource type="Resource" path="res://resources/spawning/jumpluff_grassland.tres" id="27_0j36w"]
-[ext_resource type="Resource" path="res://resources/spawning/robot_mascot.tres" id="28_wvq2v"]
+[ext_resource type="Script" uid="uid://c48eolwiu22e2" path="res://scripts/spawning/ObstacleSpawner.cs" id="25_ptb65"]
+[ext_resource type="PackedScene" uid="uid://buh4okktrihm4" path="res://scenes/obstacle.tscn" id="26_nt4xe"]
 [ext_resource type="Texture2D" uid="uid://d4f3cqfycfb0w" path="res://assets/HUD/black-hole.png" id="hud_black_hole"]
 [ext_resource type="Texture2D" uid="uid://cgv83cfx6w4sw" path="res://assets/HUD/medal.png" id="hud_medal"]
 [ext_resource type="Script" uid="uid://cbfl2k34mwps6" path="res://scripts/gameplay/GameRound.cs" id="round"]
 [ext_resource type="Resource" path="res://resources/spawning/moss_creature_grassland.tres" id="spawn_0"]
 [ext_resource type="Resource" path="res://resources/spawning/penguin_snowfield.tres" id="spawn_1"]
 [ext_resource type="Resource" path="res://resources/spawning/bombastick_desert.tres" id="spawn_2"]
+[ext_resource type="Resource" path="res://resources/spawning/cug_desert.tres" id="spawn_3"]
 [ext_resource type="Resource" path="res://resources/spawning/lorax_grassland.tres" id="spawn_4"]
 [ext_resource type="Resource" path="res://resources/spawning/mouse_snail_grassland.tres" id="spawn_5"]
 [ext_resource type="Resource" path="res://resources/spawning/many_eyes_snowfield.tres" id="spawn_6"]
@@ -32,6 +34,7 @@
 [ext_resource type="Resource" path="res://resources/spawning/screechure_grassland.tres" id="spawn_15"]
 [ext_resource type="Resource" path="res://resources/spawning/screechure_snowfield.tres" id="spawn_16"]
 [ext_resource type="Resource" uid="uid://dmqi3rdwb1gk5" path="res://resources/spawning/screechure_desert.tres" id="spawn_17"]
+[ext_resource type="Resource" path="res://resources/spawning/screechure_desert.tres" id="spawn_17"]
 
 [node name="GameManager" type="Node" unique_id=1431068297 node_paths=PackedStringArray("Session", "Controls")]
 script = ExtResource("round")
@@ -71,10 +74,17 @@ position = Vector2(960, 3350)
 SurfaceDiameter = 5200.0
 
 [node name="CritterSpawner" parent="Control/SubViewportContainer/SubViewport" unique_id=682853831 node_paths=PackedStringArray("PlanetInstance") instance=ExtResource("5_spawner")]
+z_index = 1
 PlanetInstance = NodePath("../Planet")
-SpawnProfiles = Array[ExtResource("4_biy4i")]([ExtResource("spawn_0"), ExtResource("spawn_1"), ExtResource("spawn_2"), ExtResource("10_nt4xe"), ExtResource("spawn_4"), ExtResource("spawn_5"), ExtResource("spawn_6"), ExtResource("spawn_7"), ExtResource("spawn_8"), ExtResource("spawn_9"), ExtResource("spawn_10"), ExtResource("spawn_11"), ExtResource("spawn_12"), ExtResource("spawn_13"), ExtResource("spawn_14"), ExtResource("spawn_15"), ExtResource("spawn_16"), ExtResource("spawn_17"), ExtResource("25_nt4xe"), ExtResource("26_wvq2v"), ExtResource("27_0j36w"), ExtResource("28_wvq2v")])
-MaxPopulation = 300
+SpawnProfiles = Array[ExtResource("4_biy4i")]([ExtResource("spawn_0"), ExtResource("spawn_1"), ExtResource("spawn_2"), ExtResource("spawn_3"), ExtResource("spawn_4"), ExtResource("spawn_5"), ExtResource("spawn_6"), ExtResource("spawn_7"), ExtResource("spawn_8"), ExtResource("spawn_9"), ExtResource("spawn_10"), ExtResource("spawn_11"), ExtResource("spawn_12"), ExtResource("spawn_13"), ExtResource("spawn_14"), ExtResource("spawn_15"), ExtResource("spawn_16"), ExtResource("spawn_17")])
+MaxPopulation = 144
 ContinuousSpawning = true
+
+[node name="ObstacleSpawner" type="Node2D" parent="Control/SubViewportContainer/SubViewport" unique_id=1105171518 node_paths=PackedStringArray("World")]
+script = ExtResource("25_ptb65")
+ObstacleScene = ExtResource("26_nt4xe")
+World = NodePath("../Planet")
+ObstacleCount = 30
 
 [node name="Ship" parent="Control/SubViewportContainer/SubViewport" unique_id=1937052776 instance=ExtResource("2_4dhvd")]
 position = Vector2(960, 600)
@@ -97,7 +107,7 @@ CargoLabel = NodePath("CargoCount")
 ScoreLabel = NodePath("Score")
 CountdownLabel = NodePath("CountdownRow/BlackHoleCountdown")
 
-[node name="Score" type="Label" parent="Control/SubViewportContainer/SubViewport/HUD" unique_id=1986441153]
+[node name="Score" type="Label" parent="Control/SubViewportContainer/SubViewport/HUD" unique_id=1239541871]
 offset_left = 84.0
 offset_top = 24.0
 offset_right = 440.0
@@ -109,7 +119,7 @@ theme_override_constants/shadow_offset_y = 2
 theme_override_font_sizes/font_size = 30
 text = "SCORE: 0"
 
-[node name="ScoreMedal" type="TextureRect" parent="Control/SubViewportContainer/SubViewport/HUD" unique_id=2047443498]
+[node name="ScoreMedal" type="TextureRect" parent="Control/SubViewportContainer/SubViewport/HUD" unique_id=329167424]
 texture_filter = 1
 offset_left = 32.0
 offset_top = 24.0
@@ -132,7 +142,7 @@ theme_override_constants/shadow_offset_y = 2
 theme_override_font_sizes/font_size = 30
 text = "RESCUED: 0"
 
-[node name="RescuedMedal" type="TextureRect" parent="Control/SubViewportContainer/SubViewport/HUD" unique_id=1117060661]
+[node name="RescuedMedal" type="TextureRect" parent="Control/SubViewportContainer/SubViewport/HUD" unique_id=1483029254]
 texture_filter = 1
 offset_left = 32.0
 offset_top = 64.0
@@ -143,7 +153,7 @@ texture = ExtResource("hud_medal")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="CountdownRow" type="HBoxContainer" parent="Control/SubViewportContainer/SubViewport/HUD" unique_id=2125606615]
+[node name="CountdownRow" type="HBoxContainer" parent="Control/SubViewportContainer/SubViewport/HUD" unique_id=1214365332]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -156,7 +166,7 @@ mouse_filter = 2
 theme_override_constants/separation = 12
 alignment = 2
 
-[node name="BlackHoleIcon" type="TextureRect" parent="Control/SubViewportContainer/SubViewport/HUD/CountdownRow" unique_id=1030094701]
+[node name="BlackHoleIcon" type="TextureRect" parent="Control/SubViewportContainer/SubViewport/HUD/CountdownRow" unique_id=1625996758]
 texture_filter = 1
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -178,6 +188,9 @@ vertical_alignment = 1
 [connection signal="CritterDelivered" from="Control/SubViewportContainer/SubViewport/Planet/Mothership" to="Control/SubViewportContainer/SubViewport/GameSession" method="RecordRescue"]
 [connection signal="CritterDelivered" from="Control/SubViewportContainer/SubViewport/Planet/Mothership2" to="Control/SubViewportContainer/SubViewport/GameSession" method="RecordRescue"]
 [connection signal="CritterDelivered" from="Control/SubViewportContainer/SubViewport/Planet/Mothership3" to="Control/SubViewportContainer/SubViewport/GameSession" method="RecordRescue"]
+[connection signal="ObstacleDelivered" from="Control/SubViewportContainer/SubViewport/Planet/Mothership" to="Control/SubViewportContainer/SubViewport/GameSession" method="RecordObstacleDelivery"]
+[connection signal="ObstacleDelivered" from="Control/SubViewportContainer/SubViewport/Planet/Mothership2" to="Control/SubViewportContainer/SubViewport/GameSession" method="RecordObstacleDelivery"]
+[connection signal="ObstacleDelivered" from="Control/SubViewportContainer/SubViewport/Planet/Mothership3" to="Control/SubViewportContainer/SubViewport/GameSession" method="RecordObstacleDelivery"]
 
 [editable path="Control/SubViewportContainer/SubViewport/Planet"]
 [editable path="Control/SubViewportContainer/SubViewport/Ship"]
