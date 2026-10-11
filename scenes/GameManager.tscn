@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b6kfohy5lmeo8" path="res://scenes/ship.tscn" id="2_4dhvd"]
 [ext_resource type="PackedScene" uid="uid://c706muv7iwdrg" path="res://scenes/planet.tscn" id="2_qppyr"]
-[ext_resource type="Script" path="res://scripts/data/CritterSpawnProfile.cs" id="4_biy4i"]
+[ext_resource type="Script" uid="uid://duyieb4jy5na1" path="res://scripts/data/CritterSpawnProfile.cs" id="4_biy4i"]
 [ext_resource type="PackedScene" path="res://scenes/critter_spawner.tscn" id="5_spawner"]
 [ext_resource type="Script" uid="uid://c6bj3kn7w6uv7" path="res://scripts/gameplay/GameSession.cs" id="11_session"]
 [ext_resource type="Script" uid="uid://3ybosg7j0v1r" path="res://scripts/input/PlayerController.cs" id="12_player"]
@@ -69,10 +69,10 @@ position = Vector2(960, 3350)
 SurfaceDiameter = 5200.0
 
 [node name="CritterSpawner" parent="Control/SubViewportContainer/SubViewport" unique_id=682853831 node_paths=PackedStringArray("PlanetInstance") instance=ExtResource("5_spawner")]
+PlanetInstance = NodePath("../Planet")
 SpawnProfiles = Array[ExtResource("4_biy4i")]([ExtResource("spawn_0"), ExtResource("spawn_1"), ExtResource("spawn_2"), ExtResource("spawn_3"), ExtResource("spawn_4"), ExtResource("spawn_5"), ExtResource("spawn_6"), ExtResource("spawn_7"), ExtResource("spawn_8"), ExtResource("spawn_9"), ExtResource("spawn_10"), ExtResource("spawn_11"), ExtResource("spawn_12"), ExtResource("spawn_13"), ExtResource("spawn_14"), ExtResource("spawn_15"), ExtResource("spawn_16"), ExtResource("spawn_17")])
 MaxPopulation = 144
 ContinuousSpawning = true
-PlanetInstance = NodePath("../Planet")
 
 [node name="Ship" parent="Control/SubViewportContainer/SubViewport" unique_id=1937052776 instance=ExtResource("2_4dhvd")]
 position = Vector2(960, 600)
@@ -209,7 +209,11 @@ theme_override_constants/shadow_offset_y = 2
 theme_override_font_sizes/font_size = 22
 text = "E / right click: HOLD a critter"
 
-[connection signal="CritterCollected" from="Control/SubViewportContainer/SubViewport/Ship/Ship/Beam/Beam" to="Control/SubViewportContainer/SubViewport/GameSession" method="RecordRescue" unbinds=1]
+[connection signal="timeout" from="Control/SubViewportContainer/SubViewport/IntroSlideTimer" to="Control/SubViewportContainer/SubViewport/IntroSlides" method="OnIntroSlideTimeout"]
+[connection signal="CritterDelivered" from="Control/SubViewportContainer/SubViewport/Planet/Pickup Zone" to="Control/SubViewportContainer/SubViewport/GameSession" method="RecordRescue"]
+[connection signal="CritterDelivered" from="Control/SubViewportContainer/SubViewport/Planet/Pickup Zone2" to="Control/SubViewportContainer/SubViewport/GameSession" method="RecordRescue"]
+[connection signal="CritterDelivered" from="Control/SubViewportContainer/SubViewport/Planet/Pickup Zone3" to="Control/SubViewportContainer/SubViewport/GameSession" method="RecordRescue"]
+[connection signal="IntroFinished" from="Control/SubViewportContainer/SubViewport/HUD" to="Control/SubViewportContainer/SubViewport/GameSession" method="StartSession"]
 
 [editable path="Control/SubViewportContainer/SubViewport/Planet"]
 [editable path="Control/SubViewportContainer/SubViewport/Ship"]

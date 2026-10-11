@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dicv2qhi521ta"
-path="res://.godot/imported/many-eyes-transparent.png-a23733ad4aeabf1cf8ed5d5ed772fd67.ctex"
+path="res://.godot/imported/many-eyes-transparent.png-6252c6f363d54c478ededc336da1f3c0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Critter/Snow/many-eyes-transparent.png"
-dest_files=["res://.godot/imported/many-eyes-transparent.png-a23733ad4aeabf1cf8ed5d5ed772fd67.ctex"]
+source_file="res://assets/critter/Snow/many-eyes-transparent.png"
+dest_files=["res://.godot/imported/many-eyes-transparent.png-6252c6f363d54c478ededc336da1f3c0.ctex"]
 
 [params]
 

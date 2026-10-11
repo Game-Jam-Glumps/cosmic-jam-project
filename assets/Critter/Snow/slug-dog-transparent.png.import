@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d28uh1p5cfhga"
-path="res://.godot/imported/slug-dog-transparent.png-e96788153e2e89fc0c0d407d19035ed5.ctex"
+path="res://.godot/imported/slug-dog-transparent.png-5bfda7c52dcaf669924cc567c5f44954.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Critter/Snow/slug-dog-transparent.png"
-dest_files=["res://.godot/imported/slug-dog-transparent.png-e96788153e2e89fc0c0d407d19035ed5.ctex"]
+source_file="res://assets/critter/Snow/slug-dog-transparent.png"
+dest_files=["res://.godot/imported/slug-dog-transparent.png-5bfda7c52dcaf669924cc567c5f44954.ctex"]
 
 [params]
 

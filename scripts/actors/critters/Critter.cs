@@ -12,6 +12,7 @@ public partial class Critter : CharacterBody2D
 	public float HomeHalfWidthDegrees { get; set; } = 60f;
 
 	public Planet World { get; private set; }
+	public bool WasCarried { get; private set; }
 	public float Angle { get; private set; }
 	public float SurfaceSpeed { get; private set; }
 	public float SurfaceOffset =>
@@ -87,6 +88,8 @@ public partial class Critter : CharacterBody2D
 		_brain?.OnEnvironmentChanged();
 		UpdateAnimation();
 	}
+
+	public void MarkCarried() => WasCarried = true;
 
 	public override void _PhysicsProcess(double delta)
 	{

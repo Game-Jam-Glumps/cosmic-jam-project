@@ -6,6 +6,7 @@
 size = Vector2(256, 95)
 
 [node name="Pickup Zone" type="Area2D" unique_id=570087053]
+collision_mask = 2
 script = ExtResource("1_bn0s3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1825798838]

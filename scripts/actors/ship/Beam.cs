@@ -93,6 +93,7 @@ public partial class Beam : Area2D
                 OriginalScale = critter.GlobalScale,
                 InitialDistance = Mathf.Max(1f, critter.GlobalPosition.DistanceTo(GlobalPosition))
             });
+            critter.MarkCarried();
             critter.DetachFromPlanet();
             EmitSignal(SignalName.Hit);
         }

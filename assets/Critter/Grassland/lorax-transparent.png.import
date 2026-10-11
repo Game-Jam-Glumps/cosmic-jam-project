@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://mecvuixqceik"
-path="res://.godot/imported/lorax-transparent.png-99ccf69b5557a43a7b950155e1dc4e24.ctex"
+path="res://.godot/imported/lorax-transparent.png-bf5472c8aa5836deca745e2f1d81dc29.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Critter/Grassland/lorax-transparent.png"
-dest_files=["res://.godot/imported/lorax-transparent.png-99ccf69b5557a43a7b950155e1dc4e24.ctex"]
+source_file="res://assets/critter/Grassland/lorax-transparent.png"
+dest_files=["res://.godot/imported/lorax-transparent.png-bf5472c8aa5836deca745e2f1d81dc29.ctex"]
 
 [params]
 

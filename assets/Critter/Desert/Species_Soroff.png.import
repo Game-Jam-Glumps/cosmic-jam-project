@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://lrgr7x3g4jy5"
-path="res://.godot/imported/Species_Soroff.png-16f686a5907353056eacd4a75f359f2a.ctex"
+path="res://.godot/imported/Species_Soroff.png-d66558d0b24b63062b39d7cf634b6085.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Critter/Desert/Species_Soroff.png"
-dest_files=["res://.godot/imported/Species_Soroff.png-16f686a5907353056eacd4a75f359f2a.ctex"]
+source_file="res://assets/critter/Desert/Species_Soroff.png"
+dest_files=["res://.godot/imported/Species_Soroff.png-d66558d0b24b63062b39d7cf634b6085.ctex"]
 
 [params]
 
