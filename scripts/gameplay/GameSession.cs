@@ -7,6 +7,7 @@ namespace Orbitals;
 public partial class GameSession : Node
 {
     [Signal] public delegate void RescueCountChangedEventHandler(int count);
+    [Signal] public delegate void ScoreChangedEventHandler(int score);
     [Signal] public delegate void TimeRemainingChangedEventHandler(double seconds);
     [Signal] public delegate void ArrivalDueEventHandler();
 
@@ -15,7 +16,7 @@ public partial class GameSession : Node
     [Export] public bool StartOnReady { get; set; }
     [Export(PropertyHint.Range, "1,1000,1")] public int ScorePerStar { get; set; } = 20;
     public int RescuedCount { get; private set; }
-    public int Score => RescuedCount;
+    public int Score { get; private set; }
     public double SecondsRemaining { get; private set; }
     public bool HasArrived { get; private set; }
     public bool IsRunning { get; private set; }
@@ -34,12 +35,14 @@ public partial class GameSession : Node
         IsRunning = true;
     }
 
-    
-    public void RecordRescue()
+    // Records one completed rescue and publishes the new session total.
+    public void RecordRescue(Critter critter)
     {
         if (HasArrived) return;
         RescuedCount++;
+        Score += critter?.IsShiny == true ? 500 : 50;
         EmitSignal(SignalName.RescueCountChanged, RescuedCount);
+        EmitSignal(SignalName.ScoreChanged, Score);
     }
 
     
