@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" path="res://assets/HUD/star-full.png" id="star_full"]
 [ext_resource type="Texture2D" path="res://assets/HUD/star-empty.png" id="star_empty"]
 [ext_resource type="Texture2D" path="res://assets/HUD/medal.png" id="medal"]
+[ext_resource type="SpriteFrames" path="res://resources/ui/times_up_frames.tres" id="times_up"]
 
 [node name="EndScreen" type="Control" unique_id=91388739 node_paths=PackedStringArray("ScoreLabel", "RescuedLabel", "StarIcons", "RetryButton", "MenuButton")]
 layout_mode = 3
@@ -47,13 +48,23 @@ theme_override_font_sizes/font_size = 24
 text = "THE BLACK HOLE HAS ARRIVED"
 horizontal_alignment = 1
 
-[node name="Title" type="Label" parent="Center/Content" unique_id=651650605]
+[node name="Title" type="CenterContainer" parent="Center/Content" unique_id=651650605]
+custom_minimum_size = Vector2(0, 280)
 layout_mode = 2
-theme_override_colors/font_outline_color = Color(0.025, 0.035, 0.06, 1)
-theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 112
-text = "TIME'S UP!"
-horizontal_alignment = 1
+mouse_filter = 2
+
+[node name="BannerFrame" type="Control" parent="Center/Content/Title"]
+custom_minimum_size = Vector2(640, 280)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="TimesUp" type="AnimatedSprite2D" parent="Center/Content/Title/BannerFrame"]
+position = Vector2(320, 140)
+scale = Vector2(10, 10)
+texture_filter = 1
+sprite_frames = ExtResource("times_up")
+animation = &"times_up"
+autoplay = "times_up"
 
 [node name="ResultsPanel" type="PanelContainer" parent="Center/Content" unique_id=2034645398]
 layout_mode = 2

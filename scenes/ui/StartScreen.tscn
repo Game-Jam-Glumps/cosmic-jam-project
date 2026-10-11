@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" path="res://scenes/ui/BlackHoleBackground.tscn" id="background"]
 [ext_resource type="Script" uid="uid://cg0hdwqrjsluq" path="res://scripts/ui/StartScreen.cs" id="script"]
 [ext_resource type="Theme" uid="uid://3kyttaqtde04" path="res://resources/ui/menu_theme.tres" id="theme"]
+[ext_resource type="PackedScene" path="res://scenes/ui/ControlScheme.tscn" id="controls"]
 
 [node name="StartScreen" type="Control" unique_id=649511724 node_paths=PackedStringArray("PlayButton")]
 layout_mode = 3
@@ -27,7 +28,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Content" type="VBoxContainer" parent="Center" unique_id=903986165]
-custom_minimum_size = Vector2(920, 0)
+custom_minimum_size = Vector2(1400, 0)
 layout_mode = 2
 theme_override_constants/separation = 20
 
@@ -57,55 +58,39 @@ custom_minimum_size = Vector2(0, 12)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="IntroductionPanel" type="PanelContainer" parent="Center/Content" unique_id=2022522190]
-layout_mode = 2
-
-[node name="Introduction" type="VBoxContainer" parent="Center/Content/IntroductionPanel" unique_id=1443338931]
+[node name="Briefing" type="HBoxContainer" parent="Center/Content"]
 layout_mode = 2
 theme_override_constants/separation = 24
 
-[node name="Story" type="Label" parent="Center/Content/IntroductionPanel/Introduction" unique_id=775187744]
+[node name="IntroductionPanel" type="PanelContainer" parent="Center/Content/Briefing" unique_id=2022522190]
+custom_minimum_size = Vector2(560, 0)
 layout_mode = 2
-text = "A black hole is closing in. Rescue as many critters as you can before the planet runs out of time."
+size_flags_horizontal = 3
+
+[node name="Introduction" type="VBoxContainer" parent="Center/Content/Briefing/IntroductionPanel" unique_id=1443338931]
+layout_mode = 2
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="Story" type="Label" parent="Center/Content/Briefing/IntroductionPanel/Introduction" unique_id=775187744]
+layout_mode = 2
+text = "A black hole is approaching planet Critteria!
+
+
+Bring it's critters to the mothership before it's too late, but avoid picking up junk"
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="Controls" type="GridContainer" parent="Center/Content/IntroductionPanel/Introduction" unique_id=1498820247]
-layout_mode = 2
-theme_override_constants/h_separation = 40
-theme_override_constants/v_separation = 14
-columns = 2
-
-[node name="Flight" type="Label" parent="Center/Content/IntroductionPanel/Introduction/Controls" unique_id=182622667]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 23
-text = "W / S  ·  fly up and down"
-
-[node name="Orbit" type="Label" parent="Center/Content/IntroductionPanel/Introduction/Controls" unique_id=1901725997]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 23
-text = "A / D  ·  move left and right"
-
-[node name="Absorb" type="Label" parent="Center/Content/IntroductionPanel/Introduction/Controls" unique_id=1253635288]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.55, 0.95, 1, 1)
-theme_override_font_sizes/font_size = 23
-text = "SPACE / CLICK  ·  absorb many"
-
-[node name="Hold" type="Label" parent="Center/Content/IntroductionPanel/Introduction/Controls" unique_id=1339553039]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.9, 0.68, 1, 1)
-theme_override_font_sizes/font_size = 23
-text = "E / RIGHT CLICK  ·  absorb one"
-
-[node name="SkyHint" type="Label" parent="Center/Content/IntroductionPanel/Introduction" unique_id=1319356219]
+[node name="SkyHint" type="Label" parent="Center/Content/Briefing/IntroductionPanel/Introduction" unique_id=1319356219]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.68, 0.75, 0.85, 1)
 theme_override_font_sizes/font_size = 23
 text = "Orbit around the surface of a foreign planet"
 horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="ControlScheme" parent="Center/Content/Briefing" instance=ExtResource("controls")]
+layout_mode = 2
 
 [node name="PlayButton" type="Button" parent="Center/Content" unique_id=454330240]
 custom_minimum_size = Vector2(0, 82)
