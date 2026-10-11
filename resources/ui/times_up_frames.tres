@@ -1,6 +1,6 @@
-[gd_resource type="SpriteFrames" load_steps=7 format=3]
+[gd_resource type="SpriteFrames" format=3 uid="uid://byveolklgnx71"]
 
-[ext_resource type="Texture2D" path="res://assets/HUD/Asset_TimesUp.png" id="sheet"]
+[ext_resource type="Texture2D" uid="uid://bv2a5usne8xyn" path="res://assets/HUD/Asset_TimesUp.png" id="sheet"]
 
 [sub_resource type="AtlasTexture" id="frame_0"]
 atlas = ExtResource("sheet")
@@ -24,8 +24,23 @@ region = Rect2(256, 20, 64, 32)
 
 [resource]
 animations = [{
-"frames": [{"duration": 1.0, "texture": SubResource("frame_0")}, {"duration": 1.0, "texture": SubResource("frame_1")}, {"duration": 1.0, "texture": SubResource("frame_2")}, {"duration": 1.0, "texture": SubResource("frame_3")}, {"duration": 1.0, "texture": SubResource("frame_4")}],
-"loop": true,
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("frame_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("frame_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("frame_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("frame_3")
+}, {
+"duration": 1.0,
+"texture": SubResource("frame_4")
+}],
+"loop": 1,
 "name": &"times_up",
 "speed": 8.0
 }]

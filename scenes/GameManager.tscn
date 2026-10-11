@@ -2,15 +2,14 @@
 
 [ext_resource type="PackedScene" uid="uid://b6kfohy5lmeo8" path="res://scenes/ship.tscn" id="2_4dhvd"]
 [ext_resource type="PackedScene" uid="uid://c706muv7iwdrg" path="res://scenes/planet.tscn" id="2_qppyr"]
-[ext_resource type="Script" path="res://scripts/data/CritterSpawnProfile.cs" id="4_biy4i"]
+[ext_resource type="Script" uid="uid://duyieb4jy5na1" path="res://scripts/data/CritterSpawnProfile.cs" id="4_biy4i"]
 [ext_resource type="PackedScene" path="res://scenes/critter_spawner.tscn" id="5_spawner"]
 [ext_resource type="Script" uid="uid://c6bj3kn7w6uv7" path="res://scripts/gameplay/GameSession.cs" id="11_session"]
 [ext_resource type="Script" uid="uid://3ybosg7j0v1r" path="res://scripts/input/PlayerController.cs" id="12_player"]
 [ext_resource type="Script" uid="uid://cgoiqpfguc350" path="res://scripts/ui/GameHud.cs" id="13_hud"]
-[ext_resource type="Texture2D" path="res://assets/HUD/medal.png" id="hud_medal"]
-[ext_resource type="Texture2D" path="res://assets/HUD/black-hole.png" id="hud_black_hole"]
-[ext_resource type="PackedScene" path="res://scenes/ui/ControlScheme.tscn" id="control_scheme"]
-
+[ext_resource type="Texture2D" uid="uid://d4f3cqfycfb0w" path="res://assets/HUD/black-hole.png" id="hud_black_hole"]
+[ext_resource type="Texture2D" uid="uid://cgv83cfx6w4sw" path="res://assets/HUD/medal.png" id="hud_medal"]
+[ext_resource type="Script" uid="uid://cbfl2k34mwps6" path="res://scripts/gameplay/GameRound.cs" id="round"]
 [ext_resource type="Resource" path="res://resources/spawning/moss_creature_grassland.tres" id="spawn_0"]
 [ext_resource type="Resource" path="res://resources/spawning/penguin_snowfield.tres" id="spawn_1"]
 [ext_resource type="Resource" path="res://resources/spawning/bombastick_desert.tres" id="spawn_2"]
@@ -28,9 +27,7 @@
 [ext_resource type="Resource" path="res://resources/spawning/mothalist_desert.tres" id="spawn_14"]
 [ext_resource type="Resource" path="res://resources/spawning/screechure_grassland.tres" id="spawn_15"]
 [ext_resource type="Resource" path="res://resources/spawning/screechure_snowfield.tres" id="spawn_16"]
-[ext_resource type="Resource" path="res://resources/spawning/screechure_desert.tres" id="spawn_17"]
-
-[ext_resource type="Script" path="res://scripts/gameplay/GameRound.cs" id="round"]
+[ext_resource type="Resource" uid="uid://dmqi3rdwb1gk5" path="res://resources/spawning/screechure_desert.tres" id="spawn_17"]
 
 [node name="GameManager" type="Node" unique_id=1431068297 node_paths=PackedStringArray("Session", "Controls")]
 script = ExtResource("round")
@@ -70,10 +67,10 @@ position = Vector2(960, 3350)
 SurfaceDiameter = 5200.0
 
 [node name="CritterSpawner" parent="Control/SubViewportContainer/SubViewport" unique_id=682853831 node_paths=PackedStringArray("PlanetInstance") instance=ExtResource("5_spawner")]
+PlanetInstance = NodePath("../Planet")
 SpawnProfiles = Array[ExtResource("4_biy4i")]([ExtResource("spawn_0"), ExtResource("spawn_1"), ExtResource("spawn_2"), ExtResource("spawn_3"), ExtResource("spawn_4"), ExtResource("spawn_5"), ExtResource("spawn_6"), ExtResource("spawn_7"), ExtResource("spawn_8"), ExtResource("spawn_9"), ExtResource("spawn_10"), ExtResource("spawn_11"), ExtResource("spawn_12"), ExtResource("spawn_13"), ExtResource("spawn_14"), ExtResource("spawn_15"), ExtResource("spawn_16"), ExtResource("spawn_17")])
 MaxPopulation = 144
 ContinuousSpawning = true
-PlanetInstance = NodePath("../Planet")
 
 [node name="Ship" parent="Control/SubViewportContainer/SubViewport" unique_id=1937052776 instance=ExtResource("2_4dhvd")]
 position = Vector2(960, 600)
@@ -88,15 +85,15 @@ PlanetInstance = NodePath("../../../../Planet")
 [node name="Camera2D" parent="Control/SubViewportContainer/SubViewport/Ship/Ship" index="3" unique_id=1958900881]
 zoom = Vector2(1.4, 1.4)
 
-[node name="HUD" type="CanvasLayer" parent="Control/SubViewportContainer/SubViewport" unique_id=170956536 node_paths=PackedStringArray("Session", "CargoLabel", "CountdownLabel", "ScoreLabel")]
+[node name="HUD" type="CanvasLayer" parent="Control/SubViewportContainer/SubViewport" unique_id=170956536 node_paths=PackedStringArray("Session", "CargoLabel", "ScoreLabel", "CountdownLabel")]
 layer = 10
 script = ExtResource("13_hud")
 Session = NodePath("../GameSession")
 CargoLabel = NodePath("CargoCount")
-CountdownLabel = NodePath("CountdownRow/BlackHoleCountdown")
 ScoreLabel = NodePath("Score")
+CountdownLabel = NodePath("CountdownRow/BlackHoleCountdown")
 
-[node name="Score" type="Label" parent="Control/SubViewportContainer/SubViewport/HUD"]
+[node name="Score" type="Label" parent="Control/SubViewportContainer/SubViewport/HUD" unique_id=1986441153]
 offset_left = 84.0
 offset_top = 24.0
 offset_right = 440.0
@@ -108,12 +105,12 @@ theme_override_constants/shadow_offset_y = 2
 theme_override_font_sizes/font_size = 30
 text = "SCORE: 0"
 
-[node name="ScoreMedal" type="TextureRect" parent="Control/SubViewportContainer/SubViewport/HUD"]
+[node name="ScoreMedal" type="TextureRect" parent="Control/SubViewportContainer/SubViewport/HUD" unique_id=2047443498]
+texture_filter = 1
 offset_left = 32.0
 offset_top = 24.0
 offset_right = 72.0
 offset_bottom = 64.0
-texture_filter = 1
 mouse_filter = 2
 texture = ExtResource("hud_medal")
 expand_mode = 1
@@ -131,18 +128,18 @@ theme_override_constants/shadow_offset_y = 2
 theme_override_font_sizes/font_size = 30
 text = "RESCUED: 0"
 
-[node name="RescuedMedal" type="TextureRect" parent="Control/SubViewportContainer/SubViewport/HUD"]
+[node name="RescuedMedal" type="TextureRect" parent="Control/SubViewportContainer/SubViewport/HUD" unique_id=1117060661]
+texture_filter = 1
 offset_left = 32.0
 offset_top = 64.0
 offset_right = 72.0
 offset_bottom = 104.0
-texture_filter = 1
 mouse_filter = 2
 texture = ExtResource("hud_medal")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="CountdownRow" type="HBoxContainer" parent="Control/SubViewportContainer/SubViewport/HUD"]
+[node name="CountdownRow" type="HBoxContainer" parent="Control/SubViewportContainer/SubViewport/HUD" unique_id=2125606615]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -155,10 +152,10 @@ mouse_filter = 2
 theme_override_constants/separation = 12
 alignment = 2
 
-[node name="BlackHoleIcon" type="TextureRect" parent="Control/SubViewportContainer/SubViewport/HUD/CountdownRow"]
+[node name="BlackHoleIcon" type="TextureRect" parent="Control/SubViewportContainer/SubViewport/HUD/CountdownRow" unique_id=1030094701]
+texture_filter = 1
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-texture_filter = 1
 mouse_filter = 2
 texture = ExtResource("hud_black_hole")
 expand_mode = 1
@@ -173,13 +170,6 @@ theme_override_font_sizes/font_size = 30
 text = "BLACK HOLE ETA: 03:00"
 horizontal_alignment = 2
 vertical_alignment = 1
-
-[node name="ControlScheme" parent="Control/SubViewportContainer/SubViewport/HUD" instance=ExtResource("control_scheme")]
-offset_left = 32.0
-offset_top = 120.0
-offset_right = 812.0
-offset_bottom = 520.0
-scale = Vector2(0.65, 0.65)
 
 [connection signal="CritterCollected" from="Control/SubViewportContainer/SubViewport/Ship/Ship/Beam/Beam" to="Control/SubViewportContainer/SubViewport/GameSession" method="RecordRescue" unbinds=1]
 
