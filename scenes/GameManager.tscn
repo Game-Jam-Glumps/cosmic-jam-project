@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://dgqoowrg0swct"]
 
 [ext_resource type="Script" uid="uid://bxafjgdxyjsml" path="res://scripts/ShowTitle.cs" id="1_4dhvd"]
-[ext_resource type="PackedScene" uid="uid://bocwithakkxvb" path="res://scenes/GameSpace.tscn" id="1_34tde"]
-[ext_resource type="Script" uid="uid://g8bchpfej20b" path="res://scripts/ShowPlanet.cs" id="3_3dus2"]
+[ext_resource type="PackedScene" uid="uid://b6kfohy5lmeo8" path="res://scenes/ship.tscn" id="2_4dhvd"]
+[ext_resource type="PackedScene" uid="uid://c706muv7iwdrg" path="res://scenes/planet.tscn" id="2_qppyr"]
+[ext_resource type="Script" uid="uid://dbbmxao35f3lh" path="res://scripts/Planet.cs" id="4_3dus2"]
 
 [node name="GameManager" type="Node" unique_id=1431068297]
 
@@ -58,13 +59,33 @@ offset_right = 1816.0
 offset_bottom = 824.0
 text = "Explanation for objectives"
 
-[node name="Planet" parent="Control/SubViewportContainer/SubViewport" unique_id=1426500986 instance=ExtResource("1_34tde")]
-position = Vector2(960, 6400)
-script = ExtResource("3_3dus2")
+[node name="Ship" parent="Control/SubViewportContainer/SubViewport" unique_id=1937052776 instance=ExtResource("2_4dhvd")]
+position = Vector2(960, 500)
+scale = Vector2(5, 5)
+
+[node name="Ship" parent="Control/SubViewportContainer/SubViewport/Ship" index="0" unique_id=2040208976]
+z_index = 1
+
+[node name="Planet" parent="Control/SubViewportContainer/SubViewport" unique_id=1182448530 instance=ExtResource("2_qppyr")]
+position = Vector2(960, 2500)
+scale = Vector2(6.7, 6.7)
+script = ExtResource("4_3dus2")
+
+[node name="Obj" parent="Control/SubViewportContainer/SubViewport/Planet" index="2" unique_id=2108927082]
+position = Vector2(0, 0)
 
 [node name="IntroSlideTimer" type="Timer" parent="Control/SubViewportContainer/SubViewport" unique_id=151718130]
 wait_time = 15.0
 autostart = true
 
+[node name="Camera2D" type="Camera2D" parent="Control/SubViewportContainer/SubViewport" unique_id=1194923987]
+z_index = 1
+scale = Vector2(100, 100)
+
 [connection signal="timeout" from="Control/SubViewportContainer/SubViewport/IntroSlideTimer" to="Control/SubViewportContainer/SubViewport/IntroSlides" method="OnIntroSlideTimeout"]
-[connection signal="timeout" from="Control/SubViewportContainer/SubViewport/IntroSlideTimer" to="Control/SubViewportContainer/SubViewport/Planet" method="OnPlanetTimeout"]
+
+[editable path="Control/SubViewportContainer/SubViewport/Ship"]
+[editable path="Control/SubViewportContainer/SubViewport/Ship/Ship/Beam"]
+[editable path="Control/SubViewportContainer/SubViewport/Ship/Planet"]
+[editable path="Control/SubViewportContainer/SubViewport/Ship/Critter"]
+[editable path="Control/SubViewportContainer/SubViewport/Planet"]

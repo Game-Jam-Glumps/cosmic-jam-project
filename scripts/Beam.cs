@@ -9,7 +9,7 @@ public partial class Beam : Area2D
 
 	private Node2D _activeTarget = null;
 	private Planet _activePlanet = null;
-	[Export] public float PullSpeed { get; set; } = 200f;
+	[Export] public float PullSpeed { get; set; } = 150f;
 
 	public override void _Input(InputEvent @event)
 	{

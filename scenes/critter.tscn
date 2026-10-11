@@ -8,9 +8,6 @@
 
 [node name="Critter" type="Node2D" unique_id=1328425137]
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=567617152]
-zoom = Vector2(6, 6)
-
 [node name="Critter" type="CharacterBody2D" parent="." unique_id=1338414584]
 script = ExtResource("1_oeans")
 
