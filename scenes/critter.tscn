@@ -1,23 +1,60 @@
 [gd_scene format=3 uid="uid://dkqybdfs05tje"]
 
-[ext_resource type="Texture2D" uid="uid://ihlqdvqho1ly" path="res://assets/icon.svg" id="1_63vdf"]
-[ext_resource type="Script" uid="uid://cmk7p1d84exao" path="res://scripts/Critter.cs" id="1_oeans"]
-[ext_resource type="Script" uid="uid://beb8whanohrnh" path="res://scripts/CritterBrain.cs" id="2_brain"]
+[ext_resource type="Script" uid="uid://cmk7p1d84exao" path="res://scripts/actors/critters/Critter.cs" id="1_oeans"]
+[ext_resource type="Script" uid="uid://beb8whanohrnh" path="res://scripts/actors/critters/CritterBrain.cs" id="2_brain"]
+[ext_resource type="Texture2D" uid="uid://d1mqnh88lrot8" path="res://assets/Critter/Grassland/mouse-snail-transparent.png" id="3_35jsl"]
+[ext_resource type="Resource" path="res://resources/species/moss_creature.tres" id="3_species"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uunrr"]
+atlas = ExtResource("3_35jsl")
+region = Rect2(0, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fraou"]
+atlas = ExtResource("3_35jsl")
+region = Rect2(1024, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5mxoi"]
+atlas = ExtResource("3_35jsl")
+region = Rect2(2048, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ty1m"]
+atlas = ExtResource("3_35jsl")
+region = Rect2(3072, 0, 1024, 1024)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gsppg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uunrr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fraou")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5mxoi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ty1m")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5xnpt"]
 
 [node name="Critter" type="Node2D" unique_id=1328425137]
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=567617152]
-zoom = Vector2(6, 6)
-
 [node name="Critter" type="CharacterBody2D" parent="." unique_id=1338414584]
+collision_layer = 2
+collision_mask = 0
 script = ExtResource("1_oeans")
+Profile = ExtResource("3_species")
 
-[node name="Sprite2D" type="Sprite2D" parent="Critter" unique_id=352831124]
-position = Vector2(-1.1920929e-07, 0)
-scale = Vector2(0.1640625, 0.16796875)
-texture = ExtResource("1_63vdf")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Critter" unique_id=1015940515]
+texture_filter = 1
+scale = Vector2(0.0234375, 0.0234375)
+sprite_frames = SubResource("SpriteFrames_gsppg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Critter" unique_id=1996449197]
 shape = SubResource("RectangleShape2D_5xnpt")

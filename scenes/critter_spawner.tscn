@@ -1,0 +1,37 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/spawning/CritterSpawner.cs" id="1_spawner"]
+[ext_resource type="PackedScene" path="res://scenes/critter.tscn" id="2_critter"]
+[ext_resource type="Script" path="res://scripts/data/CritterSpawnProfile.cs" id="3_rule"]
+[ext_resource type="Resource" path="res://resources/habitats/grassland.tres" id="4_grass"]
+[ext_resource type="Resource" path="res://resources/habitats/snowfield.tres" id="5_snow"]
+[ext_resource type="Resource" path="res://resources/habitats/desert.tres" id="6_desert"]
+[ext_resource type="Resource" path="res://resources/species/moss_creature.tres" id="7_moss"]
+[ext_resource type="Resource" path="res://resources/species/penguin.tres" id="8_penguin"]
+[ext_resource type="Resource" path="res://resources/species/bombastick.tres" id="9_bombastick"]
+
+[sub_resource type="Resource" id="SpawnProfile_grass"]
+script = ExtResource("3_rule")
+Habitat = ExtResource("4_grass")
+Species = ExtResource("7_moss")
+Count = 3
+
+[sub_resource type="Resource" id="SpawnProfile_snow"]
+script = ExtResource("3_rule")
+Habitat = ExtResource("5_snow")
+Species = ExtResource("8_penguin")
+Count = 3
+
+[sub_resource type="Resource" id="SpawnProfile_desert"]
+script = ExtResource("3_rule")
+Habitat = ExtResource("6_desert")
+Species = ExtResource("9_bombastick")
+Count = 3
+
+[node name="CritterSpawner" type="Node2D"]
+script = ExtResource("1_spawner")
+CritterScene = ExtResource("2_critter")
+SpawnProfiles = Array[ExtResource("3_rule")]([SubResource("SpawnProfile_grass"), SubResource("SpawnProfile_snow"), SubResource("SpawnProfile_desert")])
+MaxPopulation = 9
+
+[node name="Population" type="Node2D" parent="."]

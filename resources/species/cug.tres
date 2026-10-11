@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SpeciesProfile" format=3 uid="uid://ctlfqsrv1jpuj"]
+
+[ext_resource type="Script" uid="uid://bl1rxtr4y7w8b" path="res://scripts/data/SpeciesProfile.cs" id="1"]
+[ext_resource type="SpriteFrames" uid="uid://dke1kgwwuua0g" path="res://resources/animations/cug.tres" id="2"]
+
+[resource]
+resource_name = "cug"
+script = ExtResource("1")
+Animations = ExtResource("2")
+FlightHeight = 60.0

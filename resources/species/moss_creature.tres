@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="SpeciesProfile" format=3 uid="uid://qffchu1dgxa4"]
+
+[ext_resource type="Script" uid="uid://bl1rxtr4y7w8b" path="res://scripts/data/SpeciesProfile.cs" id="1"]
+[ext_resource type="SpriteFrames" uid="uid://4c7qcilvo34n" path="res://resources/animations/moss_creature.tres" id="2"]
+
+[resource]
+resource_name = "moss_creature"
+script = ExtResource("1")
+Animations = ExtResource("2")

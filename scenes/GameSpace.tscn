@@ -2,7 +2,13 @@
 
 [ext_resource type="PackedScene" uid="uid://c706muv7iwdrg" path="res://scenes/planet.tscn" id="1_jdjnh"]
 
+[ext_resource type="Script" path="res://scripts/input/PlayerController.cs" id="player_input"]
+
 [node name="Node2D" type="Node2D" unique_id=1426500986]
 
 [node name="Planet" parent="." unique_id=1182448530 instance=ExtResource("1_jdjnh")]
 scale = Vector2(90, 90)
+
+[node name="PlayerController" type="Node" parent="." node_paths=PackedStringArray("PlanetActor")]
+script = ExtResource("player_input")
+PlanetActor = NodePath("../Planet")

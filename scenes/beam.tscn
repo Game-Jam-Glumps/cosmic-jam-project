@@ -1,26 +1,20 @@
 [gd_scene format=3 uid="uid://rlpodagx4v8f"]
 
-[ext_resource type="Script" uid="uid://b7b22kd6jtj1n" path="res://scripts/Beam.cs" id="1_hl8vi"]
-[ext_resource type="Script" uid="uid://dc3ue0wee2v2" path="res://scripts/BeamCollision.cs" id="2_daiji"]
-[ext_resource type="Texture2D" uid="uid://csssb7fl1sglm" path="res://assets/1606.m00.i104.n015.P.c25.376246066 UFO light vector. Alien sky beams.jpg" id="3_daiji"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cvm0i"]
-size = Vector2(32, 64)
+[ext_resource type="Script" uid="uid://b7b22kd6jtj1n" path="res://scripts/actors/ship/Beam.cs" id="1_beam"]
+[ext_resource type="Script" path="res://scripts/actors/ship/beam/BeamVisuals.cs" id="2_visuals"]
 
 [node name="Beam" type="Node2D" unique_id=1856874238]
 
-[node name="Beam" type="Area2D" parent="." unique_id=225202901]
-script = ExtResource("1_hl8vi")
+[node name="Beam" type="Area2D" parent="." unique_id=225202901 node_paths=PackedStringArray("Collision", "Visuals")]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("1_beam")
+Collision = NodePath("BeamCollisionBox")
+Visuals = NodePath("Visuals")
 
-[node name="BeamCollisionBox" type="CollisionShape2D" parent="Beam" unique_id=871870481]
-position = Vector2(0, 32)
-shape = SubResource("RectangleShape2D_cvm0i")
-script = ExtResource("2_daiji")
+[node name="BeamCollisionBox" type="CollisionPolygon2D" parent="Beam" unique_id=871870481]
+polygon = PackedVector2Array(-16, 0, 16, 0, 70, 300, -70, 300)
 
-[node name="Sprite2D" type="Sprite2D" parent="Beam" unique_id=1874935488]
-position = Vector2(0, 31.500015)
-scale = Vector2(0.007111113, 0.014444438)
-texture = ExtResource("3_daiji")
-
-[connection signal="body_entered" from="Beam" to="Beam" method="OnBodyEntered"]
-[connection signal="body_exited" from="Beam" to="Beam" method="OnBodyExited"]
+[node name="Visuals" type="Node2D" parent="Beam"]
+script = ExtResource("2_visuals")

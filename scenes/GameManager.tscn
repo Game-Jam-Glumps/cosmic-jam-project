@@ -1,8 +1,32 @@
 [gd_scene format=3 uid="uid://dgqoowrg0swct"]
 
-[ext_resource type="Script" uid="uid://bxafjgdxyjsml" path="res://scripts/ShowTitle.cs" id="1_4dhvd"]
-[ext_resource type="PackedScene" uid="uid://bocwithakkxvb" path="res://scenes/GameSpace.tscn" id="1_34tde"]
-[ext_resource type="Script" uid="uid://g8bchpfej20b" path="res://scripts/ShowPlanet.cs" id="3_3dus2"]
+[ext_resource type="Script" uid="uid://bxafjgdxyjsml" path="res://scripts/ui/ShowTitle.cs" id="1_4dhvd"]
+[ext_resource type="PackedScene" uid="uid://b6kfohy5lmeo8" path="res://scenes/ship.tscn" id="2_4dhvd"]
+[ext_resource type="PackedScene" uid="uid://c706muv7iwdrg" path="res://scenes/planet.tscn" id="2_qppyr"]
+[ext_resource type="Script" path="res://scripts/data/CritterSpawnProfile.cs" id="4_biy4i"]
+[ext_resource type="PackedScene" path="res://scenes/critter_spawner.tscn" id="5_spawner"]
+[ext_resource type="Script" uid="uid://c6bj3kn7w6uv7" path="res://scripts/gameplay/GameSession.cs" id="11_session"]
+[ext_resource type="Script" uid="uid://3ybosg7j0v1r" path="res://scripts/input/PlayerController.cs" id="12_player"]
+[ext_resource type="Script" uid="uid://cgoiqpfguc350" path="res://scripts/ui/GameHud.cs" id="13_hud"]
+
+[ext_resource type="Resource" path="res://resources/spawning/moss_creature_grassland.tres" id="spawn_0"]
+[ext_resource type="Resource" path="res://resources/spawning/penguin_snowfield.tres" id="spawn_1"]
+[ext_resource type="Resource" path="res://resources/spawning/bombastick_desert.tres" id="spawn_2"]
+[ext_resource type="Resource" path="res://resources/spawning/cug_desert.tres" id="spawn_3"]
+[ext_resource type="Resource" path="res://resources/spawning/lorax_grassland.tres" id="spawn_4"]
+[ext_resource type="Resource" path="res://resources/spawning/mouse_snail_grassland.tres" id="spawn_5"]
+[ext_resource type="Resource" path="res://resources/spawning/many_eyes_snowfield.tres" id="spawn_6"]
+[ext_resource type="Resource" path="res://resources/spawning/slug_dog_snowfield.tres" id="spawn_7"]
+[ext_resource type="Resource" path="res://resources/spawning/walker_snowfield.tres" id="spawn_8"]
+[ext_resource type="Resource" path="res://resources/spawning/cocokyu_desert.tres" id="spawn_9"]
+[ext_resource type="Resource" path="res://resources/spawning/metromome_desert.tres" id="spawn_10"]
+[ext_resource type="Resource" path="res://resources/spawning/soroff_desert.tres" id="spawn_11"]
+[ext_resource type="Resource" path="res://resources/spawning/mothalist_grassland.tres" id="spawn_12"]
+[ext_resource type="Resource" path="res://resources/spawning/mothalist_snowfield.tres" id="spawn_13"]
+[ext_resource type="Resource" path="res://resources/spawning/mothalist_desert.tres" id="spawn_14"]
+[ext_resource type="Resource" path="res://resources/spawning/screechure_grassland.tres" id="spawn_15"]
+[ext_resource type="Resource" path="res://resources/spawning/screechure_snowfield.tres" id="spawn_16"]
+[ext_resource type="Resource" path="res://resources/spawning/screechure_desert.tres" id="spawn_17"]
 
 [node name="GameManager" type="Node" unique_id=1431068297]
 
@@ -24,11 +48,22 @@ size_2d_override = Vector2i(1920, 1080)
 size_2d_override_stretch = true
 render_target_update_mode = 4
 
+[node name="GameSession" type="Node" parent="Control/SubViewportContainer/SubViewport" unique_id=253214051]
+script = ExtResource("11_session")
+
+[node name="PlayerController" type="Node" parent="Control/SubViewportContainer/SubViewport" unique_id=846793002 node_paths=PackedStringArray("ShipActor", "BeamActor", "PlanetActor")]
+script = ExtResource("12_player")
+ShipActor = NodePath("../Ship/Ship")
+BeamActor = NodePath("../Ship/Ship/Beam/Beam")
+PlanetActor = NodePath("../Planet")
+
 [node name="IntroSlides" type="Control" parent="Control/SubViewportContainer/SubViewport" unique_id=877477135]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 1912.0
-offset_bottom = 1080.0
+offset_left = 111.0
+offset_top = -3.0
+offset_right = 2023.0
+offset_bottom = 1077.0
 script = ExtResource("1_4dhvd")
 
 [node name="placeholder_title" type="Label" parent="Control/SubViewportContainer/SubViewport/IntroSlides" unique_id=812082988]
@@ -58,13 +93,109 @@ offset_right = 1816.0
 offset_bottom = 824.0
 text = "Explanation for objectives"
 
-[node name="Planet" parent="Control/SubViewportContainer/SubViewport" unique_id=1426500986 instance=ExtResource("1_34tde")]
-position = Vector2(960, 6400)
-script = ExtResource("3_3dus2")
+[node name="Planet" parent="Control/SubViewportContainer/SubViewport" unique_id=1182448530 instance=ExtResource("2_qppyr")]
+position = Vector2(960, 3350)
+SurfaceDiameter = 5200.0
+
+[node name="CritterSpawner" parent="Control/SubViewportContainer/SubViewport" unique_id=682853831 node_paths=PackedStringArray("PlanetInstance") instance=ExtResource("5_spawner")]
+SpawnProfiles = Array[ExtResource("4_biy4i")]([ExtResource("spawn_0"), ExtResource("spawn_1"), ExtResource("spawn_2"), ExtResource("spawn_3"), ExtResource("spawn_4"), ExtResource("spawn_5"), ExtResource("spawn_6"), ExtResource("spawn_7"), ExtResource("spawn_8"), ExtResource("spawn_9"), ExtResource("spawn_10"), ExtResource("spawn_11"), ExtResource("spawn_12"), ExtResource("spawn_13"), ExtResource("spawn_14"), ExtResource("spawn_15"), ExtResource("spawn_16"), ExtResource("spawn_17")])
+MaxPopulation = 144
+ContinuousSpawning = true
+PlanetInstance = NodePath("../Planet")
+
+[node name="Ship" parent="Control/SubViewportContainer/SubViewport" unique_id=1937052776 instance=ExtResource("2_4dhvd")]
+position = Vector2(960, 600)
+
+[node name="Ship" parent="Control/SubViewportContainer/SubViewport/Ship" index="0" unique_id=2040208976 node_paths=PackedStringArray("PlanetInstance")]
+z_index = 1
+PlanetInstance = NodePath("../../Planet")
+
+[node name="Beam" parent="Control/SubViewportContainer/SubViewport/Ship/Ship/Beam" parent_id_path=PackedInt32Array(1937052776, 1856874238) index="0" unique_id=225202901 node_paths=PackedStringArray("PlanetInstance")]
+PlanetInstance = NodePath("../../../../Planet")
+
+[node name="Camera2D" parent="Control/SubViewportContainer/SubViewport/Ship/Ship" index="3" unique_id=1958900881]
+zoom = Vector2(1.4, 1.4)
 
 [node name="IntroSlideTimer" type="Timer" parent="Control/SubViewportContainer/SubViewport" unique_id=151718130]
 wait_time = 15.0
 autostart = true
 
+[node name="HUD" type="CanvasLayer" parent="Control/SubViewportContainer/SubViewport" unique_id=170956536 node_paths=PackedStringArray("Session", "CargoLabel", "CountdownLabel", "IntroSlides")]
+layer = 10
+script = ExtResource("13_hud")
+Session = NodePath("../GameSession")
+CargoLabel = NodePath("CargoCount")
+CountdownLabel = NodePath("BlackHoleCountdown")
+IntroSlides = NodePath("../IntroSlides")
+
+[node name="CargoCount" type="Label" parent="Control/SubViewportContainer/SubViewport/HUD" unique_id=1127080903]
+offset_left = 32.0
+offset_top = 24.0
+offset_right = 360.0
+offset_bottom = 72.0
+theme_override_colors/font_color = Color(0.65, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 30
+text = "RESCUED: 0"
+
+[node name="BlackHoleCountdown" type="Label" parent="Control/SubViewportContainer/SubViewport/HUD" unique_id=864060378]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -540.0
+offset_top = 24.0
+offset_right = -32.0
+offset_bottom = 72.0
+grow_horizontal = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 30
+text = "BLACK HOLE ETA: 03:00"
+horizontal_alignment = 2
+
+[node name="Controls" type="Label" parent="Control/SubViewportContainer/SubViewport/HUD" unique_id=2121287720]
+offset_left = 32.0
+offset_top = 76.0
+offset_right = 850.0
+offset_bottom = 110.0
+theme_override_colors/font_color = Color(0.8, 0.95, 1, 0.85)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 20
+text = "W/S or ↑/↓: hover    A/D or ←/→: orbit"
+
+[node name="BeamControls" type="Label" parent="Control/SubViewportContainer/SubViewport/HUD" unique_id=1223736909]
+offset_left = 32.0
+offset_top = 110.0
+offset_right = 1100.0
+offset_bottom = 145.0
+theme_override_colors/font_color = Color(0.65, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 22
+text = "Space / left click: ABSORB many"
+
+[node name="HoldControls" type="Label" parent="Control/SubViewportContainer/SubViewport/HUD" unique_id=1898581655]
+offset_left = 32.0
+offset_top = 145.0
+offset_right = 1100.0
+offset_bottom = 180.0
+theme_override_colors/font_color = Color(0.9, 0.65, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 22
+text = "E / right click: HOLD a critter"
+
 [connection signal="timeout" from="Control/SubViewportContainer/SubViewport/IntroSlideTimer" to="Control/SubViewportContainer/SubViewport/IntroSlides" method="OnIntroSlideTimeout"]
-[connection signal="timeout" from="Control/SubViewportContainer/SubViewport/IntroSlideTimer" to="Control/SubViewportContainer/SubViewport/Planet" method="OnPlanetTimeout"]
+[connection signal="CritterCollected" from="Control/SubViewportContainer/SubViewport/Ship/Ship/Beam/Beam" to="Control/SubViewportContainer/SubViewport/GameSession" method="RecordRescue" unbinds=1]
+[connection signal="IntroFinished" from="Control/SubViewportContainer/SubViewport/HUD" to="Control/SubViewportContainer/SubViewport/GameSession" method="StartSession"]
+
+[editable path="Control/SubViewportContainer/SubViewport/Planet"]
+[editable path="Control/SubViewportContainer/SubViewport/Ship"]
+[editable path="Control/SubViewportContainer/SubViewport/Ship/Ship/Beam"]

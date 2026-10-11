@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="SpeciesProfile" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/SpeciesProfile.cs" id="1"]
+[ext_resource type="SpriteFrames" path="res://resources/animations/metromome.tres" id="2"]
+
+[resource]
+resource_name = "metromome"
+script = ExtResource("1")
+Animations = ExtResource("2")
+SpriteHeight = 48.0
+FlightHeight = 0.0
+FacesRight = true

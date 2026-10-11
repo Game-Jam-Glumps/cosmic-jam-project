@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="HabitatProfile" format=3 uid="uid://ycmmp1x43ik7"]
+
+[ext_resource type="Script" uid="uid://cgg658nx6ndru" path="res://scripts/data/HabitatProfile.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+HabitatName = "Desert"
+CenterDegrees = 180.0
+SurfaceDegrees = 105.0
