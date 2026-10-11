@@ -22,6 +22,7 @@ public partial class GameSession : Node
     public bool HasArrived { get; private set; }
     public bool IsRunning { get; private set; }
     private readonly HashSet<ulong> _rescuedCritters = new();
+    private readonly HashSet<ulong> _deliveredObstacles = new();
 
     
     public override void _Ready()
@@ -47,6 +48,15 @@ public partial class GameSession : Node
             StringComparison.OrdinalIgnoreCase) ? 1000 : 50;
         Score += rarityPoints * (critter.IsShiny ? 5 : 1);
         EmitSignal(SignalName.RescueCountChanged, RescuedCount);
+        EmitSignal(SignalName.ScoreChanged, Score);
+    }
+
+    // Records one delivered tree without increasing the rescued-creature count.
+    public void RecordObstacleDelivery(Obstacle obstacle)
+    {
+        if (HasArrived || !GodotObject.IsInstanceValid(obstacle) || obstacle.IsQueuedForDeletion() ||
+            !_deliveredObstacles.Add(obstacle.GetInstanceId())) return;
+        Score -= 10;
         EmitSignal(SignalName.ScoreChanged, Score);
     }
 

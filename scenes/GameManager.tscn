@@ -12,6 +12,8 @@
 [ext_resource type="Resource" path="res://resources/spawning/jumpluff_snowfield.tres" id="26_wvq2v"]
 [ext_resource type="Resource" path="res://resources/spawning/jumpluff_grassland.tres" id="27_0j36w"]
 [ext_resource type="Resource" path="res://resources/spawning/robot_mascot.tres" id="28_wvq2v"]
+[ext_resource type="Script" uid="uid://c48eolwiu22e2" path="res://scripts/spawning/ObstacleSpawner.cs" id="25_ptb65"]
+[ext_resource type="PackedScene" uid="uid://buh4okktrihm4" path="res://scenes/obstacle.tscn" id="26_nt4xe"]
 [ext_resource type="Texture2D" uid="uid://dnjqniqdg516k" path="res://assets/Env/Asset_pine-tree.png" id="29_r1jpt"]
 [ext_resource type="Texture2D" uid="uid://b0vwgsqp18o4a" path="res://assets/Env/Asset_Mountain_BackGround.png" id="29_rq0se"]
 [ext_resource type="Texture2D" uid="uid://qj8w3xn0c1dm" path="res://assets/Env/Asset_ForestMountain.png" id="30_g2nle"]
@@ -81,27 +83,1678 @@ render_target_update_mode = 4
 script = ExtResource("11_session")
 StartOnReady = true
 
+[node name="Planet" parent="Control/SubViewportContainer/SubViewport" unique_id=1182448530 instance=ExtResource("2_qppyr")]
+position = Vector2(960, 3350)
+SurfaceDiameter = 5200.0
+
+[node name="Particles_Trees" type="CPUParticles2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/GlobalParticle" parent_id_path=PackedInt32Array(1182448530, 547905915) index="3" unique_id=1489506528]
+position = Vector2(-0.7343848, -0.67873347)
+amount = 12
+texture = ExtResource("29_r1jpt")
+lifetime = 6.0
+emission_shape = 6
+emission_ring_inner_radius = 250.0
+emission_ring_radius = 250.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 30.0
+angular_velocity_min = 10.0
+angular_velocity_max = 30.0
+angle_max = 360.0
+scale_amount_min = 0.0
+scale_amount_max = 0.01
+color_ramp = SubResource("Gradient_8dfcq")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/GlobalParticle" parent_id_path=PackedInt32Array(1182448530, 547905915) index="4" unique_id=574847060]
+position = Vector2(-235.96573, 243.52658)
+rotation = 0.732537
+amount = 34
+lifetime = 2.0
+emission_shape = 3
+emission_rect_extents = Vector2(60.05, 1)
+direction = Vector2(0.23, -0.51)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 36.03
+initial_velocity_max = 169.92
+
+[node name="Mountain" type="Node2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map" parent_id_path=PackedInt32Array(1182448530, 2098654404) index="3" unique_id=1068248602]
+
+[node name="AssetMountainBackGround7" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/Mountain" unique_id=2023448107]
+modulate = Color(0.46, 0.46, 0.46, 1)
+position = Vector2(-279, 41)
+rotation = -1.4977715
+scale = Vector2(0.24999999, 0.24999999)
+texture = ExtResource("29_rq0se")
+
+[node name="AssetMountainBackGround6" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/Mountain" unique_id=1297170942]
+modulate = Color(0.46, 0.46, 0.46, 1)
+position = Vector2(-221.00002, 159)
+rotation = -2.2590818
+scale = Vector2(0.24999999, 0.24999999)
+texture = ExtResource("29_rq0se")
+
+[node name="AssetMountainBackGround5" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/Mountain" unique_id=567105579]
+modulate = Color(0.46, 0.46, 0.46, 1)
+position = Vector2(-64, 258)
+rotation = 3.2377567
+scale = Vector2(0.24999999, 0.24999999)
+texture = ExtResource("29_rq0se")
+
+[node name="AssetMountainBackGround4" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/Mountain" unique_id=2146272904]
+modulate = Color(0.46, 0.46, 0.46, 1)
+position = Vector2(192, 111)
+rotation = 2.1620224
+scale = Vector2(0.24999999, 0.24999999)
+texture = ExtResource("29_rq0se")
+
+[node name="AssetMountainBackGround3" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/Mountain" unique_id=713672603]
+modulate = Color(0.46, 0.46, 0.46, 1)
+position = Vector2(211, -49)
+rotation = 1.4448708
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("29_rq0se")
+
+[node name="AssetMountainBackGround2" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/Mountain" unique_id=116768492]
+modulate = Color(0.46, 0.46, 0.46, 1)
+position = Vector2(-148, -199)
+rotation = -0.34349602
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("29_rq0se")
+
+[node name="AssetMountainBackGround" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/Mountain" unique_id=646873457]
+modulate = Color(0.46, 0.46, 0.46, 1)
+position = Vector2(-27, -246)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("29_rq0se")
+
+[node name="AssetForestMountain" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/Mountain" unique_id=2103416213]
+modulate = Color(0.93, 0.93, 0.93, 1)
+position = Vector2(-87.92584, -251.20947)
+rotation = -0.14604451
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("30_g2nle")
+
+[node name="AssetForestMountain2" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/Mountain" unique_id=1369225830]
+modulate = Color(0.93, 0.93, 0.93, 1)
+position = Vector2(239.07422, 15.790573)
+rotation = 1.5997279
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("30_g2nle")
+
+[node name="AssetDesertMountain" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/Mountain" unique_id=1991322459]
+modulate = Color(0.93, 0.93, 0.93, 1)
+position = Vector2(-269.92584, 123.79056)
+rotation = -1.9763792
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("31_r1jpt")
+
+[node name="AssetSnowMountain" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/Mountain" unique_id=528291277]
+modulate = Color(0.93, 0.93, 0.93, 1)
+position = Vector2(83.07419, 254.79056)
+rotation = -3.5421925
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("32_nlc08")
+
+[node name="AssetSnowMountain2" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/Mountain" unique_id=1799589737]
+modulate = Color(0.93, 0.93, 0.93, 1)
+position = Vector2(-117.92581, 259.79056)
+rotation = -2.748722
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("32_nlc08")
+
+[node name="Big\'GrassGroup" type="Node2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/Mountain" unique_id=2093299214]
+
+[node name="AddonGrass1" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/Mountain/Big\'GrassGroup" unique_id=240055789]
+position = Vector2(-159, -224)
+rotation = -0.4432643
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("33_aol2w")
+
+[node name="AddonGrass2" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/Mountain/Big\'GrassGroup" unique_id=685526556]
+position = Vector2(-149, -231)
+rotation = -0.42784032
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("33_aol2w")
+
+[node name="AddonGrass3" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/Mountain/Big\'GrassGroup" unique_id=485477581]
+position = Vector2(-18, -260)
+rotation = 0.09813076
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("33_aol2w")
+
+[node name="AddonGrass4" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/Mountain/Big\'GrassGroup" unique_id=668518838]
+position = Vector2(-2.000001, -260)
+rotation = 0.09813076
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("33_aol2w")
+
+[node name="AddonGrass5" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/Mountain/Big\'GrassGroup" unique_id=1826832013]
+position = Vector2(124.99999, -211)
+rotation = 0.58488953
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("33_aol2w")
+
+[node name="AddonGrass6" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/Mountain/Big\'GrassGroup" unique_id=1705413638]
+position = Vector2(220, -89)
+rotation = 1.1687158
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("33_aol2w")
+
+[node name="AddonGrass7" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/Mountain/Big\'GrassGroup" unique_id=1216653063]
+position = Vector2(225, -72)
+rotation = 1.266566
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("33_aol2w")
+
+[node name="AddonGrass8" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/Mountain/Big\'GrassGroup" unique_id=970283288]
+position = Vector2(228, -56)
+rotation = 1.266566
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("33_aol2w")
+
+[node name="AddonGrass9" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/Mountain/Big\'GrassGroup" unique_id=1276212011]
+position = Vector2(224, 91)
+rotation = 1.9102771
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("33_aol2w")
+
+[node name="AddonGrass10" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/Mountain/Big\'GrassGroup" unique_id=1010504960]
+position = Vector2(219, 99)
+rotation = 1.9102771
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("33_aol2w")
+
+[node name="ForeGround" type="Node2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map" parent_id_path=PackedInt32Array(1182448530, 2098654404) index="5" unique_id=918286371]
+
+[node name="GrassGroup1" type="Node2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround" unique_id=1075804727]
+
+[node name="Grass1" type="Node2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup1" unique_id=1976523970]
+
+[node name="AddonGrass2" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup1/Grass1" unique_id=755459517]
+position = Vector2(-185, -204)
+rotation = -0.6509226
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass3" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup1/Grass1" unique_id=905182877]
+position = Vector2(-178, -209)
+rotation = -0.60335875
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass4" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup1/Grass1" unique_id=361107447]
+position = Vector2(-171, -214)
+rotation = -0.5770131
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass5" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup1/Grass1" unique_id=1959743600]
+position = Vector2(-164, -218)
+rotation = -0.54816544
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass6" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup1/Grass1" unique_id=1489724479]
+position = Vector2(-157, -222)
+rotation = -0.52231777
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass7" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup1/Grass1" unique_id=1077072483]
+position = Vector2(-150, -226)
+rotation = -0.5137844
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass8" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup1/Grass1" unique_id=29880416]
+position = Vector2(-143, -230)
+rotation = -0.46786374
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="Grass2" type="Node2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup1" unique_id=519684723]
+position = Vector2(-2, 7)
+rotation = 0.2309665
+
+[node name="AddonGrass2" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup1/Grass2" unique_id=169106172]
+position = Vector2(-185, -204)
+rotation = -0.6509226
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass3" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup1/Grass2" unique_id=261305371]
+position = Vector2(-178, -209)
+rotation = -0.60335875
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass4" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup1/Grass2" unique_id=1123845703]
+position = Vector2(-171, -214)
+rotation = -0.5770131
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass5" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup1/Grass2" unique_id=1806484739]
+position = Vector2(-164, -218)
+rotation = -0.54816544
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass6" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup1/Grass2" unique_id=991658541]
+position = Vector2(-157, -222)
+rotation = -0.52231777
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass7" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup1/Grass2" unique_id=184474451]
+position = Vector2(-150, -226)
+rotation = -0.5137844
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass8" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup1/Grass2" unique_id=270512170]
+position = Vector2(-143, -230)
+rotation = -0.46786374
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="Grass3" type="Node2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup1" unique_id=1393547836]
+position = Vector2(2, 11)
+rotation = 0.4297589
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="AddonGrass2" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup1/Grass3" unique_id=1151084235]
+position = Vector2(-185, -204)
+rotation = -0.6509226
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass3" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup1/Grass3" unique_id=1409196010]
+position = Vector2(-178, -209)
+rotation = -0.60335875
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass4" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup1/Grass3" unique_id=578825295]
+position = Vector2(-171, -214)
+rotation = -0.5770131
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass5" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup1/Grass3" unique_id=1491461030]
+position = Vector2(-164, -218)
+rotation = -0.54816544
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass6" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup1/Grass3" unique_id=2016376090]
+position = Vector2(-157, -222)
+rotation = -0.52231777
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass7" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup1/Grass3" unique_id=58967940]
+position = Vector2(-150, -226)
+rotation = -0.5137844
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass8" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup1/Grass3" unique_id=1525843163]
+position = Vector2(-143, -230)
+rotation = -0.46786374
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="Grass4" type="Node2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup1" unique_id=542760767]
+position = Vector2(-9, 17)
+rotation = 0.6806387
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="AddonGrass2" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup1/Grass4" unique_id=509191882]
+position = Vector2(-185, -204)
+rotation = -0.6509226
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass3" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup1/Grass4" unique_id=212673150]
+position = Vector2(-178, -209)
+rotation = -0.60335875
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass4" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup1/Grass4" unique_id=484984942]
+position = Vector2(-171, -214)
+rotation = -0.5770131
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass5" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup1/Grass4" unique_id=725940616]
+position = Vector2(-164, -218)
+rotation = -0.54816544
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass6" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup1/Grass4" unique_id=144947495]
+position = Vector2(-157, -222)
+rotation = -0.52231777
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass7" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup1/Grass4" unique_id=658671927]
+position = Vector2(-150, -226)
+rotation = -0.5137844
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass8" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup1/Grass4" unique_id=1301306165]
+position = Vector2(-143, -230)
+rotation = -0.46786374
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="Grass5" type="Node2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup1" unique_id=116781762]
+position = Vector2(-8, 22)
+rotation = 0.88497204
+
+[node name="AddonGrass2" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup1/Grass5" unique_id=740204526]
+position = Vector2(-185, -204)
+rotation = -0.6509226
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass3" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup1/Grass5" unique_id=1759454992]
+position = Vector2(-178, -209)
+rotation = -0.60335875
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass4" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup1/Grass5" unique_id=1273087302]
+position = Vector2(-171, -214)
+rotation = -0.5770131
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass5" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup1/Grass5" unique_id=714798633]
+position = Vector2(-164, -218)
+rotation = -0.54816544
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass6" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup1/Grass5" unique_id=474392358]
+position = Vector2(-157, -222)
+rotation = -0.52231777
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass7" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup1/Grass5" unique_id=2069111291]
+position = Vector2(-150, -226)
+rotation = -0.5137844
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass8" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup1/Grass5" unique_id=1272960162]
+position = Vector2(-143, -230)
+rotation = -0.46786374
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="Grass6" type="Node2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup1" unique_id=1754956581]
+position = Vector2(-14, 26)
+rotation = 1.1054667
+
+[node name="AddonGrass2" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup1/Grass6" unique_id=1764891243]
+position = Vector2(-185, -204)
+rotation = -0.6509226
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass3" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup1/Grass6" unique_id=287657027]
+position = Vector2(-178, -209)
+rotation = -0.60335875
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass4" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup1/Grass6" unique_id=1463650863]
+position = Vector2(-171, -214)
+rotation = -0.5770131
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass5" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup1/Grass6" unique_id=1486402819]
+position = Vector2(-164, -218)
+rotation = -0.54816544
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass6" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup1/Grass6" unique_id=1451056867]
+position = Vector2(-157, -222)
+rotation = -0.52231777
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass7" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup1/Grass6" unique_id=1442878981]
+position = Vector2(-150, -226)
+rotation = -0.5137844
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass8" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup1/Grass6" unique_id=575521903]
+position = Vector2(-143, -230)
+rotation = -0.46786374
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="Grass7" type="Node2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup1" unique_id=1312746020]
+position = Vector2(-12.000004, -18.999985)
+rotation = -0.7856964
+
+[node name="AddonGrass2" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup1/Grass7" unique_id=1724089265]
+position = Vector2(-185, -204)
+rotation = -0.6509226
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass3" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup1/Grass7" unique_id=477361084]
+position = Vector2(-178, -209)
+rotation = -0.60335875
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass4" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup1/Grass7" unique_id=1625390853]
+position = Vector2(-171, -214)
+rotation = -0.5770131
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass5" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup1/Grass7" unique_id=873898891]
+position = Vector2(-164, -218)
+rotation = -0.54816544
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass6" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup1/Grass7" unique_id=1820288650]
+position = Vector2(-157, -222)
+rotation = -0.52231777
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass7" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup1/Grass7" unique_id=1545849381]
+position = Vector2(-150, -226)
+rotation = -0.5137844
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass8" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup1/Grass7" unique_id=549241532]
+position = Vector2(-143, -230)
+rotation = -0.46786374
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="Grass8" type="Node2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup1" unique_id=1209249758]
+position = Vector2(-12.000004, -18.999985)
+rotation = -0.7856964
+scale = Vector2(0.98, 0.98)
+
+[node name="AddonGrass2" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup1/Grass8" unique_id=2028703674]
+position = Vector2(-185, -204)
+rotation = -0.6509226
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass3" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup1/Grass8" unique_id=378552819]
+position = Vector2(-178, -209)
+rotation = -0.60335875
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass4" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup1/Grass8" unique_id=2020431361]
+position = Vector2(-171, -214)
+rotation = -0.5770131
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass5" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup1/Grass8" unique_id=1845037086]
+position = Vector2(-164, -218)
+rotation = -0.54816544
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass6" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup1/Grass8" unique_id=2004720718]
+position = Vector2(-157, -222)
+rotation = -0.52231777
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass7" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup1/Grass8" unique_id=83153195]
+position = Vector2(-150, -226)
+rotation = -0.5137844
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass8" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup1/Grass8" unique_id=1515394988]
+position = Vector2(-143, -230)
+rotation = -0.46786374
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="GrassGroup2" type="Node2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround" unique_id=2036572332]
+position = Vector2(-23, 33)
+rotation = 1.55725
+
+[node name="Grass2" type="Node2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup2" unique_id=820742675]
+position = Vector2(-2, 7)
+rotation = 0.2309665
+
+[node name="AddonGrass4" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup2/Grass2" unique_id=1608156949]
+position = Vector2(-171, -214)
+rotation = -0.5770131
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass5" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup2/Grass2" unique_id=333076580]
+position = Vector2(-164, -218)
+rotation = -0.54816544
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass6" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup2/Grass2" unique_id=1139522709]
+position = Vector2(-157, -222)
+rotation = -0.52231777
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass7" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup2/Grass2" unique_id=1077003967]
+position = Vector2(-150, -226)
+rotation = -0.5137844
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass8" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup2/Grass2" unique_id=381927959]
+position = Vector2(-143, -230)
+rotation = -0.46786374
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="Grass3" type="Node2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup2" unique_id=1910961817]
+position = Vector2(2, 11)
+rotation = 0.4297589
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="AddonGrass2" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup2/Grass3" unique_id=1997044542]
+position = Vector2(-185, -204)
+rotation = -0.6509226
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass3" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup2/Grass3" unique_id=1698432602]
+position = Vector2(-178, -209)
+rotation = -0.60335875
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass4" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup2/Grass3" unique_id=1948284831]
+position = Vector2(-171, -214)
+rotation = -0.5770131
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass5" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup2/Grass3" unique_id=2055138146]
+position = Vector2(-164, -218)
+rotation = -0.54816544
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass6" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup2/Grass3" unique_id=1671448748]
+position = Vector2(-157, -222)
+rotation = -0.52231777
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass7" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup2/Grass3" unique_id=584597850]
+position = Vector2(-150, -226)
+rotation = -0.5137844
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass8" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup2/Grass3" unique_id=887895722]
+position = Vector2(-143, -230)
+rotation = -0.46786374
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="Grass4" type="Node2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup2" unique_id=843755196]
+position = Vector2(-9, 17)
+rotation = 0.6806387
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="AddonGrass2" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup2/Grass4" unique_id=146249755]
+position = Vector2(-185, -204)
+rotation = -0.6509226
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass3" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup2/Grass4" unique_id=1547825178]
+position = Vector2(-178, -209)
+rotation = -0.60335875
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass4" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup2/Grass4" unique_id=2116624118]
+position = Vector2(-171, -214)
+rotation = -0.5770131
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass5" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup2/Grass4" unique_id=2012496160]
+position = Vector2(-164, -218)
+rotation = -0.54816544
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass6" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup2/Grass4" unique_id=563373025]
+position = Vector2(-157, -222)
+rotation = -0.52231777
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass7" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup2/Grass4" unique_id=2134412055]
+position = Vector2(-150, -226)
+rotation = -0.5137844
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass8" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup2/Grass4" unique_id=1414902775]
+position = Vector2(-143, -230)
+rotation = -0.46786374
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="Grass5" type="Node2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup2" unique_id=102565069]
+position = Vector2(-8, 22)
+rotation = 0.88497204
+
+[node name="AddonGrass2" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup2/Grass5" unique_id=1257423415]
+position = Vector2(-185, -204)
+rotation = -0.6509226
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass3" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup2/Grass5" unique_id=1351759530]
+position = Vector2(-178, -209)
+rotation = -0.60335875
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass4" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup2/Grass5" unique_id=216756733]
+position = Vector2(-171, -214)
+rotation = -0.5770131
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass5" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup2/Grass5" unique_id=2037839458]
+position = Vector2(-164, -218)
+rotation = -0.54816544
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass6" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup2/Grass5" unique_id=1822806218]
+position = Vector2(-157, -222)
+rotation = -0.52231777
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass7" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup2/Grass5" unique_id=1953273006]
+position = Vector2(-150, -226)
+rotation = -0.5137844
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="Grass6" type="Node2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup2" unique_id=685624172]
+position = Vector2(-27.550379, -33.376244)
+rotation = -1.4072806
+
+[node name="AddonGrass4" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup2/Grass6" unique_id=1935870722]
+position = Vector2(-171, -214)
+rotation = -0.5770131
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass5" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup2/Grass6" unique_id=1369417019]
+position = Vector2(-164, -218)
+rotation = -0.54816544
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass6" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup2/Grass6" unique_id=595441674]
+position = Vector2(-157, -222)
+rotation = -0.52231777
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass7" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup2/Grass6" unique_id=1084233850]
+position = Vector2(-150, -226)
+rotation = -0.5137844
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass8" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup2/Grass6" unique_id=1203505772]
+position = Vector2(-143, -230)
+rotation = -0.46786374
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="GrassGroup3" type="Node2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround" unique_id=2102130326]
+position = Vector2(0, 9)
+scale = Vector2(0.98, 0.98)
+
+[node name="Grass1" type="Node2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup3" unique_id=1541549351]
+
+[node name="AddonGrass3" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup3/Grass1" unique_id=883268501]
+position = Vector2(-178, -209)
+rotation = -0.60335875
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass4" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup3/Grass1" unique_id=1624957647]
+position = Vector2(-171, -214)
+rotation = -0.5770131
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass5" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup3/Grass1" unique_id=1827395185]
+position = Vector2(-164, -218)
+rotation = -0.54816544
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass6" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup3/Grass1" unique_id=960998146]
+position = Vector2(-157, -222)
+rotation = -0.52231777
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass7" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup3/Grass1" unique_id=59284261]
+position = Vector2(-150, -226)
+rotation = -0.5137844
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass8" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup3/Grass1" unique_id=2118077412]
+position = Vector2(-143, -230)
+rotation = -0.46786374
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="Grass2" type="Node2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup3" unique_id=2133419840]
+position = Vector2(-2, 7)
+rotation = 0.2309665
+
+[node name="AddonGrass2" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup3/Grass2" unique_id=1717501791]
+position = Vector2(-185, -204)
+rotation = -0.6509226
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass3" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup3/Grass2" unique_id=46832271]
+position = Vector2(-178, -209)
+rotation = -0.60335875
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass4" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup3/Grass2" unique_id=1704094813]
+position = Vector2(-171, -214)
+rotation = -0.5770131
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass5" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup3/Grass2" unique_id=608644336]
+position = Vector2(-164, -218)
+rotation = -0.54816544
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass6" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup3/Grass2" unique_id=569643875]
+position = Vector2(-157, -222)
+rotation = -0.52231777
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass7" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup3/Grass2" unique_id=134561896]
+position = Vector2(-150, -226)
+rotation = -0.5137844
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass8" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup3/Grass2" unique_id=1408744112]
+position = Vector2(-143, -230)
+rotation = -0.46786374
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="Grass3" type="Node2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup3" unique_id=1435767673]
+position = Vector2(2, 11)
+rotation = 0.4297589
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="AddonGrass2" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup3/Grass3" unique_id=1031580685]
+position = Vector2(-185, -204)
+rotation = -0.6509226
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass3" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup3/Grass3" unique_id=1364238090]
+position = Vector2(-178, -209)
+rotation = -0.60335875
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass4" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup3/Grass3" unique_id=28122899]
+position = Vector2(-171, -214)
+rotation = -0.5770131
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass5" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup3/Grass3" unique_id=1146665280]
+position = Vector2(-164, -218)
+rotation = -0.54816544
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass6" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup3/Grass3" unique_id=1242357281]
+position = Vector2(-157, -222)
+rotation = -0.52231777
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass7" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup3/Grass3" unique_id=607814961]
+position = Vector2(-150, -226)
+rotation = -0.5137844
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass8" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup3/Grass3" unique_id=1631066125]
+position = Vector2(-143, -230)
+rotation = -0.46786374
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="Grass4" type="Node2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup3" unique_id=1158793225]
+position = Vector2(-9, 17)
+rotation = 0.6806387
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="AddonGrass2" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup3/Grass4" unique_id=1178973357]
+position = Vector2(-185, -204)
+rotation = -0.6509226
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass3" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup3/Grass4" unique_id=2015378370]
+position = Vector2(-178, -209)
+rotation = -0.60335875
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass4" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup3/Grass4" unique_id=619263258]
+position = Vector2(-171, -214)
+rotation = -0.5770131
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass5" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup3/Grass4" unique_id=2027869776]
+position = Vector2(-164, -218)
+rotation = -0.54816544
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass6" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup3/Grass4" unique_id=711202195]
+position = Vector2(-157, -222)
+rotation = -0.52231777
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass7" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup3/Grass4" unique_id=1468364847]
+position = Vector2(-150, -226)
+rotation = -0.5137844
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass8" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup3/Grass4" unique_id=1845507947]
+position = Vector2(-143, -230)
+rotation = -0.46786374
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="Grass5" type="Node2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup3" unique_id=351280265]
+position = Vector2(-8, 22)
+rotation = 0.88497204
+
+[node name="AddonGrass2" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup3/Grass5" unique_id=2140530925]
+position = Vector2(-185, -204)
+rotation = -0.6509226
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass3" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup3/Grass5" unique_id=1307066427]
+position = Vector2(-178, -209)
+rotation = -0.60335875
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass4" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup3/Grass5" unique_id=604829654]
+position = Vector2(-171, -214)
+rotation = -0.5770131
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass5" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup3/Grass5" unique_id=758708706]
+position = Vector2(-164, -218)
+rotation = -0.54816544
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass6" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup3/Grass5" unique_id=1321768093]
+position = Vector2(-157, -222)
+rotation = -0.52231777
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass7" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup3/Grass5" unique_id=1159851343]
+position = Vector2(-150, -226)
+rotation = -0.5137844
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass8" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup3/Grass5" unique_id=1750142441]
+position = Vector2(-143, -230)
+rotation = -0.46786374
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="Grass6" type="Node2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup3" unique_id=371924333]
+position = Vector2(-14, 26)
+rotation = 1.1054667
+
+[node name="AddonGrass2" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup3/Grass6" unique_id=603061870]
+position = Vector2(-185, -204)
+rotation = -0.6509226
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass3" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup3/Grass6" unique_id=1436768579]
+position = Vector2(-178, -209)
+rotation = -0.60335875
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass4" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup3/Grass6" unique_id=593433224]
+position = Vector2(-171, -214)
+rotation = -0.5770131
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass5" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup3/Grass6" unique_id=751437210]
+position = Vector2(-164, -218)
+rotation = -0.54816544
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass6" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup3/Grass6" unique_id=668312826]
+position = Vector2(-157, -222)
+rotation = -0.52231777
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass7" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup3/Grass6" unique_id=976705970]
+position = Vector2(-150, -226)
+rotation = -0.5137844
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="GrassGroup4" type="Node2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround" unique_id=1601037777]
+position = Vector2(-31, 35)
+rotation = 1.55725
+scale = Vector2(0.98, 0.98)
+
+[node name="Grass2" type="Node2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup4" unique_id=1280647724]
+position = Vector2(-2, 7)
+rotation = 0.2309665
+
+[node name="AddonGrass4" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup4/Grass2" unique_id=274775444]
+position = Vector2(-171, -214)
+rotation = -0.5770131
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass5" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup4/Grass2" unique_id=1902136881]
+position = Vector2(-164, -218)
+rotation = -0.54816544
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass6" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup4/Grass2" unique_id=42865074]
+position = Vector2(-157, -222)
+rotation = -0.52231777
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass7" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup4/Grass2" unique_id=1580541454]
+position = Vector2(-150, -226)
+rotation = -0.5137844
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass8" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup4/Grass2" unique_id=782683209]
+position = Vector2(-143, -230)
+rotation = -0.46786374
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="Grass3" type="Node2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup4" unique_id=1154867025]
+position = Vector2(2, 11)
+rotation = 0.4297589
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="AddonGrass2" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup4/Grass3" unique_id=958391058]
+position = Vector2(-185, -204)
+rotation = -0.6509226
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass3" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup4/Grass3" unique_id=502305392]
+position = Vector2(-178, -209)
+rotation = -0.60335875
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass4" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup4/Grass3" unique_id=1430679984]
+position = Vector2(-171, -214)
+rotation = -0.5770131
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass5" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup4/Grass3" unique_id=2062579666]
+position = Vector2(-164, -218)
+rotation = -0.54816544
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass6" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup4/Grass3" unique_id=1371404171]
+position = Vector2(-157, -222)
+rotation = -0.52231777
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass7" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup4/Grass3" unique_id=772396437]
+position = Vector2(-150, -226)
+rotation = -0.5137844
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass8" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup4/Grass3" unique_id=348429863]
+position = Vector2(-143, -230)
+rotation = -0.46786374
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="Grass4" type="Node2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup4" unique_id=1528099071]
+position = Vector2(-9, 17)
+rotation = 0.6806387
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="AddonGrass2" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup4/Grass4" unique_id=981032991]
+position = Vector2(-185, -204)
+rotation = -0.6509226
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass3" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup4/Grass4" unique_id=1560086617]
+position = Vector2(-178, -209)
+rotation = -0.60335875
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass4" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup4/Grass4" unique_id=216770592]
+position = Vector2(-171, -214)
+rotation = -0.5770131
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass5" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup4/Grass4" unique_id=1791424493]
+position = Vector2(-164, -218)
+rotation = -0.54816544
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass6" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup4/Grass4" unique_id=475906597]
+position = Vector2(-157, -222)
+rotation = -0.52231777
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass7" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup4/Grass4" unique_id=1275461573]
+position = Vector2(-150, -226)
+rotation = -0.5137844
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass8" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup4/Grass4" unique_id=223207652]
+position = Vector2(-143, -230)
+rotation = -0.46786374
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="Grass5" type="Node2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup4" unique_id=606252065]
+position = Vector2(-8, 22)
+rotation = 0.88497204
+
+[node name="AddonGrass2" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup4/Grass5" unique_id=275996790]
+position = Vector2(-185, -204)
+rotation = -0.6509226
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass3" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup4/Grass5" unique_id=554727448]
+position = Vector2(-178, -209)
+rotation = -0.60335875
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass4" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup4/Grass5" unique_id=1336074677]
+position = Vector2(-171, -214)
+rotation = -0.5770131
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass5" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup4/Grass5" unique_id=1896602803]
+position = Vector2(-164, -218)
+rotation = -0.54816544
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="AddonGrass6" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/GrassGroup4/Grass5" unique_id=1341713390]
+position = Vector2(-157, -222)
+rotation = -0.52231777
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("34_ddpch")
+
+[node name="FlowersGroup" type="Node2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround" unique_id=1650487275]
+
+[node name="AddonFlower2" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/FlowersGroup" unique_id=244963585]
+position = Vector2(-165, -203)
+rotation = -0.5556292
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("35_gbt41")
+
+[node name="AddonFlower3" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/FlowersGroup" unique_id=396119230]
+position = Vector2(-154, -200)
+rotation = -0.41349632
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("35_gbt41")
+
+[node name="AddonFlower4" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/FlowersGroup" unique_id=1502754044]
+position = Vector2(-170, -191)
+rotation = -0.41349632
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("35_gbt41")
+
+[node name="AddonFlower5" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/FlowersGroup" unique_id=2023078371]
+position = Vector2(-176, -197)
+rotation = -0.41349632
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("35_gbt41")
+
+[node name="AddonFlower1" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/FlowersGroup" unique_id=2089459019]
+position = Vector2(-171, -199)
+rotation = -0.6132655
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("36_utgnh")
+
+[node name="AddonFlower6" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/FlowersGroup" unique_id=1732037776]
+position = Vector2(-159, -197)
+rotation = -0.6132655
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("36_utgnh")
+
+[node name="AddonFlower7" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/FlowersGroup" unique_id=1887960227]
+position = Vector2(-161, -205)
+rotation = -0.6132655
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("36_utgnh")
+
+[node name="FlowersGroup2" type="Node2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround" unique_id=1382929142]
+position = Vector2(3, 37)
+rotation = 1.1285621
+
+[node name="AddonFlower2" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/FlowersGroup2" unique_id=487691199]
+position = Vector2(-165, -203)
+rotation = -0.5556292
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("35_gbt41")
+
+[node name="AddonFlower3" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/FlowersGroup2" unique_id=1943109726]
+position = Vector2(-154, -200)
+rotation = -0.41349632
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("35_gbt41")
+
+[node name="AddonFlower4" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/FlowersGroup2" unique_id=636804439]
+position = Vector2(-170, -191)
+rotation = -0.41349632
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("35_gbt41")
+
+[node name="AddonFlower5" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/FlowersGroup2" unique_id=1369034522]
+position = Vector2(-176, -197)
+rotation = -0.41349632
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("35_gbt41")
+
+[node name="AddonFlower1" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/FlowersGroup2" unique_id=1156576538]
+position = Vector2(-171, -199)
+rotation = -0.6132655
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("36_utgnh")
+
+[node name="AddonFlower6" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/FlowersGroup2" unique_id=728794972]
+position = Vector2(-159, -197)
+rotation = -0.6132655
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("36_utgnh")
+
+[node name="AddonFlower7" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/FlowersGroup2" unique_id=1569734063]
+position = Vector2(-161, -205)
+rotation = -0.6132655
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("36_utgnh")
+
+[node name="FlowersGroup3" type="Node2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround" unique_id=608707371]
+position = Vector2(-23, 47)
+rotation = 1.7689689
+
+[node name="AddonFlower2" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/FlowersGroup3" unique_id=1929952585]
+position = Vector2(-165, -203)
+rotation = -0.5556292
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("35_gbt41")
+
+[node name="AddonFlower3" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/FlowersGroup3" unique_id=867980959]
+position = Vector2(-154, -200)
+rotation = -0.41349632
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("35_gbt41")
+
+[node name="AddonFlower4" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/FlowersGroup3" unique_id=117353668]
+position = Vector2(-170, -191)
+rotation = -0.41349632
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("35_gbt41")
+
+[node name="AddonFlower5" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/FlowersGroup3" unique_id=1937536487]
+position = Vector2(-176, -197)
+rotation = -0.41349632
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("35_gbt41")
+
+[node name="AddonFlower1" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/FlowersGroup3" unique_id=1832713002]
+position = Vector2(-171, -199)
+rotation = -0.6132655
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("36_utgnh")
+
+[node name="AddonFlower6" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/FlowersGroup3" unique_id=1937016768]
+position = Vector2(-159, -197)
+rotation = -0.6132655
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("36_utgnh")
+
+[node name="AddonFlower7" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/FlowersGroup3" unique_id=793602645]
+position = Vector2(-161, -205)
+rotation = -0.6132655
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("36_utgnh")
+
+[node name="FlowersGroup4" type="Node2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround" unique_id=813287875]
+position = Vector2(-13.000002, -36)
+rotation = -0.8671991
+
+[node name="AddonFlower2" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/FlowersGroup4" unique_id=1451468151]
+position = Vector2(-165, -203)
+rotation = -0.5556292
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("35_gbt41")
+
+[node name="AddonFlower3" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/FlowersGroup4" unique_id=1369628076]
+position = Vector2(-154, -200)
+rotation = -0.41349632
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("35_gbt41")
+
+[node name="AddonFlower4" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/FlowersGroup4" unique_id=875414323]
+position = Vector2(-170, -191)
+rotation = -0.41349632
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("35_gbt41")
+
+[node name="AddonFlower5" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/FlowersGroup4" unique_id=1018872245]
+position = Vector2(-176, -197)
+rotation = -0.41349632
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("35_gbt41")
+
+[node name="AddonFlower1" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/FlowersGroup4" unique_id=1129721036]
+position = Vector2(-171, -199)
+rotation = -0.6132655
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("36_utgnh")
+
+[node name="AddonFlower6" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/FlowersGroup4" unique_id=560713458]
+position = Vector2(-159, -197)
+rotation = -0.6132655
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("36_utgnh")
+
+[node name="AddonFlower7" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/FlowersGroup4" unique_id=817509807]
+position = Vector2(-161, -205)
+rotation = -0.6132655
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("36_utgnh")
+
+[node name="AssetIgloo" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround" unique_id=619404781]
+position = Vector2(157.00002, 194)
+rotation = 2.4048493
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("37_w68e7")
+
+[node name="Water" type="Node2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround" unique_id=690975157]
+
+[node name="AddonWaterPlant" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/Water" unique_id=1850822523]
+position = Vector2(124, -189)
+rotation = 0.7202529
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("38_0pxqa")
+
+[node name="AddonWaterPlant2" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/Water" unique_id=2120245982]
+position = Vector2(129, -186)
+rotation = 0.7202529
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("38_0pxqa")
+
+[node name="AddonWaterPlant3" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/Water" unique_id=1419242705]
+position = Vector2(198, -94)
+rotation = 1.2294263
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("38_0pxqa")
+
+[node name="AddonWaterPlant4" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/Water" unique_id=966795064]
+position = Vector2(195, -100)
+rotation = 1.2294263
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("38_0pxqa")
+
+[node name="AddonVein1" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/Water" unique_id=1742189803]
+position = Vector2(117, -179.99998)
+rotation = 0.77180666
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("39_0raah")
+
+[node name="AddonVein2" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/Water" unique_id=779599178]
+position = Vector2(134, -167.99998)
+rotation = 0.77180666
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("39_0raah")
+
+[node name="AddonVein3" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/Water" unique_id=1457558396]
+position = Vector2(150, -151.99998)
+rotation = 0.87999713
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("39_0raah")
+
+[node name="AddonVein4" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/Water" unique_id=1285477643]
+position = Vector2(159, -138.99998)
+rotation = 0.95705384
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("39_0raah")
+
+[node name="AddonVein5" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/Water" unique_id=1012739775]
+position = Vector2(156, -143.99998)
+rotation = 0.95705384
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("39_0raah")
+
+[node name="AddonVein6" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/Water" unique_id=492354224]
+position = Vector2(179, -111.999985)
+rotation = 0.95705384
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("39_0raah")
+
+[node name="AddonVein7" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/Water" unique_id=199674128]
+position = Vector2(181, -107.999985)
+rotation = 1.1512088
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("39_0raah")
+
+[node name="AddonVein8" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/Water" unique_id=487808357]
+position = Vector2(189, -86.999985)
+rotation = 1.1680895
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("39_0raah")
+
+[node name="AddonVein9" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/Water" unique_id=104929123]
+position = Vector2(-264, 33.00003)
+rotation = -1.6397723
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("39_0raah")
+
+[node name="AddonVein10" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/Water" unique_id=1505260490]
+position = Vector2(-264, -22.99997)
+rotation = -1.4681222
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("39_0raah")
+
+[node name="AddonVein11" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/Water" unique_id=1773623133]
+position = Vector2(-267, 4.0000305)
+rotation = -1.6397723
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("39_0raah")
+
+[node name="AddonVein12" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/Water" unique_id=1314381141]
+position = Vector2(-266, 12.0000305)
+rotation = -1.6397723
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("39_0raah")
+
+[node name="Desert" type="Node2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround" unique_id=1896970692]
+
+[node name="AddonCactus1" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/Desert" unique_id=1522487520]
+position = Vector2(-249, -131)
+rotation = -1.0185217
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("40_qdky5")
+
+[node name="AddonCactus2" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/Desert" unique_id=18806755]
+position = Vector2(-238, -147)
+rotation = -1.0185217
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("40_qdky5")
+
+[node name="AddonCactus3" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/Desert" unique_id=1034392998]
+position = Vector2(-243, -150)
+rotation = -1.0185217
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("40_qdky5")
+
+[node name="AddonCactus4" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/Desert" unique_id=518323462]
+position = Vector2(-209, -182)
+rotation = -0.7382443
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("40_qdky5")
+
+[node name="AddonCactus5" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/Desert" unique_id=442015066]
+position = Vector2(-284, 55.999985)
+rotation = -1.7708836
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("40_qdky5")
+
+[node name="AddonCactus6" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/Desert" unique_id=582833844]
+position = Vector2(-209, 192.99998)
+rotation = -2.3428674
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("40_qdky5")
+
+[node name="AddonCactus7" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/Desert" unique_id=576158996]
+position = Vector2(-254, 134.99998)
+rotation = -2.0996552
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("40_qdky5")
+
+[node name="AddonCactus8" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/Desert" unique_id=625750039]
+position = Vector2(-204, 195)
+rotation = -2.4639168
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("41_g13cn")
+
+[node name="AddonCactus9" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/Desert" unique_id=1472120298]
+position = Vector2(-255, -116)
+rotation = -1.1189679
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("41_g13cn")
+
+[node name="AddonBone1" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/Desert" unique_id=2042823024]
+modulate = Color(0.89, 0.89, 0.89, 1)
+position = Vector2(-224, -162)
+rotation = -1.1477798
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("42_y5nyl")
+
+[node name="AddonBone2" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/Desert" unique_id=1691460336]
+modulate = Color(0.89, 0.89, 0.89, 1)
+position = Vector2(-263, -101)
+rotation = -1.1477798
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("42_y5nyl")
+
+[node name="AddonBone3" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/Desert" unique_id=1583960966]
+modulate = Color(0.89, 0.89, 0.89, 1)
+position = Vector2(-271, 107)
+rotation = -2.3137722
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("42_y5nyl")
+
+[node name="AddonBone4" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/Desert" unique_id=2033995421]
+position = Vector2(-268, 103)
+rotation = -0.6424454
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("43_5606y")
+
+[node name="AddonBone5" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/Desert" unique_id=1262877315]
+position = Vector2(-266, 107)
+rotation = -0.7258306
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("43_5606y")
+
+[node name="AddonBone6" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/Desert" unique_id=952235689]
+position = Vector2(-268, 106)
+rotation = -1.0692
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("43_5606y")
+
+[node name="AddonBone7" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/Desert" unique_id=1571608196]
+position = Vector2(-269, 104)
+rotation = -0.15425417
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("43_5606y")
+
+[node name="AddonBone8" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/Desert" unique_id=1281777310]
+position = Vector2(-269, 107)
+rotation = -1.6904526
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("43_5606y")
+
+[node name="AddonCactus10" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/ForeGround/Desert" unique_id=1466644773]
+position = Vector2(-259, 137.99998)
+rotation = -2.0842988
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("40_qdky5")
+
+[node name="SkyboxCloud4" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/Cloud" parent_id_path=PackedInt32Array(1182448530, 1870346876) index="3" unique_id=1879090999]
+modulate = Color(1, 1, 1, 0.85882354)
+position = Vector2(311.99997, 383)
+rotation = 1.2781055
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("44_g2nle")
+
+[node name="SkyboxCloud5" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/Cloud" parent_id_path=PackedInt32Array(1182448530, 1870346876) index="4" unique_id=692003677]
+modulate = Color(1, 1, 1, 0.85882354)
+position = Vector2(326.99997, 430)
+rotation = 1.5851883
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("44_g2nle")
+
+[node name="SkyboxCloud6" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/Cloud" parent_id_path=PackedInt32Array(1182448530, 1870346876) index="5" unique_id=1996713696]
+modulate = Color(1, 1, 1, 0.85882354)
+position = Vector2(-302.99997, 553)
+rotation = 4.31474
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("44_g2nle")
+
+[node name="SkyboxCloud7" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/Cloud" parent_id_path=PackedInt32Array(1182448530, 1870346876) index="6" unique_id=1835085826]
+modulate = Color(1, 1, 1, 0.85882354)
+position = Vector2(-317.00003, 449)
+rotation = 4.724154
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("44_g2nle")
+
+[node name="SkyboxCloud8" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/Cloud" parent_id_path=PackedInt32Array(1182448530, 1870346876) index="7" unique_id=676710944]
+modulate = Color(1, 1, 1, 0.85882354)
+position = Vector2(-91.999985, 755)
+rotation = 3.3364236
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("44_g2nle")
+
+[node name="SkyboxCloud9" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/Cloud" parent_id_path=PackedInt32Array(1182448530, 1870346876) index="8" unique_id=583931881]
+modulate = Color(1, 1, 1, 0.85882354)
+position = Vector2(51.000015, 773)
+rotation = 3.05666
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("44_g2nle")
+
+[node name="SkyboxCloud10" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport/Planet/Obj/Map/Cloud" parent_id_path=PackedInt32Array(1182448530, 1870346876) index="9" unique_id=1794897461]
+modulate = Color(1, 1, 1, 0.85882354)
+position = Vector2(-40.999977, 777)
+rotation = 3.2660546
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("44_g2nle")
+
 [node name="PlayerController" type="Node" parent="Control/SubViewportContainer/SubViewport" unique_id=846793002 node_paths=PackedStringArray("ShipActor", "BeamActor", "PlanetActor")]
 script = ExtResource("12_player")
 ShipActor = NodePath("../Ship/Ship")
 BeamActor = NodePath("../Ship/Ship/Beam/Beam")
-PlanetActor = NodePath("../../../../Planet")
+PlanetActor = NodePath("../Planet")
 
 [node name="CritterSpawner" parent="Control/SubViewportContainer/SubViewport" unique_id=682853831 node_paths=PackedStringArray("PlanetInstance") instance=ExtResource("5_spawner")]
+z_index = 1
 PlanetInstance = NodePath("../Planet")
 SpawnProfiles = Array[ExtResource("4_biy4i")]([ExtResource("spawn_0"), ExtResource("spawn_1"), ExtResource("spawn_2"), ExtResource("10_nt4xe"), ExtResource("spawn_4"), ExtResource("spawn_5"), ExtResource("spawn_6"), ExtResource("spawn_7"), ExtResource("spawn_8"), ExtResource("spawn_9"), ExtResource("spawn_10"), ExtResource("spawn_11"), ExtResource("spawn_12"), ExtResource("spawn_13"), ExtResource("spawn_14"), ExtResource("spawn_15"), ExtResource("spawn_16"), ExtResource("spawn_17"), ExtResource("25_nt4xe"), ExtResource("26_wvq2v"), ExtResource("27_0j36w"), ExtResource("28_wvq2v")])
 MaxPopulation = 300
 ContinuousSpawning = true
+
+[node name="ObstacleSpawner" type="Node2D" parent="Control/SubViewportContainer/SubViewport" unique_id=1105171518 node_paths=PackedStringArray("World")]
+script = ExtResource("25_ptb65")
+ObstacleScene = ExtResource("26_nt4xe")
+World = NodePath("../Planet")
+ObstacleCount = 30
 
 [node name="Ship" parent="Control/SubViewportContainer/SubViewport" unique_id=1937052776 instance=ExtResource("2_4dhvd")]
 position = Vector2(960, 600)
 
 [node name="Ship" parent="Control/SubViewportContainer/SubViewport/Ship" index="0" unique_id=2040208976 node_paths=PackedStringArray("PlanetInstance")]
 z_index = 1
-PlanetInstance = NodePath("../../../../../Planet")
+PlanetInstance = NodePath("../../Planet")
 
 [node name="Beam" parent="Control/SubViewportContainer/SubViewport/Ship/Ship/Beam" parent_id_path=PackedInt32Array(1937052776, 1856874238) index="0" unique_id=225202901 node_paths=PackedStringArray("PlanetInstance")]
-PlanetInstance = NodePath("../../../../../../../Planet")
+PlanetInstance = NodePath("../../../../Planet")
 
 [node name="Camera2D" parent="Control/SubViewportContainer/SubViewport/Ship/Ship" index="3" unique_id=1958900881]
 zoom = Vector2(1.4, 1.4)
@@ -192,1663 +1845,13 @@ text = "03:00"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Planet" parent="." unique_id=1182448530 instance=ExtResource("2_qppyr")]
-position = Vector2(960, 3350)
-SurfaceDiameter = 5200.0
-
-[node name="Particles_Trees" type="CPUParticles2D" parent="Planet/Obj/Map/GlobalParticle" parent_id_path=PackedInt32Array(1182448530, 547905915) index="3" unique_id=1489506528]
-position = Vector2(-0.7343848, -0.67873347)
-amount = 12
-texture = ExtResource("29_r1jpt")
-lifetime = 6.0
-emission_shape = 6
-emission_ring_inner_radius = 250.0
-emission_ring_radius = 250.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 10.0
-initial_velocity_max = 30.0
-angular_velocity_min = 10.0
-angular_velocity_max = 30.0
-angle_max = 360.0
-scale_amount_min = 0.0
-scale_amount_max = 0.01
-color_ramp = SubResource("Gradient_8dfcq")
-
-[node name="CPUParticles2D" type="CPUParticles2D" parent="Planet/Obj/Map/GlobalParticle" parent_id_path=PackedInt32Array(1182448530, 547905915) index="4" unique_id=574847060]
-position = Vector2(-235.96573, 243.52658)
-rotation = 0.732537
-amount = 34
-lifetime = 2.0
-emission_shape = 3
-emission_rect_extents = Vector2(60.05, 1)
-direction = Vector2(0.23, -0.51)
-spread = 0.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 36.03
-initial_velocity_max = 169.92
-
-[node name="Mountain" type="Node2D" parent="Planet/Obj/Map" parent_id_path=PackedInt32Array(1182448530, 2098654404) index="3" unique_id=1068248602]
-
-[node name="AssetMountainBackGround7" type="Sprite2D" parent="Planet/Obj/Map/Mountain" unique_id=2023448107]
-modulate = Color(0.46, 0.46, 0.46, 1)
-position = Vector2(-279, 41)
-rotation = -1.4977715
-scale = Vector2(0.24999999, 0.24999999)
-texture = ExtResource("29_rq0se")
-
-[node name="AssetMountainBackGround6" type="Sprite2D" parent="Planet/Obj/Map/Mountain" unique_id=1297170942]
-modulate = Color(0.46, 0.46, 0.46, 1)
-position = Vector2(-221.00002, 159)
-rotation = -2.2590818
-scale = Vector2(0.24999999, 0.24999999)
-texture = ExtResource("29_rq0se")
-
-[node name="AssetMountainBackGround5" type="Sprite2D" parent="Planet/Obj/Map/Mountain" unique_id=567105579]
-modulate = Color(0.46, 0.46, 0.46, 1)
-position = Vector2(-64, 258)
-rotation = 3.2377567
-scale = Vector2(0.24999999, 0.24999999)
-texture = ExtResource("29_rq0se")
-
-[node name="AssetMountainBackGround4" type="Sprite2D" parent="Planet/Obj/Map/Mountain" unique_id=2146272904]
-modulate = Color(0.46, 0.46, 0.46, 1)
-position = Vector2(192, 111)
-rotation = 2.1620224
-scale = Vector2(0.24999999, 0.24999999)
-texture = ExtResource("29_rq0se")
-
-[node name="AssetMountainBackGround3" type="Sprite2D" parent="Planet/Obj/Map/Mountain" unique_id=713672603]
-modulate = Color(0.46, 0.46, 0.46, 1)
-position = Vector2(211, -49)
-rotation = 1.4448708
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("29_rq0se")
-
-[node name="AssetMountainBackGround2" type="Sprite2D" parent="Planet/Obj/Map/Mountain" unique_id=116768492]
-modulate = Color(0.46, 0.46, 0.46, 1)
-position = Vector2(-148, -199)
-rotation = -0.34349602
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("29_rq0se")
-
-[node name="AssetMountainBackGround" type="Sprite2D" parent="Planet/Obj/Map/Mountain" unique_id=646873457]
-modulate = Color(0.46, 0.46, 0.46, 1)
-position = Vector2(-27, -246)
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("29_rq0se")
-
-[node name="AssetForestMountain" type="Sprite2D" parent="Planet/Obj/Map/Mountain" unique_id=2103416213]
-modulate = Color(0.93, 0.93, 0.93, 1)
-position = Vector2(-87.92584, -251.20947)
-rotation = -0.14604451
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("30_g2nle")
-
-[node name="AssetForestMountain2" type="Sprite2D" parent="Planet/Obj/Map/Mountain" unique_id=1369225830]
-modulate = Color(0.93, 0.93, 0.93, 1)
-position = Vector2(239.07422, 15.790573)
-rotation = 1.5997279
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("30_g2nle")
-
-[node name="AssetDesertMountain" type="Sprite2D" parent="Planet/Obj/Map/Mountain" unique_id=1991322459]
-modulate = Color(0.93, 0.93, 0.93, 1)
-position = Vector2(-269.92584, 123.79056)
-rotation = -1.9763792
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("31_r1jpt")
-
-[node name="AssetSnowMountain" type="Sprite2D" parent="Planet/Obj/Map/Mountain" unique_id=528291277]
-modulate = Color(0.93, 0.93, 0.93, 1)
-position = Vector2(83.07419, 254.79056)
-rotation = -3.5421925
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("32_nlc08")
-
-[node name="AssetSnowMountain2" type="Sprite2D" parent="Planet/Obj/Map/Mountain" unique_id=1799589737]
-modulate = Color(0.93, 0.93, 0.93, 1)
-position = Vector2(-117.92581, 259.79056)
-rotation = -2.748722
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("32_nlc08")
-
-[node name="Big\'GrassGroup" type="Node2D" parent="Planet/Obj/Map/Mountain" unique_id=2093299214]
-
-[node name="AddonGrass1" type="Sprite2D" parent="Planet/Obj/Map/Mountain/Big\'GrassGroup" unique_id=240055789]
-position = Vector2(-159, -224)
-rotation = -0.4432643
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("33_aol2w")
-
-[node name="AddonGrass2" type="Sprite2D" parent="Planet/Obj/Map/Mountain/Big\'GrassGroup" unique_id=685526556]
-position = Vector2(-149, -231)
-rotation = -0.42784032
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("33_aol2w")
-
-[node name="AddonGrass3" type="Sprite2D" parent="Planet/Obj/Map/Mountain/Big\'GrassGroup" unique_id=485477581]
-position = Vector2(-18, -260)
-rotation = 0.09813076
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("33_aol2w")
-
-[node name="AddonGrass4" type="Sprite2D" parent="Planet/Obj/Map/Mountain/Big\'GrassGroup" unique_id=668518838]
-position = Vector2(-2.000001, -260)
-rotation = 0.09813076
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("33_aol2w")
-
-[node name="AddonGrass5" type="Sprite2D" parent="Planet/Obj/Map/Mountain/Big\'GrassGroup" unique_id=1826832013]
-position = Vector2(124.99999, -211)
-rotation = 0.58488953
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("33_aol2w")
-
-[node name="AddonGrass6" type="Sprite2D" parent="Planet/Obj/Map/Mountain/Big\'GrassGroup" unique_id=1705413638]
-position = Vector2(220, -89)
-rotation = 1.1687158
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("33_aol2w")
-
-[node name="AddonGrass7" type="Sprite2D" parent="Planet/Obj/Map/Mountain/Big\'GrassGroup" unique_id=1216653063]
-position = Vector2(225, -72)
-rotation = 1.266566
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("33_aol2w")
-
-[node name="AddonGrass8" type="Sprite2D" parent="Planet/Obj/Map/Mountain/Big\'GrassGroup" unique_id=970283288]
-position = Vector2(228, -56)
-rotation = 1.266566
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("33_aol2w")
-
-[node name="AddonGrass9" type="Sprite2D" parent="Planet/Obj/Map/Mountain/Big\'GrassGroup" unique_id=1276212011]
-position = Vector2(224, 91)
-rotation = 1.9102771
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("33_aol2w")
-
-[node name="AddonGrass10" type="Sprite2D" parent="Planet/Obj/Map/Mountain/Big\'GrassGroup" unique_id=1010504960]
-position = Vector2(219, 99)
-rotation = 1.9102771
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("33_aol2w")
-
-[node name="ForeGround" type="Node2D" parent="Planet/Obj/Map" parent_id_path=PackedInt32Array(1182448530, 2098654404) index="5" unique_id=918286371]
-
-[node name="GrassGroup1" type="Node2D" parent="Planet/Obj/Map/ForeGround" unique_id=1075804727]
-
-[node name="Grass1" type="Node2D" parent="Planet/Obj/Map/ForeGround/GrassGroup1" unique_id=1976523970]
-
-[node name="AddonGrass2" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup1/Grass1" unique_id=755459517]
-position = Vector2(-185, -204)
-rotation = -0.6509226
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass3" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup1/Grass1" unique_id=905182877]
-position = Vector2(-178, -209)
-rotation = -0.60335875
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass4" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup1/Grass1" unique_id=361107447]
-position = Vector2(-171, -214)
-rotation = -0.5770131
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass5" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup1/Grass1" unique_id=1959743600]
-position = Vector2(-164, -218)
-rotation = -0.54816544
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass6" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup1/Grass1" unique_id=1489724479]
-position = Vector2(-157, -222)
-rotation = -0.52231777
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass7" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup1/Grass1" unique_id=1077072483]
-position = Vector2(-150, -226)
-rotation = -0.5137844
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass8" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup1/Grass1" unique_id=29880416]
-position = Vector2(-143, -230)
-rotation = -0.46786374
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="Grass2" type="Node2D" parent="Planet/Obj/Map/ForeGround/GrassGroup1" unique_id=519684723]
-position = Vector2(-2, 7)
-rotation = 0.2309665
-
-[node name="AddonGrass2" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup1/Grass2" unique_id=169106172]
-position = Vector2(-185, -204)
-rotation = -0.6509226
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass3" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup1/Grass2" unique_id=261305371]
-position = Vector2(-178, -209)
-rotation = -0.60335875
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass4" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup1/Grass2" unique_id=1123845703]
-position = Vector2(-171, -214)
-rotation = -0.5770131
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass5" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup1/Grass2" unique_id=1806484739]
-position = Vector2(-164, -218)
-rotation = -0.54816544
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass6" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup1/Grass2" unique_id=991658541]
-position = Vector2(-157, -222)
-rotation = -0.52231777
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass7" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup1/Grass2" unique_id=184474451]
-position = Vector2(-150, -226)
-rotation = -0.5137844
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass8" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup1/Grass2" unique_id=270512170]
-position = Vector2(-143, -230)
-rotation = -0.46786374
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="Grass3" type="Node2D" parent="Planet/Obj/Map/ForeGround/GrassGroup1" unique_id=1393547836]
-position = Vector2(2, 11)
-rotation = 0.4297589
-scale = Vector2(0.99999994, 0.99999994)
-
-[node name="AddonGrass2" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup1/Grass3" unique_id=1151084235]
-position = Vector2(-185, -204)
-rotation = -0.6509226
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass3" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup1/Grass3" unique_id=1409196010]
-position = Vector2(-178, -209)
-rotation = -0.60335875
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass4" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup1/Grass3" unique_id=578825295]
-position = Vector2(-171, -214)
-rotation = -0.5770131
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass5" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup1/Grass3" unique_id=1491461030]
-position = Vector2(-164, -218)
-rotation = -0.54816544
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass6" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup1/Grass3" unique_id=2016376090]
-position = Vector2(-157, -222)
-rotation = -0.52231777
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass7" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup1/Grass3" unique_id=58967940]
-position = Vector2(-150, -226)
-rotation = -0.5137844
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass8" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup1/Grass3" unique_id=1525843163]
-position = Vector2(-143, -230)
-rotation = -0.46786374
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="Grass4" type="Node2D" parent="Planet/Obj/Map/ForeGround/GrassGroup1" unique_id=542760767]
-position = Vector2(-9, 17)
-rotation = 0.6806387
-scale = Vector2(0.99999994, 0.99999994)
-
-[node name="AddonGrass2" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup1/Grass4" unique_id=509191882]
-position = Vector2(-185, -204)
-rotation = -0.6509226
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass3" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup1/Grass4" unique_id=212673150]
-position = Vector2(-178, -209)
-rotation = -0.60335875
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass4" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup1/Grass4" unique_id=484984942]
-position = Vector2(-171, -214)
-rotation = -0.5770131
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass5" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup1/Grass4" unique_id=725940616]
-position = Vector2(-164, -218)
-rotation = -0.54816544
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass6" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup1/Grass4" unique_id=144947495]
-position = Vector2(-157, -222)
-rotation = -0.52231777
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass7" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup1/Grass4" unique_id=658671927]
-position = Vector2(-150, -226)
-rotation = -0.5137844
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass8" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup1/Grass4" unique_id=1301306165]
-position = Vector2(-143, -230)
-rotation = -0.46786374
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="Grass5" type="Node2D" parent="Planet/Obj/Map/ForeGround/GrassGroup1" unique_id=116781762]
-position = Vector2(-8, 22)
-rotation = 0.88497204
-
-[node name="AddonGrass2" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup1/Grass5" unique_id=740204526]
-position = Vector2(-185, -204)
-rotation = -0.6509226
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass3" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup1/Grass5" unique_id=1759454992]
-position = Vector2(-178, -209)
-rotation = -0.60335875
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass4" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup1/Grass5" unique_id=1273087302]
-position = Vector2(-171, -214)
-rotation = -0.5770131
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass5" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup1/Grass5" unique_id=714798633]
-position = Vector2(-164, -218)
-rotation = -0.54816544
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass6" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup1/Grass5" unique_id=474392358]
-position = Vector2(-157, -222)
-rotation = -0.52231777
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass7" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup1/Grass5" unique_id=2069111291]
-position = Vector2(-150, -226)
-rotation = -0.5137844
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass8" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup1/Grass5" unique_id=1272960162]
-position = Vector2(-143, -230)
-rotation = -0.46786374
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="Grass6" type="Node2D" parent="Planet/Obj/Map/ForeGround/GrassGroup1" unique_id=1754956581]
-position = Vector2(-14, 26)
-rotation = 1.1054667
-
-[node name="AddonGrass2" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup1/Grass6" unique_id=1764891243]
-position = Vector2(-185, -204)
-rotation = -0.6509226
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass3" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup1/Grass6" unique_id=287657027]
-position = Vector2(-178, -209)
-rotation = -0.60335875
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass4" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup1/Grass6" unique_id=1463650863]
-position = Vector2(-171, -214)
-rotation = -0.5770131
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass5" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup1/Grass6" unique_id=1486402819]
-position = Vector2(-164, -218)
-rotation = -0.54816544
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass6" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup1/Grass6" unique_id=1451056867]
-position = Vector2(-157, -222)
-rotation = -0.52231777
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass7" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup1/Grass6" unique_id=1442878981]
-position = Vector2(-150, -226)
-rotation = -0.5137844
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass8" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup1/Grass6" unique_id=575521903]
-position = Vector2(-143, -230)
-rotation = -0.46786374
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="Grass7" type="Node2D" parent="Planet/Obj/Map/ForeGround/GrassGroup1" unique_id=1312746020]
-position = Vector2(-12.000004, -18.999985)
-rotation = -0.7856964
-
-[node name="AddonGrass2" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup1/Grass7" unique_id=1724089265]
-position = Vector2(-185, -204)
-rotation = -0.6509226
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass3" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup1/Grass7" unique_id=477361084]
-position = Vector2(-178, -209)
-rotation = -0.60335875
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass4" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup1/Grass7" unique_id=1625390853]
-position = Vector2(-171, -214)
-rotation = -0.5770131
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass5" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup1/Grass7" unique_id=873898891]
-position = Vector2(-164, -218)
-rotation = -0.54816544
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass6" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup1/Grass7" unique_id=1820288650]
-position = Vector2(-157, -222)
-rotation = -0.52231777
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass7" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup1/Grass7" unique_id=1545849381]
-position = Vector2(-150, -226)
-rotation = -0.5137844
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass8" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup1/Grass7" unique_id=549241532]
-position = Vector2(-143, -230)
-rotation = -0.46786374
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="Grass8" type="Node2D" parent="Planet/Obj/Map/ForeGround/GrassGroup1" unique_id=1209249758]
-position = Vector2(-12.000004, -18.999985)
-rotation = -0.7856964
-scale = Vector2(0.98, 0.98)
-
-[node name="AddonGrass2" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup1/Grass8" unique_id=2028703674]
-position = Vector2(-185, -204)
-rotation = -0.6509226
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass3" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup1/Grass8" unique_id=378552819]
-position = Vector2(-178, -209)
-rotation = -0.60335875
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass4" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup1/Grass8" unique_id=2020431361]
-position = Vector2(-171, -214)
-rotation = -0.5770131
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass5" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup1/Grass8" unique_id=1845037086]
-position = Vector2(-164, -218)
-rotation = -0.54816544
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass6" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup1/Grass8" unique_id=2004720718]
-position = Vector2(-157, -222)
-rotation = -0.52231777
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass7" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup1/Grass8" unique_id=83153195]
-position = Vector2(-150, -226)
-rotation = -0.5137844
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass8" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup1/Grass8" unique_id=1515394988]
-position = Vector2(-143, -230)
-rotation = -0.46786374
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="GrassGroup2" type="Node2D" parent="Planet/Obj/Map/ForeGround" unique_id=2036572332]
-position = Vector2(-23, 33)
-rotation = 1.55725
-
-[node name="Grass2" type="Node2D" parent="Planet/Obj/Map/ForeGround/GrassGroup2" unique_id=820742675]
-position = Vector2(-2, 7)
-rotation = 0.2309665
-
-[node name="AddonGrass4" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup2/Grass2" unique_id=1608156949]
-position = Vector2(-171, -214)
-rotation = -0.5770131
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass5" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup2/Grass2" unique_id=333076580]
-position = Vector2(-164, -218)
-rotation = -0.54816544
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass6" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup2/Grass2" unique_id=1139522709]
-position = Vector2(-157, -222)
-rotation = -0.52231777
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass7" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup2/Grass2" unique_id=1077003967]
-position = Vector2(-150, -226)
-rotation = -0.5137844
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass8" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup2/Grass2" unique_id=381927959]
-position = Vector2(-143, -230)
-rotation = -0.46786374
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="Grass3" type="Node2D" parent="Planet/Obj/Map/ForeGround/GrassGroup2" unique_id=1910961817]
-position = Vector2(2, 11)
-rotation = 0.4297589
-scale = Vector2(0.99999994, 0.99999994)
-
-[node name="AddonGrass2" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup2/Grass3" unique_id=1997044542]
-position = Vector2(-185, -204)
-rotation = -0.6509226
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass3" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup2/Grass3" unique_id=1698432602]
-position = Vector2(-178, -209)
-rotation = -0.60335875
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass4" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup2/Grass3" unique_id=1948284831]
-position = Vector2(-171, -214)
-rotation = -0.5770131
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass5" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup2/Grass3" unique_id=2055138146]
-position = Vector2(-164, -218)
-rotation = -0.54816544
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass6" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup2/Grass3" unique_id=1671448748]
-position = Vector2(-157, -222)
-rotation = -0.52231777
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass7" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup2/Grass3" unique_id=584597850]
-position = Vector2(-150, -226)
-rotation = -0.5137844
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass8" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup2/Grass3" unique_id=887895722]
-position = Vector2(-143, -230)
-rotation = -0.46786374
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="Grass4" type="Node2D" parent="Planet/Obj/Map/ForeGround/GrassGroup2" unique_id=843755196]
-position = Vector2(-9, 17)
-rotation = 0.6806387
-scale = Vector2(0.99999994, 0.99999994)
-
-[node name="AddonGrass2" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup2/Grass4" unique_id=146249755]
-position = Vector2(-185, -204)
-rotation = -0.6509226
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass3" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup2/Grass4" unique_id=1547825178]
-position = Vector2(-178, -209)
-rotation = -0.60335875
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass4" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup2/Grass4" unique_id=2116624118]
-position = Vector2(-171, -214)
-rotation = -0.5770131
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass5" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup2/Grass4" unique_id=2012496160]
-position = Vector2(-164, -218)
-rotation = -0.54816544
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass6" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup2/Grass4" unique_id=563373025]
-position = Vector2(-157, -222)
-rotation = -0.52231777
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass7" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup2/Grass4" unique_id=2134412055]
-position = Vector2(-150, -226)
-rotation = -0.5137844
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass8" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup2/Grass4" unique_id=1414902775]
-position = Vector2(-143, -230)
-rotation = -0.46786374
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="Grass5" type="Node2D" parent="Planet/Obj/Map/ForeGround/GrassGroup2" unique_id=102565069]
-position = Vector2(-8, 22)
-rotation = 0.88497204
-
-[node name="AddonGrass2" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup2/Grass5" unique_id=1257423415]
-position = Vector2(-185, -204)
-rotation = -0.6509226
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass3" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup2/Grass5" unique_id=1351759530]
-position = Vector2(-178, -209)
-rotation = -0.60335875
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass4" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup2/Grass5" unique_id=216756733]
-position = Vector2(-171, -214)
-rotation = -0.5770131
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass5" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup2/Grass5" unique_id=2037839458]
-position = Vector2(-164, -218)
-rotation = -0.54816544
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass6" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup2/Grass5" unique_id=1822806218]
-position = Vector2(-157, -222)
-rotation = -0.52231777
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass7" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup2/Grass5" unique_id=1953273006]
-position = Vector2(-150, -226)
-rotation = -0.5137844
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="Grass6" type="Node2D" parent="Planet/Obj/Map/ForeGround/GrassGroup2" unique_id=685624172]
-position = Vector2(-27.550379, -33.376244)
-rotation = -1.4072806
-
-[node name="AddonGrass4" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup2/Grass6" unique_id=1935870722]
-position = Vector2(-171, -214)
-rotation = -0.5770131
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass5" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup2/Grass6" unique_id=1369417019]
-position = Vector2(-164, -218)
-rotation = -0.54816544
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass6" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup2/Grass6" unique_id=595441674]
-position = Vector2(-157, -222)
-rotation = -0.52231777
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass7" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup2/Grass6" unique_id=1084233850]
-position = Vector2(-150, -226)
-rotation = -0.5137844
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass8" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup2/Grass6" unique_id=1203505772]
-position = Vector2(-143, -230)
-rotation = -0.46786374
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="GrassGroup3" type="Node2D" parent="Planet/Obj/Map/ForeGround" unique_id=2102130326]
-position = Vector2(0, 9)
-scale = Vector2(0.98, 0.98)
-
-[node name="Grass1" type="Node2D" parent="Planet/Obj/Map/ForeGround/GrassGroup3" unique_id=1541549351]
-
-[node name="AddonGrass3" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup3/Grass1" unique_id=883268501]
-position = Vector2(-178, -209)
-rotation = -0.60335875
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass4" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup3/Grass1" unique_id=1624957647]
-position = Vector2(-171, -214)
-rotation = -0.5770131
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass5" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup3/Grass1" unique_id=1827395185]
-position = Vector2(-164, -218)
-rotation = -0.54816544
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass6" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup3/Grass1" unique_id=960998146]
-position = Vector2(-157, -222)
-rotation = -0.52231777
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass7" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup3/Grass1" unique_id=59284261]
-position = Vector2(-150, -226)
-rotation = -0.5137844
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass8" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup3/Grass1" unique_id=2118077412]
-position = Vector2(-143, -230)
-rotation = -0.46786374
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="Grass2" type="Node2D" parent="Planet/Obj/Map/ForeGround/GrassGroup3" unique_id=2133419840]
-position = Vector2(-2, 7)
-rotation = 0.2309665
-
-[node name="AddonGrass2" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup3/Grass2" unique_id=1717501791]
-position = Vector2(-185, -204)
-rotation = -0.6509226
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass3" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup3/Grass2" unique_id=46832271]
-position = Vector2(-178, -209)
-rotation = -0.60335875
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass4" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup3/Grass2" unique_id=1704094813]
-position = Vector2(-171, -214)
-rotation = -0.5770131
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass5" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup3/Grass2" unique_id=608644336]
-position = Vector2(-164, -218)
-rotation = -0.54816544
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass6" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup3/Grass2" unique_id=569643875]
-position = Vector2(-157, -222)
-rotation = -0.52231777
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass7" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup3/Grass2" unique_id=134561896]
-position = Vector2(-150, -226)
-rotation = -0.5137844
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass8" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup3/Grass2" unique_id=1408744112]
-position = Vector2(-143, -230)
-rotation = -0.46786374
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="Grass3" type="Node2D" parent="Planet/Obj/Map/ForeGround/GrassGroup3" unique_id=1435767673]
-position = Vector2(2, 11)
-rotation = 0.4297589
-scale = Vector2(0.99999994, 0.99999994)
-
-[node name="AddonGrass2" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup3/Grass3" unique_id=1031580685]
-position = Vector2(-185, -204)
-rotation = -0.6509226
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass3" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup3/Grass3" unique_id=1364238090]
-position = Vector2(-178, -209)
-rotation = -0.60335875
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass4" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup3/Grass3" unique_id=28122899]
-position = Vector2(-171, -214)
-rotation = -0.5770131
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass5" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup3/Grass3" unique_id=1146665280]
-position = Vector2(-164, -218)
-rotation = -0.54816544
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass6" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup3/Grass3" unique_id=1242357281]
-position = Vector2(-157, -222)
-rotation = -0.52231777
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass7" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup3/Grass3" unique_id=607814961]
-position = Vector2(-150, -226)
-rotation = -0.5137844
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass8" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup3/Grass3" unique_id=1631066125]
-position = Vector2(-143, -230)
-rotation = -0.46786374
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="Grass4" type="Node2D" parent="Planet/Obj/Map/ForeGround/GrassGroup3" unique_id=1158793225]
-position = Vector2(-9, 17)
-rotation = 0.6806387
-scale = Vector2(0.99999994, 0.99999994)
-
-[node name="AddonGrass2" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup3/Grass4" unique_id=1178973357]
-position = Vector2(-185, -204)
-rotation = -0.6509226
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass3" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup3/Grass4" unique_id=2015378370]
-position = Vector2(-178, -209)
-rotation = -0.60335875
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass4" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup3/Grass4" unique_id=619263258]
-position = Vector2(-171, -214)
-rotation = -0.5770131
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass5" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup3/Grass4" unique_id=2027869776]
-position = Vector2(-164, -218)
-rotation = -0.54816544
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass6" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup3/Grass4" unique_id=711202195]
-position = Vector2(-157, -222)
-rotation = -0.52231777
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass7" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup3/Grass4" unique_id=1468364847]
-position = Vector2(-150, -226)
-rotation = -0.5137844
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass8" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup3/Grass4" unique_id=1845507947]
-position = Vector2(-143, -230)
-rotation = -0.46786374
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="Grass5" type="Node2D" parent="Planet/Obj/Map/ForeGround/GrassGroup3" unique_id=351280265]
-position = Vector2(-8, 22)
-rotation = 0.88497204
-
-[node name="AddonGrass2" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup3/Grass5" unique_id=2140530925]
-position = Vector2(-185, -204)
-rotation = -0.6509226
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass3" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup3/Grass5" unique_id=1307066427]
-position = Vector2(-178, -209)
-rotation = -0.60335875
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass4" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup3/Grass5" unique_id=604829654]
-position = Vector2(-171, -214)
-rotation = -0.5770131
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass5" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup3/Grass5" unique_id=758708706]
-position = Vector2(-164, -218)
-rotation = -0.54816544
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass6" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup3/Grass5" unique_id=1321768093]
-position = Vector2(-157, -222)
-rotation = -0.52231777
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass7" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup3/Grass5" unique_id=1159851343]
-position = Vector2(-150, -226)
-rotation = -0.5137844
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass8" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup3/Grass5" unique_id=1750142441]
-position = Vector2(-143, -230)
-rotation = -0.46786374
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="Grass6" type="Node2D" parent="Planet/Obj/Map/ForeGround/GrassGroup3" unique_id=371924333]
-position = Vector2(-14, 26)
-rotation = 1.1054667
-
-[node name="AddonGrass2" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup3/Grass6" unique_id=603061870]
-position = Vector2(-185, -204)
-rotation = -0.6509226
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass3" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup3/Grass6" unique_id=1436768579]
-position = Vector2(-178, -209)
-rotation = -0.60335875
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass4" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup3/Grass6" unique_id=593433224]
-position = Vector2(-171, -214)
-rotation = -0.5770131
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass5" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup3/Grass6" unique_id=751437210]
-position = Vector2(-164, -218)
-rotation = -0.54816544
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass6" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup3/Grass6" unique_id=668312826]
-position = Vector2(-157, -222)
-rotation = -0.52231777
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass7" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup3/Grass6" unique_id=976705970]
-position = Vector2(-150, -226)
-rotation = -0.5137844
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="GrassGroup4" type="Node2D" parent="Planet/Obj/Map/ForeGround" unique_id=1601037777]
-position = Vector2(-31, 35)
-rotation = 1.55725
-scale = Vector2(0.98, 0.98)
-
-[node name="Grass2" type="Node2D" parent="Planet/Obj/Map/ForeGround/GrassGroup4" unique_id=1280647724]
-position = Vector2(-2, 7)
-rotation = 0.2309665
-
-[node name="AddonGrass4" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup4/Grass2" unique_id=274775444]
-position = Vector2(-171, -214)
-rotation = -0.5770131
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass5" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup4/Grass2" unique_id=1902136881]
-position = Vector2(-164, -218)
-rotation = -0.54816544
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass6" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup4/Grass2" unique_id=42865074]
-position = Vector2(-157, -222)
-rotation = -0.52231777
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass7" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup4/Grass2" unique_id=1580541454]
-position = Vector2(-150, -226)
-rotation = -0.5137844
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass8" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup4/Grass2" unique_id=782683209]
-position = Vector2(-143, -230)
-rotation = -0.46786374
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="Grass3" type="Node2D" parent="Planet/Obj/Map/ForeGround/GrassGroup4" unique_id=1154867025]
-position = Vector2(2, 11)
-rotation = 0.4297589
-scale = Vector2(0.99999994, 0.99999994)
-
-[node name="AddonGrass2" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup4/Grass3" unique_id=958391058]
-position = Vector2(-185, -204)
-rotation = -0.6509226
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass3" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup4/Grass3" unique_id=502305392]
-position = Vector2(-178, -209)
-rotation = -0.60335875
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass4" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup4/Grass3" unique_id=1430679984]
-position = Vector2(-171, -214)
-rotation = -0.5770131
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass5" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup4/Grass3" unique_id=2062579666]
-position = Vector2(-164, -218)
-rotation = -0.54816544
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass6" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup4/Grass3" unique_id=1371404171]
-position = Vector2(-157, -222)
-rotation = -0.52231777
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass7" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup4/Grass3" unique_id=772396437]
-position = Vector2(-150, -226)
-rotation = -0.5137844
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass8" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup4/Grass3" unique_id=348429863]
-position = Vector2(-143, -230)
-rotation = -0.46786374
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="Grass4" type="Node2D" parent="Planet/Obj/Map/ForeGround/GrassGroup4" unique_id=1528099071]
-position = Vector2(-9, 17)
-rotation = 0.6806387
-scale = Vector2(0.99999994, 0.99999994)
-
-[node name="AddonGrass2" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup4/Grass4" unique_id=981032991]
-position = Vector2(-185, -204)
-rotation = -0.6509226
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass3" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup4/Grass4" unique_id=1560086617]
-position = Vector2(-178, -209)
-rotation = -0.60335875
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass4" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup4/Grass4" unique_id=216770592]
-position = Vector2(-171, -214)
-rotation = -0.5770131
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass5" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup4/Grass4" unique_id=1791424493]
-position = Vector2(-164, -218)
-rotation = -0.54816544
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass6" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup4/Grass4" unique_id=475906597]
-position = Vector2(-157, -222)
-rotation = -0.52231777
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass7" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup4/Grass4" unique_id=1275461573]
-position = Vector2(-150, -226)
-rotation = -0.5137844
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass8" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup4/Grass4" unique_id=223207652]
-position = Vector2(-143, -230)
-rotation = -0.46786374
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="Grass5" type="Node2D" parent="Planet/Obj/Map/ForeGround/GrassGroup4" unique_id=606252065]
-position = Vector2(-8, 22)
-rotation = 0.88497204
-
-[node name="AddonGrass2" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup4/Grass5" unique_id=275996790]
-position = Vector2(-185, -204)
-rotation = -0.6509226
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass3" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup4/Grass5" unique_id=554727448]
-position = Vector2(-178, -209)
-rotation = -0.60335875
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass4" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup4/Grass5" unique_id=1336074677]
-position = Vector2(-171, -214)
-rotation = -0.5770131
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass5" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup4/Grass5" unique_id=1896602803]
-position = Vector2(-164, -218)
-rotation = -0.54816544
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="AddonGrass6" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/GrassGroup4/Grass5" unique_id=1341713390]
-position = Vector2(-157, -222)
-rotation = -0.52231777
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("34_ddpch")
-
-[node name="FlowersGroup" type="Node2D" parent="Planet/Obj/Map/ForeGround" unique_id=1650487275]
-
-[node name="AddonFlower2" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/FlowersGroup" unique_id=244963585]
-position = Vector2(-165, -203)
-rotation = -0.5556292
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("35_gbt41")
-
-[node name="AddonFlower3" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/FlowersGroup" unique_id=396119230]
-position = Vector2(-154, -200)
-rotation = -0.41349632
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("35_gbt41")
-
-[node name="AddonFlower4" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/FlowersGroup" unique_id=1502754044]
-position = Vector2(-170, -191)
-rotation = -0.41349632
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("35_gbt41")
-
-[node name="AddonFlower5" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/FlowersGroup" unique_id=2023078371]
-position = Vector2(-176, -197)
-rotation = -0.41349632
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("35_gbt41")
-
-[node name="AddonFlower1" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/FlowersGroup" unique_id=2089459019]
-position = Vector2(-171, -199)
-rotation = -0.6132655
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("36_utgnh")
-
-[node name="AddonFlower6" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/FlowersGroup" unique_id=1732037776]
-position = Vector2(-159, -197)
-rotation = -0.6132655
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("36_utgnh")
-
-[node name="AddonFlower7" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/FlowersGroup" unique_id=1887960227]
-position = Vector2(-161, -205)
-rotation = -0.6132655
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("36_utgnh")
-
-[node name="FlowersGroup2" type="Node2D" parent="Planet/Obj/Map/ForeGround" unique_id=1382929142]
-position = Vector2(3, 37)
-rotation = 1.1285621
-
-[node name="AddonFlower2" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/FlowersGroup2" unique_id=487691199]
-position = Vector2(-165, -203)
-rotation = -0.5556292
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("35_gbt41")
-
-[node name="AddonFlower3" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/FlowersGroup2" unique_id=1943109726]
-position = Vector2(-154, -200)
-rotation = -0.41349632
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("35_gbt41")
-
-[node name="AddonFlower4" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/FlowersGroup2" unique_id=636804439]
-position = Vector2(-170, -191)
-rotation = -0.41349632
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("35_gbt41")
-
-[node name="AddonFlower5" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/FlowersGroup2" unique_id=1369034522]
-position = Vector2(-176, -197)
-rotation = -0.41349632
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("35_gbt41")
-
-[node name="AddonFlower1" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/FlowersGroup2" unique_id=1156576538]
-position = Vector2(-171, -199)
-rotation = -0.6132655
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("36_utgnh")
-
-[node name="AddonFlower6" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/FlowersGroup2" unique_id=728794972]
-position = Vector2(-159, -197)
-rotation = -0.6132655
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("36_utgnh")
-
-[node name="AddonFlower7" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/FlowersGroup2" unique_id=1569734063]
-position = Vector2(-161, -205)
-rotation = -0.6132655
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("36_utgnh")
-
-[node name="FlowersGroup3" type="Node2D" parent="Planet/Obj/Map/ForeGround" unique_id=608707371]
-position = Vector2(-23, 47)
-rotation = 1.7689689
-
-[node name="AddonFlower2" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/FlowersGroup3" unique_id=1929952585]
-position = Vector2(-165, -203)
-rotation = -0.5556292
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("35_gbt41")
-
-[node name="AddonFlower3" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/FlowersGroup3" unique_id=867980959]
-position = Vector2(-154, -200)
-rotation = -0.41349632
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("35_gbt41")
-
-[node name="AddonFlower4" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/FlowersGroup3" unique_id=117353668]
-position = Vector2(-170, -191)
-rotation = -0.41349632
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("35_gbt41")
-
-[node name="AddonFlower5" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/FlowersGroup3" unique_id=1937536487]
-position = Vector2(-176, -197)
-rotation = -0.41349632
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("35_gbt41")
-
-[node name="AddonFlower1" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/FlowersGroup3" unique_id=1832713002]
-position = Vector2(-171, -199)
-rotation = -0.6132655
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("36_utgnh")
-
-[node name="AddonFlower6" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/FlowersGroup3" unique_id=1937016768]
-position = Vector2(-159, -197)
-rotation = -0.6132655
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("36_utgnh")
-
-[node name="AddonFlower7" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/FlowersGroup3" unique_id=793602645]
-position = Vector2(-161, -205)
-rotation = -0.6132655
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("36_utgnh")
-
-[node name="FlowersGroup4" type="Node2D" parent="Planet/Obj/Map/ForeGround" unique_id=813287875]
-position = Vector2(-13.000002, -36)
-rotation = -0.8671991
-
-[node name="AddonFlower2" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/FlowersGroup4" unique_id=1451468151]
-position = Vector2(-165, -203)
-rotation = -0.5556292
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("35_gbt41")
-
-[node name="AddonFlower3" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/FlowersGroup4" unique_id=1369628076]
-position = Vector2(-154, -200)
-rotation = -0.41349632
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("35_gbt41")
-
-[node name="AddonFlower4" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/FlowersGroup4" unique_id=875414323]
-position = Vector2(-170, -191)
-rotation = -0.41349632
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("35_gbt41")
-
-[node name="AddonFlower5" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/FlowersGroup4" unique_id=1018872245]
-position = Vector2(-176, -197)
-rotation = -0.41349632
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("35_gbt41")
-
-[node name="AddonFlower1" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/FlowersGroup4" unique_id=1129721036]
-position = Vector2(-171, -199)
-rotation = -0.6132655
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("36_utgnh")
-
-[node name="AddonFlower6" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/FlowersGroup4" unique_id=560713458]
-position = Vector2(-159, -197)
-rotation = -0.6132655
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("36_utgnh")
-
-[node name="AddonFlower7" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/FlowersGroup4" unique_id=817509807]
-position = Vector2(-161, -205)
-rotation = -0.6132655
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("36_utgnh")
-
-[node name="AssetIgloo" type="Sprite2D" parent="Planet/Obj/Map/ForeGround" unique_id=619404781]
-position = Vector2(157.00002, 194)
-rotation = 2.4048493
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("37_w68e7")
-
-[node name="Water" type="Node2D" parent="Planet/Obj/Map/ForeGround" unique_id=690975157]
-
-[node name="AddonWaterPlant" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/Water" unique_id=1850822523]
-position = Vector2(124, -189)
-rotation = 0.7202529
-scale = Vector2(0.075, 0.075)
-texture = ExtResource("38_0pxqa")
-
-[node name="AddonWaterPlant2" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/Water" unique_id=2120245982]
-position = Vector2(129, -186)
-rotation = 0.7202529
-scale = Vector2(0.075, 0.075)
-texture = ExtResource("38_0pxqa")
-
-[node name="AddonWaterPlant3" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/Water" unique_id=1419242705]
-position = Vector2(198, -94)
-rotation = 1.2294263
-scale = Vector2(0.075, 0.075)
-texture = ExtResource("38_0pxqa")
-
-[node name="AddonWaterPlant4" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/Water" unique_id=966795064]
-position = Vector2(195, -100)
-rotation = 1.2294263
-scale = Vector2(0.075, 0.075)
-texture = ExtResource("38_0pxqa")
-
-[node name="AddonVein1" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/Water" unique_id=1742189803]
-position = Vector2(117, -179.99998)
-rotation = 0.77180666
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("39_0raah")
-
-[node name="AddonVein2" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/Water" unique_id=779599178]
-position = Vector2(134, -167.99998)
-rotation = 0.77180666
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("39_0raah")
-
-[node name="AddonVein3" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/Water" unique_id=1457558396]
-position = Vector2(150, -151.99998)
-rotation = 0.87999713
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("39_0raah")
-
-[node name="AddonVein4" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/Water" unique_id=1285477643]
-position = Vector2(159, -138.99998)
-rotation = 0.95705384
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("39_0raah")
-
-[node name="AddonVein5" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/Water" unique_id=1012739775]
-position = Vector2(156, -143.99998)
-rotation = 0.95705384
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("39_0raah")
-
-[node name="AddonVein6" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/Water" unique_id=492354224]
-position = Vector2(179, -111.999985)
-rotation = 0.95705384
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("39_0raah")
-
-[node name="AddonVein7" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/Water" unique_id=199674128]
-position = Vector2(181, -107.999985)
-rotation = 1.1512088
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("39_0raah")
-
-[node name="AddonVein8" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/Water" unique_id=487808357]
-position = Vector2(189, -86.999985)
-rotation = 1.1680895
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("39_0raah")
-
-[node name="AddonVein9" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/Water" unique_id=104929123]
-position = Vector2(-264, 33.00003)
-rotation = -1.6397723
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("39_0raah")
-
-[node name="AddonVein10" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/Water" unique_id=1505260490]
-position = Vector2(-264, -22.99997)
-rotation = -1.4681222
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("39_0raah")
-
-[node name="AddonVein11" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/Water" unique_id=1773623133]
-position = Vector2(-267, 4.0000305)
-rotation = -1.6397723
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("39_0raah")
-
-[node name="AddonVein12" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/Water" unique_id=1314381141]
-position = Vector2(-266, 12.0000305)
-rotation = -1.6397723
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("39_0raah")
-
-[node name="Desert" type="Node2D" parent="Planet/Obj/Map/ForeGround" unique_id=1896970692]
-
-[node name="AddonCactus1" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/Desert" unique_id=1522487520]
-position = Vector2(-249, -131)
-rotation = -1.0185217
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("40_qdky5")
-
-[node name="AddonCactus2" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/Desert" unique_id=18806755]
-position = Vector2(-238, -147)
-rotation = -1.0185217
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("40_qdky5")
-
-[node name="AddonCactus3" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/Desert" unique_id=1034392998]
-position = Vector2(-243, -150)
-rotation = -1.0185217
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("40_qdky5")
-
-[node name="AddonCactus4" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/Desert" unique_id=518323462]
-position = Vector2(-209, -182)
-rotation = -0.7382443
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("40_qdky5")
-
-[node name="AddonCactus5" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/Desert" unique_id=442015066]
-position = Vector2(-284, 55.999985)
-rotation = -1.7708836
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("40_qdky5")
-
-[node name="AddonCactus6" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/Desert" unique_id=582833844]
-position = Vector2(-209, 192.99998)
-rotation = -2.3428674
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("40_qdky5")
-
-[node name="AddonCactus7" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/Desert" unique_id=576158996]
-position = Vector2(-254, 134.99998)
-rotation = -2.0996552
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("40_qdky5")
-
-[node name="AddonCactus8" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/Desert" unique_id=625750039]
-position = Vector2(-204, 195)
-rotation = -2.4639168
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("41_g13cn")
-
-[node name="AddonCactus9" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/Desert" unique_id=1472120298]
-position = Vector2(-255, -116)
-rotation = -1.1189679
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("41_g13cn")
-
-[node name="AddonBone1" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/Desert" unique_id=2042823024]
-modulate = Color(0.89, 0.89, 0.89, 1)
-position = Vector2(-224, -162)
-rotation = -1.1477798
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("42_y5nyl")
-
-[node name="AddonBone2" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/Desert" unique_id=1691460336]
-modulate = Color(0.89, 0.89, 0.89, 1)
-position = Vector2(-263, -101)
-rotation = -1.1477798
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("42_y5nyl")
-
-[node name="AddonBone3" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/Desert" unique_id=1583960966]
-modulate = Color(0.89, 0.89, 0.89, 1)
-position = Vector2(-271, 107)
-rotation = -2.3137722
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("42_y5nyl")
-
-[node name="AddonBone4" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/Desert" unique_id=2033995421]
-position = Vector2(-268, 103)
-rotation = -0.6424454
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("43_5606y")
-
-[node name="AddonBone5" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/Desert" unique_id=1262877315]
-position = Vector2(-266, 107)
-rotation = -0.7258306
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("43_5606y")
-
-[node name="AddonBone6" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/Desert" unique_id=952235689]
-position = Vector2(-268, 106)
-rotation = -1.0692
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("43_5606y")
-
-[node name="AddonBone7" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/Desert" unique_id=1571608196]
-position = Vector2(-269, 104)
-rotation = -0.15425417
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("43_5606y")
-
-[node name="AddonBone8" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/Desert" unique_id=1281777310]
-position = Vector2(-269, 107)
-rotation = -1.6904526
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("43_5606y")
-
-[node name="AddonCactus10" type="Sprite2D" parent="Planet/Obj/Map/ForeGround/Desert" unique_id=1466644773]
-position = Vector2(-259, 137.99998)
-rotation = -2.0842988
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("40_qdky5")
-
-[node name="SkyboxCloud4" type="Sprite2D" parent="Planet/Obj/Map/Cloud" parent_id_path=PackedInt32Array(1182448530, 1870346876) index="3" unique_id=1879090999]
-modulate = Color(1, 1, 1, 0.85882354)
-position = Vector2(311.99997, 383)
-rotation = 1.2781055
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("44_g2nle")
-
-[node name="SkyboxCloud5" type="Sprite2D" parent="Planet/Obj/Map/Cloud" parent_id_path=PackedInt32Array(1182448530, 1870346876) index="4" unique_id=692003677]
-modulate = Color(1, 1, 1, 0.85882354)
-position = Vector2(326.99997, 430)
-rotation = 1.5851883
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("44_g2nle")
-
-[node name="SkyboxCloud6" type="Sprite2D" parent="Planet/Obj/Map/Cloud" parent_id_path=PackedInt32Array(1182448530, 1870346876) index="5" unique_id=1996713696]
-modulate = Color(1, 1, 1, 0.85882354)
-position = Vector2(-302.99997, 553)
-rotation = 4.31474
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("44_g2nle")
-
-[node name="SkyboxCloud7" type="Sprite2D" parent="Planet/Obj/Map/Cloud" parent_id_path=PackedInt32Array(1182448530, 1870346876) index="6" unique_id=1835085826]
-modulate = Color(1, 1, 1, 0.85882354)
-position = Vector2(-317.00003, 449)
-rotation = 4.724154
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("44_g2nle")
-
-[node name="SkyboxCloud8" type="Sprite2D" parent="Planet/Obj/Map/Cloud" parent_id_path=PackedInt32Array(1182448530, 1870346876) index="7" unique_id=676710944]
-modulate = Color(1, 1, 1, 0.85882354)
-position = Vector2(-91.999985, 755)
-rotation = 3.3364236
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("44_g2nle")
-
-[node name="SkyboxCloud9" type="Sprite2D" parent="Planet/Obj/Map/Cloud" parent_id_path=PackedInt32Array(1182448530, 1870346876) index="8" unique_id=583931881]
-modulate = Color(1, 1, 1, 0.85882354)
-position = Vector2(51.000015, 773)
-rotation = 3.05666
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("44_g2nle")
-
-[node name="SkyboxCloud10" type="Sprite2D" parent="Planet/Obj/Map/Cloud" parent_id_path=PackedInt32Array(1182448530, 1870346876) index="9" unique_id=1794897461]
-modulate = Color(1, 1, 1, 0.85882354)
-position = Vector2(-40.999977, 777)
-rotation = 3.2660546
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("44_g2nle")
-
-[node name="Mothership" parent="Planet" index="1" unique_id=570087053]
-visible = false
-
-[node name="Mothership2" parent="Planet" index="2" unique_id=165711443]
-visible = false
-
-[node name="Mothership3" parent="Planet" index="3" unique_id=1157786660]
-visible = false
-
-[connection signal="CritterDelivered" from="Planet/Mothership" to="Control/SubViewportContainer/SubViewport/GameSession" method="RecordRescue"]
-[connection signal="CritterDelivered" from="Planet/Mothership2" to="Control/SubViewportContainer/SubViewport/GameSession" method="RecordRescue"]
-[connection signal="CritterDelivered" from="Planet/Mothership3" to="Control/SubViewportContainer/SubViewport/GameSession" method="RecordRescue"]
-
+[connection signal="CritterDelivered" from="Control/SubViewportContainer/SubViewport/Planet/Mothership" to="Control/SubViewportContainer/SubViewport/GameSession" method="RecordRescue"]
+[connection signal="CritterDelivered" from="Control/SubViewportContainer/SubViewport/Planet/Mothership2" to="Control/SubViewportContainer/SubViewport/GameSession" method="RecordRescue"]
+[connection signal="CritterDelivered" from="Control/SubViewportContainer/SubViewport/Planet/Mothership3" to="Control/SubViewportContainer/SubViewport/GameSession" method="RecordRescue"]
+[connection signal="ObstacleDelivered" from="Control/SubViewportContainer/SubViewport/Planet/Mothership" to="Control/SubViewportContainer/SubViewport/GameSession" method="RecordObstacleDelivery"]
+[connection signal="ObstacleDelivered" from="Control/SubViewportContainer/SubViewport/Planet/Mothership2" to="Control/SubViewportContainer/SubViewport/GameSession" method="RecordObstacleDelivery"]
+[connection signal="ObstacleDelivered" from="Control/SubViewportContainer/SubViewport/Planet/Mothership3" to="Control/SubViewportContainer/SubViewport/GameSession" method="RecordObstacleDelivery"]
+
+[editable path="Control/SubViewportContainer/SubViewport/Planet"]
 [editable path="Control/SubViewportContainer/SubViewport/Ship"]
 [editable path="Control/SubViewportContainer/SubViewport/Ship/Ship/Beam"]
-[editable path="Planet"]
