@@ -1,20 +1,17 @@
 [gd_scene format=3 uid="uid://buh4okktrihm4"]
 
 [ext_resource type="Script" uid="uid://dir8d700styaw" path="res://scripts/actors/obstacle/Obstacle.cs" id="1_drdry"]
-[ext_resource type="Texture2D" uid="uid://dnjqniqdg516k" path="res://assets/Env/Asset_pine-tree.png" id="2_cjuko"]
+[ext_resource type="Texture2D" uid="uid://b67pten0tvf0m" path="res://assets/Env/Asset_pine-tree.png" id="2_cjuko"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cvm0i"]
 size = Vector2(128, 128)
 
-[node name="Node2D" type="Node2D" unique_id=209424209]
-z_index = 1
-
-[node name="obstacle" type="CharacterBody2D" parent="." unique_id=156838050]
+[node name="obstacle" type="CharacterBody2D" unique_id=156838050]
 script = ExtResource("1_drdry")
 
-[node name="Sprite2D" type="Sprite2D" parent="obstacle" unique_id=1447724784]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1447724784]
 scale = Vector2(0.062499993, 0.062499993)
 texture = ExtResource("2_cjuko")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacle" unique_id=1321097597]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1321097597]
 shape = SubResource("RectangleShape2D_cvm0i")

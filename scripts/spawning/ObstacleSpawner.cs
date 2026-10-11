@@ -9,16 +9,16 @@ public partial class ObstacleSpawner : Node2D
     [Export] public Planet World { get; set; }
 
     [Export(PropertyHint.Range, "0,100,1")]
-    public int ObstacleCount { get; set; } = 5;
+    public int ObstacleCount { get; set; } = 144;
 
     [Export] public bool SpawnOnReady { get; set; } = true;
     [Export] public bool RandomizeAngles { get; set; } = true;
 
     [Export]
-    public float StartAngleDegrees { get; set; } = -150f;
+    public float StartAngleDegrees { get; set; } = -180f;
 
     [Export]
-    public float EndAngleDegrees { get; set; } = 150f;
+    public float EndAngleDegrees { get; set; } = 180f;
 
     private readonly RandomNumberGenerator _random =
         new RandomNumberGenerator();
@@ -28,7 +28,7 @@ public partial class ObstacleSpawner : Node2D
         _random.Randomize();
 
         if (SpawnOnReady)
-            SpawnObstacles();
+            CallDeferred(nameof(SpawnObstacles));
     }
 
     public void SpawnObstacles()
@@ -69,6 +69,8 @@ public partial class ObstacleSpawner : Node2D
 
         // This initializes orbiting and places the obstacle exactly on the surface.
         obstacle.AttachToPlanet(World);
+
+        obstacle.Scale *= 5f;
 
         return obstacle;
     }

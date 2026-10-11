@@ -78,9 +78,11 @@ SpawnProfiles = Array[ExtResource("4_biy4i")]([ExtResource("spawn_0"), ExtResour
 MaxPopulation = 144
 ContinuousSpawning = true
 
-[node name="ObstacleSpawner" type="Node2D" parent="Control/SubViewportContainer/SubViewport" unique_id=1105171518]
+[node name="ObstacleSpawner" type="Node2D" parent="Control/SubViewportContainer/SubViewport" unique_id=1105171518 node_paths=PackedStringArray("World")]
 script = ExtResource("25_ptb65")
 ObstacleScene = ExtResource("26_nt4xe")
+World = NodePath("../Planet")
+ObstacleCount = 100
 
 [node name="Ship" parent="Control/SubViewportContainer/SubViewport" unique_id=1937052776 instance=ExtResource("2_4dhvd")]
 position = Vector2(960, 600)
