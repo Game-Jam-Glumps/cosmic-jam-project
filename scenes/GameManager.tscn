@@ -1894,7 +1894,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
 theme_override_font_sizes/font_size = 22
-text = "E / right click: HOLD a critter"
+text = "E / right click: HOLD an object"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Control/SubViewportContainer/SubViewport" unique_id=318961963]
 stream = SubResource("AudioStreamOggVorbis_3yw2i")
