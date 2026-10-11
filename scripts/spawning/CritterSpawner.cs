@@ -94,7 +94,8 @@ public partial class CritterSpawner : Node2D
                     return;
                 }
 
-                critter.Profile = rule.Species;
+                critter.Profile = (SpeciesProfile)rule.Species.Duplicate();
+                critter.Profile.Rarity = _rng.Randf() < 0.01f ? "Shiny" : "Normal";
                 critter.Habitat = rule.Habitat;
                 instance.Name = $"{rule.Habitat.HabitatName}Critter";
                 _population.AddChild(instance, true);

@@ -19,9 +19,9 @@ public partial class GameHud : CanvasLayer
             GD.PushError($"{Name}: assign a GameSession before displaying the HUD.");
             return;
         }
-        Session.RescueCountChanged += UpdateCargo;
+        Session.ScoreChanged += UpdateCargo;
         Session.TimeRemainingChanged += UpdateCountdown;
-        UpdateCargo(Session.RescuedCount);
+        UpdateCargo(Session.Score);
         UpdateCountdown(Session.SecondsRemaining);
     }
 
@@ -47,7 +47,7 @@ public partial class GameHud : CanvasLayer
     {
         if (GodotObject.IsInstanceValid(Session))
         {
-            Session.RescueCountChanged -= UpdateCargo;
+            Session.ScoreChanged -= UpdateCargo;
             Session.TimeRemainingChanged -= UpdateCountdown;
         }
     }

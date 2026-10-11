@@ -1,4 +1,5 @@
 using Godot;
+using System;
 
 namespace Orbitals;
 public partial class Critter : CharacterBody2D
@@ -13,6 +14,7 @@ public partial class Critter : CharacterBody2D
 
 	public Planet World { get; private set; }
 	public bool WasCarried { get; private set; }
+	public bool IsShiny => string.Equals(Profile?.Rarity, "Shiny", StringComparison.OrdinalIgnoreCase);
 	public float Angle { get; private set; }
 	public float SurfaceSpeed { get; private set; }
 	public float SurfaceOffset =>

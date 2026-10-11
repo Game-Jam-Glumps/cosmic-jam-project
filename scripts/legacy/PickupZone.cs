@@ -4,7 +4,7 @@ namespace Orbitals;
 public partial class PickupZone : Area2D
 {
 	[Signal]
-	public delegate void CritterDeliveredEventHandler();
+	public delegate void CritterDeliveredEventHandler(Critter critter);
 
 	private void OnBodyEntered(Node2D body)
 	{
@@ -12,7 +12,7 @@ public partial class PickupZone : Area2D
 		if (body is Critter critter && critter.WasCarried)
 		{
 			GD.Print("Critter delivered!");
-			EmitSignal(SignalName.CritterDelivered);
+			EmitSignal(SignalName.CritterDelivered, critter);
 			body.QueueFree();
 		}
 	}
